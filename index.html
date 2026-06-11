@@ -441,6 +441,61 @@ section { position: relative; }
   .food-grid { grid-template-columns: repeat(2,1fr); }
 }
 
+/* ===== THERAPISTS ===== */
+#therapists { background: var(--bear); padding: 6rem 2rem; text-align: center; }
+#therapists .section-h2 { color: var(--warm); }
+#therapists .eyebrow { color: var(--gold); }
+#therapists .section-gold-bar { margin: 1.2rem auto 0; }
+.therapists-intro {
+  font-size: 0.95rem; color: rgba(254,252,250,0.6);
+  line-height: 2; max-width: 540px; margin: 1.5rem auto 4rem;
+}
+.therapists-grid {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
+}
+.therapist-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(211,177,125,0.2);
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.therapist-card:hover { border-color: rgba(211,177,125,0.5); }
+.therapist-card img {
+  width: 100%; height: 340px; object-fit: cover; object-position: top;
+  display: block;
+}
+.therapist-info { padding: 1.8rem 1.5rem 2rem; }
+.therapist-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; color: var(--gold); margin-bottom: 0.3rem;
+}
+.therapist-title {
+  font-size: 0.8rem; color: rgba(211,177,125,0.6);
+  letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem;
+}
+.therapist-style {
+  display: inline-block; font-size: 0.78rem; color: var(--gold);
+  border: 1px solid rgba(211,177,125,0.4); padding: 0.2rem 0.7rem;
+  letter-spacing: 0.1em; margin-bottom: 1rem;
+}
+.therapist-desc {
+  font-size: 0.88rem; color: rgba(254,252,250,0.65);
+  line-height: 1.9; margin-bottom: 1.2rem;
+}
+.therapist-fits {
+  list-style: none; margin-bottom: 1.5rem;
+}
+.therapist-fits li {
+  font-size: 0.82rem; color: rgba(254,252,250,0.55);
+  line-height: 1.8; padding-left: 1.2rem; position: relative;
+}
+.therapist-fits li::before {
+  content: '✓'; position: absolute; left: 0; color: var(--gold); font-size: 0.75rem;
+}
+.therapist-card .btn-gold { width: 100%; text-align: center; font-size: 0.85rem; }
+@media (max-width: 900px) { .therapists-grid { grid-template-columns: 1fr; max-width: 420px; } }
+
 /* ===== S08 CLIENT VIEW ===== */
 #client {
   height: 70vh; min-height: 400px;
@@ -880,6 +935,74 @@ footer {
   </div>
   <div class="explore-map" style="margin-top:1.5rem;">
     <img src="images/explore-en2.jpg" alt="Nearby Attractions &amp; Local Food Recommendations">
+  </div>
+</section>
+
+<!-- THERAPISTS -->
+<section id="therapists">
+  <div class="section-header">
+    <p class="eyebrow" data-zh="認識我們的按摩師" data-en="Meet Our Therapists">認識我們的按摩師</p>
+    <h2 class="section-h2" data-zh="選擇適合自己的放鬆方式" data-en="Find the Right Match for You">選擇適合自己的放鬆方式</h2>
+    <div class="section-gold-bar"></div>
+  </div>
+  <p class="therapists-intro" data-zh="每位按摩師都有不同的背景與風格，您可以依照自己的需求選擇適合的老師。" data-en="Each therapist has their own background and style. Choose the one that feels right for you.">每位按摩師都有不同的背景與風格，您可以依照自己的需求選擇適合的老師。</p>
+
+  <div class="therapists-grid">
+
+    <!-- Benson -->
+    <div class="therapist-card">
+      <img src="images/therapist-benson.jpg" alt="熊教練 Benson">
+      <div class="therapist-info">
+        <div class="therapist-name">🐻 熊教練 Benson</div>
+        <div class="therapist-title" data-zh="身體的調音師" data-en="The Body Tuner">身體的調音師</div>
+        <div class="therapist-style" data-zh="溫和放鬆派" data-en="Gentle & Mindful">溫和放鬆派</div>
+        <p class="therapist-desc" data-zh="健身教練背景，同時熱愛音樂與鋼琴。擅長以穩定細膩的手法，陪伴忙碌的都市人慢下腳步。" data-en="With a fitness coaching background and a love for music, Benson brings steady, attentive hands to help city dwellers truly slow down.">健身教練背景，同時熱愛音樂與鋼琴。擅長以穩定細膩的手法，陪伴忙碌的都市人慢下腳步。</p>
+        <ul class="therapist-fits">
+          <li data-zh="第一次體驗按摩" data-en="First-time massage experience">第一次體驗按摩</li>
+          <li data-zh="長時間工作久坐" data-en="Desk workers & long hours">長時間工作久坐</li>
+          <li data-zh="喜歡溫和放鬆感" data-en="Prefer a gentle, calming touch">喜歡溫和放鬆感</li>
+          <li data-zh="希望獲得舒適休息體驗" data-en="Looking for a comfortable rest">希望獲得舒適休息體驗</li>
+        </ul>
+        <button class="btn-gold" onclick="openModal('benson')" data-zh="預約熊教練" data-en="Book Benson">預約熊教練</button>
+      </div>
+    </div>
+
+    <!-- 肉壯熊 -->
+    <div class="therapist-card">
+      <img src="images/therapist-bear.jpg" alt="肉壯熊">
+      <div class="therapist-info">
+        <div class="therapist-name">🐻‍❄️ 肉壯熊</div>
+        <div class="therapist-title" data-zh="扎實有力的陪伴" data-en="Strong & Grounded">扎實有力的陪伴</div>
+        <div class="therapist-style" data-zh="扎實力量派" data-en="Deep Pressure">扎實力量派</div>
+        <p class="therapist-desc" data-zh="手法穩定扎實，重視身體緊繃部位的放鬆感受。給人安心可靠的印象，適合喜歡較有存在感按壓的客人。" data-en="Known for steady, powerful technique with focused attention on tension points. Reliable and grounding — ideal for those who prefer a more substantial press.">手法穩定扎實，重視身體緊繃部位的放鬆感受。給人安心可靠的印象，適合喜歡較有存在感按壓的客人。</p>
+        <ul class="therapist-fits">
+          <li data-zh="喜歡較有力道的按壓感" data-en="Prefer stronger, deeper pressure">喜歡較有力道的按壓感</li>
+          <li data-zh="運動後放鬆" data-en="Post-workout recovery">運動後放鬆</li>
+          <li data-zh="長時間勞動工作者" data-en="Physical laborers & active workers">長時間勞動工作者</li>
+          <li data-zh="偏好深層放鬆感" data-en="Deep relaxation seekers">偏好深層放鬆感</li>
+        </ul>
+        <button class="btn-gold" onclick="openModal('bear')" data-zh="預約肉壯熊" data-en="Book 肉壯熊">預約肉壯熊</button>
+      </div>
+    </div>
+
+    <!-- 強尼熊老師傅 -->
+    <div class="therapist-card">
+      <img src="images/therapist-johnny.jpg" alt="強尼熊老師傅">
+      <div class="therapist-info">
+        <div class="therapist-name">🐻‍❄️ 強尼熊老師傅</div>
+        <div class="therapist-title" data-zh="經驗累積的老功夫" data-en="The Seasoned Master">經驗累積的老功夫</div>
+        <div class="therapist-style" data-zh="經驗老師傅派" data-en="Traditional Mastery">經驗老師傅派</div>
+        <p class="therapist-desc" data-zh="多年實務經驗，熟悉各種客人的需求與習慣。手法自然流暢，節奏穩定，讓人不知不覺深度放鬆。" data-en="Years of hands-on experience with a natural, fluid rhythm that eases clients into deep relaxation without them even noticing.">多年實務經驗，熟悉各種客人的需求與習慣。手法自然流暢，節奏穩定，讓人不知不覺深度放鬆。</p>
+        <ul class="therapist-fits">
+          <li data-zh="喜歡老師傅風格" data-en="Appreciate experienced, traditional style">喜歡老師傅風格</li>
+          <li data-zh="習慣傳統按摩節奏" data-en="Familiar with classic massage rhythm">習慣傳統按摩節奏</li>
+          <li data-zh="希望享受完整放鬆時光" data-en="Want a full, uninterrupted relaxation">希望享受完整放鬆時光</li>
+          <li data-zh="偏好沉穩手法" data-en="Prefer calm, measured technique">偏好沉穩手法</li>
+        </ul>
+        <button class="btn-gold" onclick="openModal('johnny')" data-zh="預約強尼熊老師傅" data-en="Book Johnny">預約強尼熊老師傅</button>
+      </div>
+    </div>
+
   </div>
 </section>
 
