@@ -61,6 +61,14 @@ nav {
   letter-spacing: .06em; cursor: pointer; transition: opacity .2s; font-weight: 500;
 }
 .nav-cta:hover { opacity: .85; }
+.lang-toggle-btn {
+  background: transparent; color: var(--pebble);
+  border: 1px solid rgba(196,181,164,.3); padding: .38rem .85rem;
+  font-family: 'Noto Sans TC', sans-serif; font-size: .75rem;
+  letter-spacing: .1em; cursor: pointer; transition: border-color .2s, color .2s;
+  margin-right: .5rem;
+}
+.lang-toggle-btn:hover { border-color: var(--gold); color: var(--gold); }
 
 /* HERO */
 .hero {
@@ -651,12 +659,13 @@ footer {
     </div>
   </div>
   <ul class="nav-links">
-    <li><a href="#about">教練介紹</a></li>
-    <li><a href="#rooms">客房</a></li>
-    <li><a href="#massage">舒緩按摩</a></li>
-    <li><a href="#subscribe">訂閱方案</a></li>
+    <li><a href="#about" data-zh="教練介紹" data-en="About">教練介紹</a></li>
+    <li><a href="#rooms" data-zh="客房" data-en="Rooms">客房</a></li>
+    <li><a href="#massage" data-zh="舒緩按摩" data-en="Massage">舒緩按摩</a></li>
+    <li><a href="#subscribe" data-zh="訂閱方案" data-en="Plans">訂閱方案</a></li>
   </ul>
-  <button class="nav-cta" onclick="openModal('massage')">預約按摩</button>
+  <button id="lang-toggle" class="lang-toggle-btn" onclick="toggleLang()">EN</button>
+  <button class="nav-cta" onclick="openModal('massage')" data-zh="預約按摩" data-en="Book Now">預約按摩</button>
 </nav>
 
 <!-- HERO -->
@@ -665,24 +674,24 @@ footer {
   <div class="hero-glow g1"></div>
   <div class="hero-glow g2"></div>
   <div class="hero-content">
-    <div class="hero-badge">🐻 班森熊教練主理</div>
-    <h1 class="hero-title">身體的調音師，<br><em>讓你慢下來</em></h1>
-    <p class="hero-tagline">
+    <div class="hero-badge" data-zh="🐻 班森熊教練主理" data-en="🐻 Curated by Coach Benson Bear">🐻 班森熊教練主理</div>
+    <h1 class="hero-title" data-zh="身體的調音師，<br><em>讓你慢下來</em>" data-en="Your Body's Tuner,<br><em>Slow Down with Us</em>">身體的調音師，<br><em>讓你慢下來</em></h1>
+    <p class="hero-tagline" data-zh="有些人用力量改變身體，<strong>有些人用音樂療癒心靈。</strong><br>班森熊教練，剛好同時走過這兩條路。" data-en="Some reshape the body with strength. <strong>Others heal the soul with music.</strong><br>Coach Benson Bear has walked both paths.">
       有些人用力量改變身體，<strong>有些人用音樂療癒心靈。</strong><br>
       班森熊教練，剛好同時走過這兩條路。
     </p>
-    <blockquote class="hero-quote">
+    <blockquote class="hero-quote" data-zh="最好的狀態，不是永遠緊繃向前衝；<br>而是在需要的時候，知道如何讓自己慢下來。" data-en="The best version of yourself isn't always pushing forward at full speed —<br>it's knowing when to slow down and breathe.">
       最好的狀態，不是永遠緊繃向前衝；<br>
       而是在需要的時候，知道如何讓自己慢下來。
     </blockquote>
     <div class="hero-actions">
-      <button class="btn-primary" onclick="openModal('massage')">預約舒緩按摩</button>
-      <button class="btn-ghost" onclick="document.getElementById('rooms').scrollIntoView({behavior:'smooth'})">探索客房</button>
+      <button class="btn-primary" onclick="openModal('massage')" data-zh="預約舒緩按摩" data-en="Book a Massage">預約舒緩按摩</button>
+      <button class="btn-ghost" onclick="document.getElementById('rooms').scrollIntoView({behavior:'smooth'})" data-zh="探索客房" data-en="Explore Rooms">探索客房</button>
     </div>
   </div>
   <div class="hero-scroll">
     <div class="scroll-line"></div>
-    向下捲動
+    <span data-zh="向下捲動" data-en="Scroll">向下捲動</span>
   </div>
 </section>
 
@@ -693,42 +702,42 @@ footer {
       <div class="about-portrait">
         🐻
         <div class="about-stats">
-          <div class="stat"><div class="stat-num">🏋️</div><div class="stat-label">體育專業</div></div>
-          <div class="stat"><div class="stat-num">🎹</div><div class="stat-label">鋼琴演奏</div></div>
-          <div class="stat"><div class="stat-num">👐</div><div class="stat-label">深層舒緩</div></div>
+          <div class="stat"><div class="stat-num">🏋️</div><div class="stat-label" data-zh="體育專業" data-en="Sports Science">體育專業</div></div>
+          <div class="stat"><div class="stat-num">🎹</div><div class="stat-label" data-zh="鋼琴演奏" data-en="Piano Performance">鋼琴演奏</div></div>
+          <div class="stat"><div class="stat-num">👐</div><div class="stat-label" data-zh="深層舒緩" data-en="Deep Relaxation">深層舒緩</div></div>
         </div>
       </div>
       <div class="about-accent-box"></div>
     </div>
     <div class="about-right">
-      <p class="sec-eyebrow">關於班森熊教練</p>
-      <h2 class="sec-title">一雙懂運動的手，<br>也是一雙懂音樂的手</h2>
+      <p class="sec-eyebrow" data-zh="關於班森熊教練" data-en="About Coach Benson Bear">關於班森熊教練</p>
+      <h2 class="sec-title" data-zh="一雙懂運動的手，<br>也是一雙懂音樂的手" data-en="Hands That Know Movement,<br>and Music">一雙懂運動的手，<br>也是一雙懂音樂的手</h2>
       <div class="gold-bar"></div>
-      <p class="sec-sub">科班體育背景出身，長期投入健身訓練與人體機能研究，熟悉肌肉、筋膜與身體運作的邏輯；同時熱愛音樂，擁有鋼琴演奏經驗，習慣用節奏、呼吸與感受去理解身體最細微的變化。</p>
+      <p class="sec-sub" data-zh="科班體育背景出身，長期投入健身訓練與人體機能研究，熟悉肌肉、筋膜與身體運作的邏輯；同時熱愛音樂，擁有鋼琴演奏經驗，習慣用節奏、呼吸與感受去理解身體最細微的變化。" data-en="Formally trained in sports science with deep expertise in fitness and human biomechanics — and equally passionate about music, bringing a pianist's sensitivity to every session, attuned to the body's subtlest rhythms.">科班體育背景出身，長期投入健身訓練與人體機能研究，熟悉肌肉、筋膜與身體運作的邏輯；同時熱愛音樂，擁有鋼琴演奏經驗，習慣用節奏、呼吸與感受去理解身體最細微的變化。</p>
       <div class="pillars">
         <div class="pillar">
           <div class="pillar-icon">🏋️</div>
-          <div class="pillar-name">體育專業背景</div>
-          <div class="pillar-desc">了解運動後的疲勞累積、肌肉緊繃與身體失衡，提供對應的舒緩方式。</div>
+          <div class="pillar-name" data-zh="體育專業背景" data-en="Sports Science Background">體育專業背景</div>
+          <div class="pillar-desc" data-zh="了解運動後的疲勞累積、肌肉緊繃與身體失衡，提供對應的舒緩方式。" data-en="Deep understanding of post-exercise fatigue, muscle tension, and physical imbalance — with targeted relief for each.">了解運動後的疲勞累積、肌肉緊繃與身體失衡，提供對應的舒緩方式。</div>
         </div>
         <div class="pillar">
           <div class="pillar-icon">🎹</div>
-          <div class="pillar-name">音樂人的細膩</div>
-          <div class="pillar-desc">如同調整琴鍵般，感受每一塊肌肉的張力與節奏，找到最舒適的力度。</div>
+          <div class="pillar-name" data-zh="音樂人的細膩" data-en="A Musician's Sensitivity">音樂人的細膩</div>
+          <div class="pillar-desc" data-zh="如同調整琴鍵般，感受每一塊肌肉的張力與節奏，找到最舒適的力度。" data-en="Like tuning piano keys, he senses each muscle's tension and rhythm to find the perfect pressure.">如同調整琴鍵般，感受每一塊肌肉的張力與節奏，找到最舒適的力度。</div>
         </div>
         <div class="pillar">
           <div class="pillar-icon">👐</div>
-          <div class="pillar-name">溫暖而有力量</div>
-          <div class="pillar-desc">兼具深層舒緩與穩定陪伴，協助身體找回屬於自己的平衡感。</div>
+          <div class="pillar-name" data-zh="溫暖而有力量" data-en="Warm Yet Grounding">溫暖而有力量</div>
+          <div class="pillar-desc" data-zh="兼具深層舒緩與穩定陪伴，協助身體找回屬於自己的平衡感。" data-en="Combining deep relief with steady presence, helping the body rediscover its own sense of balance.">兼具深層舒緩與穩定陪伴，協助身體找回屬於自己的平衡感。</div>
         </div>
         <div class="pillar">
           <div class="pillar-icon">🌿</div>
-          <div class="pillar-name">身心同步放鬆</div>
-          <div class="pillar-desc">不只舒緩身體的疲勞，也讓緊繃的情緒有機會慢慢沉澱下來。</div>
+          <div class="pillar-name" data-zh="身心同步放鬆" data-en="Body & Mind in Harmony">身心同步放鬆</div>
+          <div class="pillar-desc" data-zh="不只舒緩身體的疲勞，也讓緊繃的情緒有機會慢慢沉澱下來。" data-en="Not just releasing physical tension — giving stressed emotions room to slowly settle and breathe.">不只舒緩身體的疲勞，也讓緊繃的情緒有機會慢慢沉澱下來。</div>
         </div>
       </div>
       <div class="benson-philosophy">
-        <p>在熊抱舒所，每一次按摩不只是按壓與放鬆，更像是一場專屬於身體的調音過程。就像鋼琴需要定期調音，身體也需要適時保養。🎹🌿</p>
+        <p data-zh="在熊抱舒所，每一次按摩不只是按壓與放鬆，更像是一場專屬於身體的調音過程。就像鋼琴需要定期調音，身體也需要適時保養。🎹🌿" data-en="At 熊抱舒所, every massage is more than pressure and release — it's a tuning session made just for your body. Just as a piano needs regular tuning, your body deserves regular care. 🎹🌿">在熊抱舒所，每一次按摩不只是按壓與放鬆，更像是一場專屬於身體的調音過程。就像鋼琴需要定期調音，身體也需要適時保養。🎹🌿</p>
       </div>
     </div>
   </div>
@@ -738,10 +747,10 @@ footer {
 <section id="rooms">
   <div class="rooms-head">
     <div>
-      <p class="sec-eyebrow">客房介紹</p>
-      <h2 class="sec-title">為每一種旅人<br>設計的空間</h2>
+      <p class="sec-eyebrow" data-zh="客房介紹" data-en="Our Rooms">客房介紹</p>
+      <h2 class="sec-title" data-zh="為每一種旅人<br>設計的空間" data-en="Spaces Designed<br>for Every Traveller">為每一種旅人<br>設計的空間</h2>
     </div>
-    <p style="font-size:.88rem;color:var(--muted);font-weight:300;max-width:280px;line-height:1.8;">為旅人打造的舒適空間，讓每一天都像在度假。<br>住得更好・每一天都像度假。</p>
+    <p style="font-size:.88rem;color:var(--muted);font-weight:300;max-width:280px;line-height:1.8;" data-zh="為旅人打造的舒適空間，讓每一天都像在度假。<br>住得更好・每一天都像度假。" data-en="Comfortable spaces crafted for travellers — where every night feels like a retreat.">為旅人打造的舒適空間，讓每一天都像在度假。<br>住得更好・每一天都像度假。</p>
   </div>
   <div class="rooms-stack">
 
@@ -755,37 +764,37 @@ footer {
         </div>
       </div>
       <div class="room-info">
-        <span class="room-type-badge">養生 · 舒壓</span>
-        <h3 class="room-name">養生舒壓客房</h3>
-        <p class="room-tagline">適合重視健康、養生、按摩體驗的旅客</p>
+        <span class="room-type-badge" data-zh="養生 · 舒壓" data-en="Wellness · Relaxation">養生 · 舒壓</span>
+        <h3 class="room-name" data-zh="養生舒壓客房" data-en="Wellness & Relaxation Room">養生舒壓客房</h3>
+        <p class="room-tagline" data-zh="適合重視健康、養生、按摩體驗的旅客" data-en="Ideal for health-conscious travellers who value wellness and massage">適合重視健康、養生、按摩體驗的旅客</p>
         <div class="room-gold-bar"></div>
         <div class="room-specs">
-          <div class="spec-item"><span class="spec-key">面積</span><span class="spec-val">4.5 坪 / 15㎡</span></div>
-          <div class="spec-item"><span class="spec-key">尺寸</span><span class="spec-val">3.0m × 4.5m</span></div>
-          <div class="spec-item"><span class="spec-key">目標客群</span><span class="spec-val">養生健康旅客</span></div>
-          <div class="spec-item"><span class="spec-key">衛浴</span><span class="spec-val">乾濕分離 + 泡腳區</span></div>
-          <div class="spec-item"><span class="spec-key">採光</span><span class="spec-val">左側大窗 ★</span></div>
+          <div class="spec-item"><span class="spec-key" data-zh="面積" data-en="Size">面積</span><span class="spec-val">4.5 坪 / 15㎡</span></div>
+          <div class="spec-item"><span class="spec-key" data-zh="尺寸" data-en="Dimensions">尺寸</span><span class="spec-val">3.0m × 4.5m</span></div>
+          <div class="spec-item"><span class="spec-key" data-zh="目標客群" data-en="Best For">目標客群</span><span class="spec-val" data-zh="養生健康旅客" data-en="Wellness travellers">養生健康旅客</span></div>
+          <div class="spec-item"><span class="spec-key" data-zh="衛浴" data-en="Bathroom">衛浴</span><span class="spec-val" data-zh="乾濕分離 + 泡腳區" data-en="Separate shower + foot bath">乾濕分離 + 泡腳區</span></div>
+          <div class="spec-item"><span class="spec-key" data-zh="採光" data-en="Natural Light">採光</span><span class="spec-val" data-zh="左側大窗 ★" data-en="Large side window ★">左側大窗 ★</span></div>
           <div class="spec-item"><span class="spec-key">Wi-Fi</span><span class="spec-val">100Mbps+</span></div>
         </div>
         <div class="room-features">
-          <p class="room-features-title">特色設備</p>
+          <p class="room-features-title" data-zh="特色設備" data-en="Room Features">特色設備</p>
           <div class="features-grid">
-            <div class="feature-chip"><span class="chip-icon">🛏️</span>專業按摩床配置</div>
-            <div class="feature-chip"><span class="chip-icon">🌿</span>草本精油舒壓按摩</div>
-            <div class="feature-chip"><span class="chip-icon">♨️</span>遠紅外線暖療設備</div>
-            <div class="feature-chip"><span class="chip-icon">🚿</span>淋浴 + 泡腳養生</div>
-            <div class="feature-chip"><span class="chip-icon">🍵</span>養生備品提供</div>
-            <div class="feature-chip"><span class="chip-icon">💡</span>LED 氛圍燈帶</div>
-            <div class="feature-chip"><span class="chip-icon">🌬️</span>空氣清淨設備</div>
-            <div class="feature-chip"><span class="chip-icon">🎋</span>天然木質療癒設計</div>
+            <div class="feature-chip"><span class="chip-icon">🛏️</span><span data-zh="專業按摩床配置" data-en="Professional massage bed">專業按摩床配置</span></div>
+            <div class="feature-chip"><span class="chip-icon">🌿</span><span data-zh="草本精油舒壓按摩" data-en="Herbal aromatherapy massage">草本精油舒壓按摩</span></div>
+            <div class="feature-chip"><span class="chip-icon">♨️</span><span data-zh="遠紅外線暖療設備" data-en="Far-infrared warming device">遠紅外線暖療設備</span></div>
+            <div class="feature-chip"><span class="chip-icon">🚿</span><span data-zh="淋浴 + 泡腳養生" data-en="Shower + wellness foot bath">淋浴 + 泡腳養生</span></div>
+            <div class="feature-chip"><span class="chip-icon">🍵</span><span data-zh="養生備品提供" data-en="Wellness amenities included">養生備品提供</span></div>
+            <div class="feature-chip"><span class="chip-icon">💡</span><span data-zh="LED 氛圍燈帶" data-en="LED ambient lighting">LED 氛圍燈帶</span></div>
+            <div class="feature-chip"><span class="chip-icon">🌬️</span><span data-zh="空氣清淨設備" data-en="Air purifier">空氣清淨設備</span></div>
+            <div class="feature-chip"><span class="chip-icon">🎋</span><span data-zh="天然木質療癒設計" data-en="Natural wood healing décor">天然木質療癒設計</span></div>
           </div>
         </div>
         <div class="room-price-row">
           <div>
-            <div class="room-price">洽詢報價 <span>/ 晚</span></div>
-            <div style="font-size:.72rem;color:var(--muted);margin-top:.2rem;">含早餐・免費停車</div>
+            <div class="room-price"><span data-zh="洽詢報價" data-en="Enquire">洽詢報價</span> <span>/ <span data-zh="晚" data-en="night">晚</span></span></div>
+            <div style="font-size:.72rem;color:var(--muted);margin-top:.2rem;" data-zh="含早餐・免費停車" data-en="Breakfast included · Free parking">含早餐・免費停車</div>
           </div>
-          <button class="room-book-btn" onclick="openModal('booking')">立即預訂</button>
+          <button class="room-book-btn" onclick="openModal('booking')" data-zh="立即預訂" data-en="Book Now">立即預訂</button>
         </div>
       </div>
     </div>
@@ -800,37 +809,37 @@ footer {
         </div>
       </div>
       <div class="room-info">
-        <span class="room-type-badge">日韓 · 簡約風格</span>
-        <h3 class="room-name">日韓簡約客房</h3>
-        <p class="room-tagline">適合韓國人・日本人・外國旅客的飯店風格</p>
+        <span class="room-type-badge" data-zh="日韓 · 簡約風格" data-en="J/K · Minimal Style">日韓 · 簡約風格</span>
+        <h3 class="room-name" data-zh="日韓簡約客房" data-en="Japanese-Korean Minimal Room">日韓簡約客房</h3>
+        <p class="room-tagline" data-zh="適合韓國人・日本人・外國旅客的飯店風格" data-en="Hotel-style comfort perfect for Korean, Japanese & international guests">適合韓國人・日本人・外國旅客的飯店風格</p>
         <div class="room-gold-bar"></div>
         <div class="room-specs">
-          <div class="spec-item"><span class="spec-key">面積</span><span class="spec-val">4.5 坪 / 15㎡</span></div>
-          <div class="spec-item"><span class="spec-key">尺寸</span><span class="spec-val">3.0m × 4.5m</span></div>
-          <div class="spec-item"><span class="spec-key">目標客群</span><span class="spec-val">長住旅客 7 晚+</span></div>
-          <div class="spec-item"><span class="spec-key">衛浴</span><span class="spec-val">翻新乾濕分離</span></div>
-          <div class="spec-item"><span class="spec-key">採光</span><span class="spec-val">左側大窗 ★</span></div>
+          <div class="spec-item"><span class="spec-key" data-zh="面積" data-en="Size">面積</span><span class="spec-val">4.5 坪 / 15㎡</span></div>
+          <div class="spec-item"><span class="spec-key" data-zh="尺寸" data-en="Dimensions">尺寸</span><span class="spec-val">3.0m × 4.5m</span></div>
+          <div class="spec-item"><span class="spec-key" data-zh="目標客群" data-en="Best For">目標客群</span><span class="spec-val" data-zh="長住旅客 7 晚+" data-en="Extended stays 7 nights+">長住旅客 7 晚+</span></div>
+          <div class="spec-item"><span class="spec-key" data-zh="衛浴" data-en="Bathroom">衛浴</span><span class="spec-val" data-zh="翻新乾濕分離" data-en="Renovated separate shower">翻新乾濕分離</span></div>
+          <div class="spec-item"><span class="spec-key" data-zh="採光" data-en="Natural Light">採光</span><span class="spec-val" data-zh="左側大窗 ★" data-en="Large side window ★">左側大窗 ★</span></div>
           <div class="spec-item"><span class="spec-key">Wi-Fi</span><span class="spec-val">100Mbps+</span></div>
         </div>
         <div class="room-features">
-          <p class="room-features-title">特色設備</p>
+          <p class="room-features-title" data-zh="特色設備" data-en="Room Features">特色設備</p>
           <div class="features-grid">
-            <div class="feature-chip"><span class="chip-icon">🛏️</span>高品質床寢好眠</div>
-            <div class="feature-chip"><span class="chip-icon">💼</span>長桌工作區靈活使用</div>
-            <div class="feature-chip"><span class="chip-icon">☕</span>輕鬆茶几小空間</div>
-            <div class="feature-chip"><span class="chip-icon">📦</span>開放式收納衣架</div>
-            <div class="feature-chip"><span class="chip-icon">🖥️</span>多功能長桌工/化/茶</div>
-            <div class="feature-chip"><span class="chip-icon">💡</span>LED 氛圍燈帶</div>
-            <div class="feature-chip"><span class="chip-icon">🌿</span>溫潤木質米色系</div>
-            <div class="feature-chip"><span class="chip-icon">📶</span>長住工作型旅客首選</div>
+            <div class="feature-chip"><span class="chip-icon">🛏️</span><span data-zh="高品質床寢好眠" data-en="Premium bedding for restful sleep">高品質床寢好眠</span></div>
+            <div class="feature-chip"><span class="chip-icon">💼</span><span data-zh="長桌工作區靈活使用" data-en="Long desk for work or study">長桌工作區靈活使用</span></div>
+            <div class="feature-chip"><span class="chip-icon">☕</span><span data-zh="輕鬆茶几小空間" data-en="Cosy tea table nook">輕鬆茶几小空間</span></div>
+            <div class="feature-chip"><span class="chip-icon">📦</span><span data-zh="開放式收納衣架" data-en="Open wardrobe & storage rack">開放式收納衣架</span></div>
+            <div class="feature-chip"><span class="chip-icon">🖥️</span><span data-zh="多功能長桌工/化/茶" data-en="Multi-use long desk (work/vanity/tea)">多功能長桌工/化/茶</span></div>
+            <div class="feature-chip"><span class="chip-icon">💡</span><span data-zh="LED 氛圍燈帶" data-en="LED ambient lighting">LED 氛圍燈帶</span></div>
+            <div class="feature-chip"><span class="chip-icon">🌿</span><span data-zh="溫潤木質米色系" data-en="Warm wood & beige palette">溫潤木質米色系</span></div>
+            <div class="feature-chip"><span class="chip-icon">📶</span><span data-zh="長住工作型旅客首選" data-en="Top pick for remote workers">長住工作型旅客首選</span></div>
           </div>
         </div>
         <div class="room-price-row">
           <div>
-            <div class="room-price">洽詢報價 <span>/ 晚</span></div>
-            <div style="font-size:.72rem;color:var(--muted);margin-top:.2rem;">長住7晚享優惠・免費停車</div>
+            <div class="room-price"><span data-zh="洽詢報價" data-en="Enquire">洽詢報價</span> <span>/ <span data-zh="晚" data-en="night">晚</span></span></div>
+            <div style="font-size:.72rem;color:var(--muted);margin-top:.2rem;" data-zh="長住7晚享優惠・免費停車" data-en="7-night discount available · Free parking">長住7晚享優惠・免費停車</div>
           </div>
-          <button class="room-book-btn" onclick="openModal('booking')">立即預訂</button>
+          <button class="room-book-btn" onclick="openModal('booking')" data-zh="立即預訂" data-en="Book Now">立即預訂</button>
         </div>
       </div>
     </div>
@@ -842,76 +851,76 @@ footer {
 <section id="massage">
   <div class="massage-inner">
     <div class="massage-story">
-      <p class="sec-eyebrow">🌿 瑞典式精油按摩</p>
-      <h2 class="sec-title">不追求激烈刺激，<br>只要舒服自在</h2>
+      <p class="sec-eyebrow" data-zh="🌿 瑞典式精油按摩" data-en="🌿 Swedish Aromatherapy Massage">🌿 瑞典式精油按摩</p>
+      <h2 class="sec-title" data-zh="不追求激烈刺激，<br>只要舒服自在" data-en="No intensity needed —<br>just pure comfort">不追求激烈刺激，<br>只要舒服自在</h2>
       <div class="gold-bar"></div>
-      <p class="sec-sub">透過適當的深度、穩定的節奏，以及專注的陪伴，讓身體像重新校準一般，慢慢回到舒服自在的狀態。</p>
+      <p class="sec-sub" data-zh="透過適當的深度、穩定的節奏，以及專注的陪伴，讓身體像重新校準一般，慢慢回到舒服自在的狀態。" data-en="Through the right depth, steady rhythm, and attentive presence, your body gently recalibrates — slowly returning to a state of ease.">透過適當的深度、穩定的節奏，以及專注的陪伴，讓身體像重新校準一般，慢慢回到舒服自在的狀態。</p>
       <div class="story-body">
-        <p>在熊抱舒所，按摩是一種<strong>陪伴的儀式</strong>。</p>
-        <p style="margin-top:.8rem;">班森熊教練不只是按壓肌肉，而是透過對人體結構的理解，用細膩的音樂感受，找到每一個緊繃點背後的節奏，讓緊繃的部位有機會慢慢鬆開。</p>
-        <div class="story-quote">
+        <p data-zh="在熊抱舒所，按摩是一種<strong>陪伴的儀式</strong>。" data-en="At 熊抱舒所, massage is a <strong>ritual of presence</strong>.">在熊抱舒所，按摩是一種<strong>陪伴的儀式</strong>。</p>
+        <p style="margin-top:.8rem;" data-zh="班森熊教練不只是按壓肌肉，而是透過對人體結構的理解，用細膩的音樂感受，找到每一個緊繃點背後的節奏，讓緊繃的部位有機會慢慢鬆開。" data-en="Coach Benson doesn't simply press muscles — through a deep understanding of the body's structure and a musician's sensitivity, he finds the rhythm behind each tension point and gently guides it to release.">班森熊教練不只是按壓肌肉，而是透過對人體結構的理解，用細膩的音樂感受，找到每一個緊繃點背後的節奏，讓緊繃的部位有機會慢慢鬆開。</p>
+        <div class="story-quote" data-zh="就像鋼琴需要定期調音，<br>身體也需要適時保養。<br>歡迎來到熊抱舒所。🐻🎹🌿" data-en="Just as a piano needs regular tuning,<br>your body deserves regular care.<br>Welcome to 熊抱舒所. 🐻🎹🌿">
           就像鋼琴需要定期調音，<br>身體也需要適時保養。<br>歡迎來到熊抱舒所。🐻🎹🌿
         </div>
-        <p>讓身體舒展，讓心靈留白，讓生活重新找回屬於自己的節奏。</p>
+        <p data-zh="讓身體舒展，讓心靈留白，讓生活重新找回屬於自己的節奏。" data-en="Let your body stretch, your mind rest, and your life rediscover its own rhythm.">讓身體舒展，讓心靈留白，讓生活重新找回屬於自己的節奏。</p>
       </div>
       <div class="notice-box">
-        <strong>⚠️ 重要說明：</strong>本服務為舒緩按摩，提供身體放鬆與舒緩體驗，不涉及醫療行為，亦不宣稱任何療效。如有健康疑慮，請諮詢專業醫療人員。
+        <strong data-zh="⚠️ 重要說明：" data-en="⚠️ Important Notice:">⚠️ 重要說明：</strong><span data-zh="本服務為舒緩按摩，提供身體放鬆與舒緩體驗，不涉及醫療行為，亦不宣稱任何療效。如有健康疑慮，請諮詢專業醫療人員。" data-en="This service is a relaxation massage for physical relief and comfort. It does not constitute medical treatment and makes no therapeutic claims. Please consult a medical professional for any health concerns.">本服務為舒緩按摩，提供身體放鬆與舒緩體驗，不涉及醫療行為，亦不宣稱任何療效。如有健康疑慮，請諮詢專業醫療人員。</span>
       </div>
     </div>
     <div class="massage-services">
       <div class="services-card">
-        <p class="sec-eyebrow">服務項目</p>
-        <h3 class="sec-title">🌿 瑞典式精油按摩</h3>
+        <p class="sec-eyebrow" data-zh="服務項目" data-en="Services">服務項目</p>
+        <h3 class="sec-title" data-zh="🌿 瑞典式精油按摩" data-en="🌿 Swedish Aromatherapy Massage">🌿 瑞典式精油按摩</h3>
         <div class="gold-bar"></div>
-        <p style="font-size:.8rem;color:rgba(196,181,164,.6);font-weight:300;margin-bottom:.5rem;">全身放鬆｜筋膜舒緩｜壓力釋放</p>
+        <p style="font-size:.8rem;color:rgba(196,181,164,.6);font-weight:300;margin-bottom:.5rem;" data-zh="全身放鬆｜筋膜舒緩｜壓力釋放" data-en="Full-body relaxation · Fascia relief · Stress release">全身放鬆｜筋膜舒緩｜壓力釋放</p>
         <div class="service-list">
           <div class="service-row">
             <div class="svc-left">
-              <span class="svc-name">瑞典式精油按摩</span>
+              <span class="svc-name" data-zh="瑞典式精油按摩" data-en="Swedish Aromatherapy Massage">瑞典式精油按摩</span>
               <div class="svc-tags">
-                <span class="svc-tag">全身舒緩</span>
-                <span class="svc-tag">精油調配</span>
+                <span class="svc-tag" data-zh="全身舒緩" data-en="Full Body">全身舒緩</span>
+                <span class="svc-tag" data-zh="精油調配" data-en="Custom Blend">精油調配</span>
               </div>
             </div>
             <div class="svc-right">
-              <div class="svc-duration">60 分鐘</div>
-              <div class="svc-price">NTNT$1,500</div>
+              <div class="svc-duration" data-zh="60 分鐘" data-en="60 min">60 分鐘</div>
+              <div class="svc-price">NT$1,500</div>
             </div>
           </div>
           <div class="service-row">
             <div class="svc-left">
-              <span class="svc-name">瑞典式精油按摩</span>
+              <span class="svc-name" data-zh="瑞典式精油按摩" data-en="Swedish Aromatherapy Massage">瑞典式精油按摩</span>
               <div class="svc-tags">
-                <span class="svc-tag">深度舒緩</span>
-                <span class="svc-tag">精油調配</span>
+                <span class="svc-tag" data-zh="深度舒緩" data-en="Deep Relief">深度舒緩</span>
+                <span class="svc-tag" data-zh="精油調配" data-en="Custom Blend">精油調配</span>
               </div>
             </div>
             <div class="svc-right">
-              <div class="svc-duration">90 分鐘</div>
-              <div class="svc-price">NTNT$2,000</div>
+              <div class="svc-duration" data-zh="90 分鐘" data-en="90 min">90 分鐘</div>
+              <div class="svc-price">NT$2,000</div>
             </div>
           </div>
         </div>
         <div class="promos-area">
-          <p style="font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem;">🎁 專屬優惠</p>
+          <p style="font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem;" data-zh="🎁 專屬優惠" data-en="🎁 Exclusive Offers">🎁 專屬優惠</p>
           <div class="promo-chip">
             <span class="promo-icon">🎂</span>
-            <span><strong style="color:var(--cream);">當月壽星</strong>折抵 NT$200（需出示證件）</span>
+            <span><strong style="color:var(--cream);" data-zh="當月壽星" data-en="Birthday Month">當月壽星</strong><span data-zh="折抵 NT$200（需出示證件）" data-en="— NT$200 off (ID required)">折抵 NT$200（需出示證件）</span></span>
           </div>
           <div class="promo-chip">
             <span class="promo-icon">🚓</span>
-            <span><strong style="color:var(--cream);">軍警消人員</strong>折抵 NT$200（需出示證件）</span>
+            <span><strong style="color:var(--cream);" data-zh="軍警消人員" data-en="Military / Police / Fire">軍警消人員</strong><span data-zh="折抵 NT$200（需出示證件）" data-en="— NT$200 off (ID required)">折抵 NT$200（需出示證件）</span></span>
           </div>
         </div>
         <div class="payment-row-full">
-          <div class="pay-title">💳 支付方式</div>
+          <div class="pay-title" data-zh="💳 支付方式" data-en="💳 Payment">💳 支付方式</div>
           <div class="pay-methods">
             <span class="pay-badge-green">LINE Pay</span>
-            <span class="pay-badge-gray">現金</span>
-            <span class="pay-badge-gray">銀行轉帳</span>
+            <span class="pay-badge-gray" data-zh="現金" data-en="Cash">現金</span>
+            <span class="pay-badge-gray" data-zh="銀行轉帳" data-en="Bank Transfer">銀行轉帳</span>
           </div>
         </div>
-        <button class="reserve-cta" onclick="openModal('massage')">🐻 立即預約舒緩按摩</button>
+        <button class="reserve-cta" onclick="openModal('massage')" data-zh="🐻 立即預約舒緩按摩" data-en="🐻 Book a Massage">🐻 立即預約舒緩按摩</button>
       </div>
     </div>
   </div>
@@ -922,8 +931,8 @@ footer {
   <div class="lc-left">
     <div class="lc-icon">💬</div>
     <div class="lc-text">
-      <h3>用 LINE 預約最方便！</h3>
-      <p>加入好友後直接傳訊，班森熊教練親自回覆確認時間<br>接受 LINE Pay 付款，安全便利不用現金</p>
+      <h3 data-zh="用 LINE 預約最方便！" data-en="Book Easily via LINE!">用 LINE 預約最方便！</h3>
+      <p data-zh="加入好友後直接傳訊，班森熊教練親自回覆確認時間<br>接受 LINE Pay 付款，安全便利不用現金" data-en="Add us as a friend and message directly — Coach Benson replies personally to confirm your time.<br>LINE Pay accepted for safe, cashless payment.">加入好友後直接傳訊，班森熊教練親自回覆確認時間<br>接受 LINE Pay 付款，安全便利不用現金</p>
     </div>
   </div>
   <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
@@ -936,75 +945,75 @@ footer {
 <section id="subscribe">
   <div class="subscribe-inner">
     <div class="sub-left">
-      <p class="sec-eyebrow">訂閱方案</p>
-      <h2 class="sec-title">讓熊抱舒所<br>成為你的日常</h2>
+      <p class="sec-eyebrow" data-zh="訂閱方案" data-en="Membership Plans">訂閱方案</p>
+      <h2 class="sec-title" data-zh="讓熊抱舒所<br>成為你的日常" data-en="Make 熊抱舒所<br>Part of Your Routine">讓熊抱舒所<br>成為你的日常</h2>
       <div class="gold-bar"></div>
-      <p class="sec-sub">定期回來保養身體，就像鋼琴需要調音。選擇最適合你的訂閱方案，讓舒緩成為一種習慣。</p>
+      <p class="sec-sub" data-zh="定期回來保養身體，就像鋼琴需要調音。選擇最適合你的訂閱方案，讓舒緩成為一種習慣。" data-en="Regular body care is like tuning a piano — essential and rewarding. Choose the plan that fits your life and let relaxation become a habit.">定期回來保養身體，就像鋼琴需要調音。選擇最適合你的訂閱方案，讓舒緩成為一種習慣。</p>
       <div class="plans">
         <div class="plan">
           <div class="plan-top">
             <div>
-              <div class="plan-name">月訪旅人</div>
-              <div class="plan-note">每月計費，隨時取消</div>
+              <div class="plan-name" data-zh="月訪旅人" data-en="Monthly Visitor">月訪旅人</div>
+              <div class="plan-note" data-zh="每月計費，隨時取消" data-en="Billed monthly, cancel anytime">每月計費，隨時取消</div>
             </div>
-            <div class="plan-price">洽詢<sub>/月</sub></div>
+            <div class="plan-price"><span data-zh="洽詢" data-en="Enquire">洽詢</span><sub data-zh="/月" data-en="/mo">/月</sub></div>
           </div>
           <ul class="plan-perks">
-            <li>每月 1 晚客房折扣 20%</li>
-            <li>60 分鐘舒緩按摩兌換 × 1</li>
-            <li>早鳥預約優先通知</li>
-            <li>生日月份額外折扣 NT$200</li>
+            <li data-zh="每月 1 晚客房折扣 20%" data-en="1 night/month at 20% off">每月 1 晚客房折扣 20%</li>
+            <li data-zh="60 分鐘舒緩按摩兌換 × 1" data-en="1 × 60-min massage redemption">60 分鐘舒緩按摩兌換 × 1</li>
+            <li data-zh="早鳥預約優先通知" data-en="Early-bird booking priority alerts">早鳥預約優先通知</li>
+            <li data-zh="生日月份額外折扣 NT$200" data-en="Birthday month bonus NT$200 off">生日月份額外折扣 NT$200</li>
           </ul>
         </div>
         <div class="plan hot">
           <div class="plan-top">
             <div>
-              <div class="plan-name">熊抱常駐者</div>
-              <div class="plan-note">年繳方案，省更多</div>
+              <div class="plan-name" data-zh="熊抱常駐者" data-en="Bear Hug Regular">熊抱常駐者</div>
+              <div class="plan-note" data-zh="年繳方案，省更多" data-en="Annual plan, save more">年繳方案，省更多</div>
             </div>
-            <div class="plan-price">洽詢<sub>/月</sub></div>
+            <div class="plan-price"><span data-zh="洽詢" data-en="Enquire">洽詢</span><sub data-zh="/月" data-en="/mo">/月</sub></div>
           </div>
           <ul class="plan-perks">
-            <li>每月 2 晚客房折扣 30%</li>
-            <li>90 分鐘舒緩按摩兌換 × 2</li>
-            <li>軍警消專屬額外折抵</li>
-            <li>優先預約黃金時段</li>
-            <li>贈年度養生體驗一次</li>
+            <li data-zh="每月 2 晚客房折扣 30%" data-en="2 nights/month at 30% off">每月 2 晚客房折扣 30%</li>
+            <li data-zh="90 分鐘舒緩按摩兌換 × 2" data-en="2 × 90-min massage redemptions">90 分鐘舒緩按摩兌換 × 2</li>
+            <li data-zh="軍警消專屬額外折抵" data-en="Extra discount for military/police/fire">軍警消專屬額外折抵</li>
+            <li data-zh="優先預約黃金時段" data-en="Priority access to prime time slots">優先預約黃金時段</li>
+            <li data-zh="贈年度養生體驗一次" data-en="One complimentary annual wellness session">贈年度養生體驗一次</li>
           </ul>
         </div>
         <div class="plan">
           <div class="plan-top">
             <div>
-              <div class="plan-name">企業員工方案</div>
-              <div class="plan-note">每季計費，最多 10 人</div>
+              <div class="plan-name" data-zh="企業員工方案" data-en="Corporate Plan">企業員工方案</div>
+              <div class="plan-note" data-zh="每季計費，最多 10 人" data-en="Billed quarterly, up to 10 staff">每季計費，最多 10 人</div>
             </div>
-            <div class="plan-price">洽詢<sub>/季</sub></div>
+            <div class="plan-price"><span data-zh="洽詢" data-en="Enquire">洽詢</span><sub data-zh="/季" data-en="/qtr">/季</sub></div>
           </div>
           <ul class="plan-perks">
-            <li>員工客房折扣 25%</li>
-            <li>團體按摩體驗 × 季度</li>
-            <li>企業訂房專屬連結</li>
-            <li>員工福利卡管理</li>
+            <li data-zh="員工客房折扣 25%" data-en="25% off rooms for all staff">員工客房折扣 25%</li>
+            <li data-zh="團體按摩體驗 × 季度" data-en="Group massage experience each quarter">團體按摩體驗 × 季度</li>
+            <li data-zh="企業訂房專屬連結" data-en="Dedicated corporate booking link">企業訂房專屬連結</li>
+            <li data-zh="員工福利卡管理" data-en="Staff benefits card management">員工福利卡管理</li>
           </ul>
         </div>
       </div>
     </div>
     <div class="sub-form-wrap">
-      <h3>開始你的訂閱</h3>
-      <p>填寫資料後，班森熊教練會在 24 小時內親自與您確認方案細節，並安排首次導覽體驗。</p>
-      <div class="fg"><input type="text" placeholder="您的姓名 *"></div>
-      <div class="fg"><input type="email" placeholder="電子郵件 *"></div>
-      <div class="fg"><input type="tel" placeholder="手機號碼 *"></div>
+      <h3 data-zh="開始你的訂閱" data-en="Start Your Membership">開始你的訂閱</h3>
+      <p data-zh="填寫資料後，班森熊教練會在 24 小時內親自與您確認方案細節，並安排首次導覽體驗。" data-en="After submitting, Coach Benson will personally confirm your plan details within 24 hours and arrange your first welcome visit.">填寫資料後，班森熊教練會在 24 小時內親自與您確認方案細節，並安排首次導覽體驗。</p>
+      <div class="fg"><input type="text" placeholder="您的姓名 *" data-ph-zh="您的姓名 *" data-ph-en="Your Name *"></div>
+      <div class="fg"><input type="email" placeholder="電子郵件 *" data-ph-zh="電子郵件 *" data-ph-en="Email Address *"></div>
+      <div class="fg"><input type="tel" placeholder="手機號碼 *" data-ph-zh="手機號碼 *" data-ph-en="Phone Number *"></div>
       <div class="fg">
-        <select>
-          <option value="" disabled selected>選擇訂閱方案 *</option>
-          <option>月訪旅人方案</option>
-          <option>熊抱常駐者（年繳）</option>
-          <option>企業員工方案</option>
+        <select data-ph-zh="選擇訂閱方案 *" data-ph-en="Select a Plan *">
+          <option value="" disabled selected data-zh="選擇訂閱方案 *" data-en="Select a Plan *">選擇訂閱方案 *</option>
+          <option data-zh="月訪旅人方案" data-en="Monthly Visitor Plan">月訪旅人方案</option>
+          <option data-zh="熊抱常駐者（年繳）" data-en="Bear Hug Regular (Annual)">熊抱常駐者（年繳）</option>
+          <option data-zh="企業員工方案" data-en="Corporate Plan">企業員工方案</option>
         </select>
       </div>
-      <div class="fg"><textarea rows="3" placeholder="有什麼特別需求或問題嗎？（選填）"></textarea></div>
-      <button class="sub-submit" onclick="showToast('感謝訂閱申請！班森熊教練會盡快與您聯繫 🐻🌿')">提交申請</button>
+      <div class="fg"><textarea rows="3" placeholder="有什麼特別需求或問題嗎？（選填）" data-ph-zh="有什麼特別需求或問題嗎？（選填）" data-ph-en="Any special requests or questions? (optional)"></textarea></div>
+      <button class="sub-submit" onclick="showToast('感謝訂閱申請！班森熊教練會盡快與您聯繫 🐻🌿')" data-zh="提交申請" data-en="Submit Application">提交申請</button>
     </div>
   </div>
 </section>
@@ -1014,38 +1023,38 @@ footer {
   <div class="footer-grid">
     <div>
       <div class="footer-brand-logo">🐻 熊抱舒所</div>
-      <p class="footer-brand-desc">Bear Hug &amp; Relax · 班森熊教練主理<br><br>一雙懂運動的手，也是一雙懂音樂的手。從健身房到鋼琴前，從力量訓練到身體放鬆。</p>
+      <p class="footer-brand-desc" data-zh="Bear Hug &amp; Relax · 班森熊教練主理<br><br>一雙懂運動的手，也是一雙懂音樂的手。從健身房到鋼琴前，從力量訓練到身體放鬆。" data-en="Bear Hug &amp; Relax · Curated by Coach Benson Bear<br><br>Hands that know movement and music. From the gym to the piano bench — from strength to serenity.">Bear Hug &amp; Relax · 班森熊教練主理<br><br>一雙懂運動的手，也是一雙懂音樂的手。從健身房到鋼琴前，從力量訓練到身體放鬆。</p>
     </div>
     <div class="footer-col">
-      <h4>客房類型</h4>
+      <h4 data-zh="客房類型" data-en="Room Types">客房類型</h4>
       <ul>
-        <li><a href="#">養生舒壓客房</a></li>
-        <li><a href="#">日韓簡約客房</a></li>
-        <li><a href="#">長住優惠方案</a></li>
+        <li><a href="#" data-zh="養生舒壓客房" data-en="Wellness &amp; Relaxation Room">養生舒壓客房</a></li>
+        <li><a href="#" data-zh="日韓簡約客房" data-en="Japanese-Korean Minimal Room">日韓簡約客房</a></li>
+        <li><a href="#" data-zh="長住優惠方案" data-en="Extended Stay Deals">長住優惠方案</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>舒緩按摩</h4>
+      <h4 data-zh="舒緩按摩" data-en="Massage">舒緩按摩</h4>
       <ul>
-        <li><a href="#">60 分鐘 NT$1,500</a></li>
-        <li><a href="#">90 分鐘 NT$2,000</a></li>
-        <li><a href="#">壽星優惠 -$200</a></li>
-        <li><a href="#">軍警消優惠 -$200</a></li>
+        <li><a href="#" data-zh="60 分鐘 NT$1,500" data-en="60 min — NT$1,500">60 分鐘 NT$1,500</a></li>
+        <li><a href="#" data-zh="90 分鐘 NT$2,000" data-en="90 min — NT$2,000">90 分鐘 NT$2,000</a></li>
+        <li><a href="#" data-zh="壽星優惠 -$200" data-en="Birthday Discount -$200">壽星優惠 -$200</a></li>
+        <li><a href="#" data-zh="軍警消優惠 -$200" data-en="Military/Police/Fire -$200">軍警消優惠 -$200</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>聯絡方式</h4>
+      <h4 data-zh="聯絡方式" data-en="Contact">聯絡方式</h4>
       <ul>
-        <li><a href="#" id="footer-line-link">💬 LINE 加好友</a></li>
-        <li><a href="#">LINE Pay 付款</a></li>
-        <li><a href="#">銀行轉帳</a></li>
-        <li><a href="#">現金付款</a></li>
+        <li><a href="#" id="footer-line-link" data-zh="💬 LINE 加好友" data-en="💬 Add on LINE">💬 LINE 加好友</a></li>
+        <li><a href="#" data-zh="LINE Pay 付款" data-en="Pay via LINE Pay">LINE Pay 付款</a></li>
+        <li><a href="#" data-zh="銀行轉帳" data-en="Bank Transfer">銀行轉帳</a></li>
+        <li><a href="#" data-zh="現金付款" data-en="Cash Payment">現金付款</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 熊抱舒所 Bear Hug &amp; Relax · 班森熊教練主理</p>
-    <p>本服務為舒緩按摩，不涉及醫療行為，不宣稱任何療效</p>
+    <p data-zh="© 2026 熊抱舒所 Bear Hug &amp; Relax · 班森熊教練主理" data-en="© 2026 熊抱舒所 Bear Hug &amp; Relax · Curated by Coach Benson Bear">© 2026 熊抱舒所 Bear Hug &amp; Relax · 班森熊教練主理</p>
+    <p data-zh="本服務為舒緩按摩，不涉及醫療行為，不宣稱任何療效" data-en="This service is a relaxation massage only. No medical claims are made.">本服務為舒緩按摩，不涉及醫療行為，不宣稱任何療效</p>
   </div>
 </footer>
 
@@ -1053,39 +1062,39 @@ footer {
 <div class="modal-overlay" id="modal-booking">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('booking')">✕</button>
-    <h2>🏠 預訂客房</h2>
-    <p>填寫後點「確認預訂」，將自動開啟 LINE 對話，並帶入您的預約資訊，由班森熊教練親自確認。</p>
+    <h2 data-zh="🏠 預訂客房" data-en="🏠 Book a Room">🏠 預訂客房</h2>
+    <p data-zh="填寫後點「確認預訂」，將自動開啟 LINE 對話，並帶入您的預約資訊，由班森熊教練親自確認。" data-en="Fill in your details and tap Confirm — LINE will open automatically with your booking info pre-filled for Coach Benson to confirm.">填寫後點「確認預訂」，將自動開啟 LINE 對話，並帶入您的預約資訊，由班森熊教練親自確認。</p>
     <div class="step-flow">
-      <div class="step-item"><div class="step-circle">1</div><div class="step-label">填寫<br>資料</div></div>
+      <div class="step-item"><div class="step-circle">1</div><div class="step-label" data-zh="填寫<br>資料" data-en="Fill<br>Form">填寫<br>資料</div></div>
       <div class="step-arrow">›</div>
-      <div class="step-item"><div class="step-circle">2</div><div class="step-label">跳轉<br>LINE</div></div>
+      <div class="step-item"><div class="step-circle">2</div><div class="step-label" data-zh="跳轉<br>LINE" data-en="Open<br>LINE">跳轉<br>LINE</div></div>
       <div class="step-arrow">›</div>
-      <div class="step-item"><div class="step-circle">3</div><div class="step-label">教練<br>確認</div></div>
+      <div class="step-item"><div class="step-circle">3</div><div class="step-label" data-zh="教練<br>確認" data-en="Coach<br>Confirms">教練<br>確認</div></div>
       <div class="step-arrow">›</div>
-      <div class="step-item"><div class="step-circle">4</div><div class="step-label">LINE Pay<br>付款</div></div>
+      <div class="step-item"><div class="step-circle">4</div><div class="step-label" data-zh="LINE Pay<br>付款" data-en="LINE Pay<br>Payment">LINE Pay<br>付款</div></div>
     </div>
-    <div class="fg"><input type="text" id="bk-name" placeholder="姓名 *"></div>
-    <div class="fg"><input type="tel" id="bk-phone" placeholder="手機號碼 *"></div>
+    <div class="fg"><input type="text" id="bk-name" placeholder="姓名 *" data-ph-zh="姓名 *" data-ph-en="Name *"></div>
+    <div class="fg"><input type="tel" id="bk-phone" placeholder="手機號碼 *" data-ph-zh="手機號碼 *" data-ph-en="Phone Number *"></div>
     <div class="fg-row">
       <div class="fg"><input type="date" id="bk-checkin"></div>
       <div class="fg"><input type="date" id="bk-checkout"></div>
     </div>
     <div class="fg">
       <select id="bk-room">
-        <option disabled selected>選擇房型 *</option>
-        <option>養生舒壓客房</option>
-        <option>日韓簡約客房</option>
+        <option disabled selected data-zh="選擇房型 *" data-en="Select Room Type *">選擇房型 *</option>
+        <option data-zh="養生舒壓客房" data-en="Wellness &amp; Relaxation Room">養生舒壓客房</option>
+        <option data-zh="日韓簡約客房" data-en="Japanese-Korean Minimal Room">日韓簡約客房</option>
       </select>
     </div>
-    <div class="fg"><textarea rows="2" id="bk-note" placeholder="特殊需求（選填）"></textarea></div>
+    <div class="fg"><textarea rows="2" id="bk-note" placeholder="特殊需求（選填）" data-ph-zh="特殊需求（選填）" data-ph-en="Special requests (optional)"></textarea></div>
     <div class="linepay-box">
       <div class="lp-icon">💚</div>
       <div class="lp-text">
-        <strong>付款方式：LINE Pay</strong>
-        確認後教練會透過 LINE 傳送付款連結，安全快速完成訂房。也可選擇現金 / 銀行轉帳。
+        <strong data-zh="付款方式：LINE Pay" data-en="Payment: LINE Pay">付款方式：LINE Pay</strong>
+        <span data-zh="確認後教練會透過 LINE 傳送付款連結，安全快速完成訂房。也可選擇現金 / 銀行轉帳。" data-en="After confirmation, Coach Benson will send a LINE Pay link via LINE. Cash and bank transfer also accepted.">確認後教練會透過 LINE 傳送付款連結，安全快速完成訂房。也可選擇現金 / 銀行轉帳。</span>
       </div>
     </div>
-    <button class="modal-submit" onclick="submitBooking()">確認預訂 → 開啟 LINE</button>
+    <button class="modal-submit" onclick="submitBooking()" data-zh="確認預訂 → 開啟 LINE" data-en="Confirm Booking → Open LINE">確認預訂 → 開啟 LINE</button>
   </div>
 </div>
 
@@ -1093,24 +1102,24 @@ footer {
 <div class="modal-overlay" id="modal-massage">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('massage')">✕</button>
-    <h2>🐻 預約舒緩按摩</h2>
-    <p>填寫後點「確認預約」，將自動開啟 LINE 對話，由班森熊教練親自回覆確認時間。</p>
+    <h2 data-zh="🐻 預約舒緩按摩" data-en="🐻 Book a Massage">🐻 預約舒緩按摩</h2>
+    <p data-zh="填寫後點「確認預約」，將自動開啟 LINE 對話，由班森熊教練親自回覆確認時間。" data-en="Fill in your details and tap Confirm — LINE will open and Coach Benson will personally reply to confirm your appointment.">填寫後點「確認預約」，將自動開啟 LINE 對話，由班森熊教練親自回覆確認時間。</p>
     <div class="step-flow">
-      <div class="step-item"><div class="step-circle">1</div><div class="step-label">填寫<br>資料</div></div>
+      <div class="step-item"><div class="step-circle">1</div><div class="step-label" data-zh="填寫<br>資料" data-en="Fill<br>Form">填寫<br>資料</div></div>
       <div class="step-arrow">›</div>
-      <div class="step-item"><div class="step-circle">2</div><div class="step-label">跳轉<br>LINE</div></div>
+      <div class="step-item"><div class="step-circle">2</div><div class="step-label" data-zh="跳轉<br>LINE" data-en="Open<br>LINE">跳轉<br>LINE</div></div>
       <div class="step-arrow">›</div>
-      <div class="step-item"><div class="step-circle">3</div><div class="step-label">教練<br>確認</div></div>
+      <div class="step-item"><div class="step-circle">3</div><div class="step-label" data-zh="教練<br>確認" data-en="Coach<br>Confirms">教練<br>確認</div></div>
       <div class="step-arrow">›</div>
-      <div class="step-item"><div class="step-circle">4</div><div class="step-label">LINE Pay<br>付款</div></div>
+      <div class="step-item"><div class="step-circle">4</div><div class="step-label" data-zh="LINE Pay<br>付款" data-en="LINE Pay<br>Payment">LINE Pay<br>付款</div></div>
     </div>
-    <div class="fg"><input type="text" id="ms-name" placeholder="姓名 *"></div>
-    <div class="fg"><input type="tel" id="ms-phone" placeholder="手機號碼 *"></div>
+    <div class="fg"><input type="text" id="ms-name" placeholder="姓名 *" data-ph-zh="姓名 *" data-ph-en="Name *"></div>
+    <div class="fg"><input type="tel" id="ms-phone" placeholder="手機號碼 *" data-ph-zh="手機號碼 *" data-ph-en="Phone Number *"></div>
     <div class="fg-row">
       <div class="fg"><input type="date" id="ms-date"></div>
       <div class="fg">
         <select id="ms-time">
-          <option disabled selected>希望時段</option>
+          <option disabled selected data-zh="希望時段" data-en="Preferred Time">希望時段</option>
           <option>10:00</option><option>11:00</option>
           <option>13:00</option><option>14:00</option>
           <option>15:00</option><option>16:00</option>
@@ -1121,30 +1130,30 @@ footer {
     </div>
     <div class="fg">
       <select id="ms-service">
-        <option disabled selected>選擇療程 *</option>
-        <option value="60min-1500">瑞典式精油按摩 60分鐘 — NT$1,500</option>
-        <option value="90min-2000">瑞典式精油按摩 90分鐘 — NT$2,000</option>
+        <option disabled selected data-zh="選擇療程 *" data-en="Select Service *">選擇療程 *</option>
+        <option value="60min-1500" data-zh="瑞典式精油按摩 60分鐘 — NT$1,500" data-en="Swedish Aromatherapy Massage 60 min — NT$1,500">瑞典式精油按摩 60分鐘 — NT$1,500</option>
+        <option value="90min-2000" data-zh="瑞典式精油按摩 90分鐘 — NT$2,000" data-en="Swedish Aromatherapy Massage 90 min — NT$2,000">瑞典式精油按摩 90分鐘 — NT$2,000</option>
       </select>
     </div>
     <div class="fg">
       <select id="ms-promo">
-        <option value="none">無優惠</option>
-        <option value="birthday">🎂 當月壽星 折抵 NT$200（需出示證件）</option>
-        <option value="uniform">🚓 軍警消人員 折抵 NT$200（需出示證件）</option>
+        <option value="none" data-zh="無優惠" data-en="No discount">無優惠</option>
+        <option value="birthday" data-zh="🎂 當月壽星 折抵 NT$200（需出示證件）" data-en="🎂 Birthday Month — NT$200 off (ID required)">🎂 當月壽星 折抵 NT$200（需出示證件）</option>
+        <option value="uniform" data-zh="🚓 軍警消人員 折抵 NT$200（需出示證件）" data-en="🚓 Military/Police/Fire — NT$200 off (ID required)">🚓 軍警消人員 折抵 NT$200（需出示證件）</option>
       </select>
     </div>
-    <div class="fg"><textarea rows="2" id="ms-note" placeholder="身體特別緊繃的部位或其他需求（選填）"></textarea></div>
+    <div class="fg"><textarea rows="2" id="ms-note" placeholder="身體特別緊繃的部位或其他需求（選填）" data-ph-zh="身體特別緊繃的部位或其他需求（選填）" data-ph-en="Areas of tension or special requests (optional)"></textarea></div>
     <div class="linepay-box">
       <div class="lp-icon">💚</div>
       <div class="lp-text">
-        <strong>付款方式：LINE Pay / 現金 / 銀行轉帳</strong>
-        確認預約後，教練會透過 LINE 傳送 LINE Pay 付款連結，輕鬆完成預付。
+        <strong data-zh="付款方式：LINE Pay / 現金 / 銀行轉帳" data-en="Payment: LINE Pay / Cash / Bank Transfer">付款方式：LINE Pay / 現金 / 銀行轉帳</strong>
+        <span data-zh="確認預約後，教練會透過 LINE 傳送 LINE Pay 付款連結，輕鬆完成預付。" data-en="After confirmation, Coach Benson will send a LINE Pay link — quick and easy prepayment.">確認預約後，教練會透過 LINE 傳送 LINE Pay 付款連結，輕鬆完成預付。</span>
       </div>
     </div>
-    <div style="font-size:.74rem;color:var(--muted);line-height:1.7;margin:.6rem 0;padding:.7rem .9rem;background:var(--cream);border-left:2px solid var(--gold);">
+    <div style="font-size:.74rem;color:var(--muted);line-height:1.7;margin:.6rem 0;padding:.7rem .9rem;background:var(--cream);border-left:2px solid var(--gold);" data-zh="⚠️ 本服務為舒緩按摩，不涉及醫療行為，不宣稱任何療效" data-en="⚠️ This is a relaxation massage service only. No medical claims are made.">
       ⚠️ 本服務為舒緩按摩，不涉及醫療行為，不宣稱任何療效
     </div>
-    <button class="modal-submit" onclick="submitMassage()">確認預約 → 開啟 LINE</button>
+    <button class="modal-submit" onclick="submitMassage()" data-zh="確認預約 → 開啟 LINE" data-en="Confirm Booking → Open LINE">確認預約 → 開啟 LINE</button>
   </div>
 </div>
 
@@ -1153,8 +1162,8 @@ footer {
   <a class="line-fab-main" id="line-fab-btn" href="#" target="_blank">
     <span class="line-logo">💬</span>
     <span>
-      LINE 聯絡我們
-      <span class="line-fab-label">點此加好友・直接對話</span>
+      <span data-zh="LINE 聯絡我們" data-en="Contact via LINE">LINE 聯絡我們</span>
+      <span class="line-fab-label" data-zh="點此加好友・直接對話" data-en="Add friend · Chat directly">點此加好友・直接對話</span>
     </span>
   </a>
 </div>
@@ -1282,6 +1291,62 @@ footer {
     t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 3500);
   }
+  // ── Language Toggle ──
+  const LANG_KEY = 'bhrlang';
+  let currentLang = localStorage.getItem(LANG_KEY) || 'zh';
+
+  function applyLang(lang) {
+    currentLang = lang;
+    localStorage.setItem(LANG_KEY, lang);
+
+    // Update all data-zh / data-en elements
+    document.querySelectorAll('[data-zh],[data-en]').forEach(el => {
+      const val = lang === 'en' ? el.dataset.en : el.dataset.zh;
+      if (val === undefined) return;
+      // For elements that contain child nodes (e.g. <strong>, <br>), use innerHTML
+      // For plain text-only elements use textContent to avoid XSS — but our values
+      // contain intentional HTML (<br>, <strong>), so innerHTML is appropriate here.
+      el.innerHTML = val;
+    });
+
+    // Update placeholder attributes (inputs/textareas with data-ph-zh / data-ph-en)
+    document.querySelectorAll('[data-ph-zh],[data-ph-en]').forEach(el => {
+      const val = lang === 'en' ? el.dataset.phEn : el.dataset.phZh;
+      if (val !== undefined) el.placeholder = val;
+    });
+
+    // Update the hot plan badge via CSS content replacement
+    const hotStyle = document.getElementById('hot-plan-style');
+    if (lang === 'en') {
+      hotStyle.textContent = '.plan.hot::before { content: "Most Popular"; }';
+    } else {
+      hotStyle.textContent = '.plan.hot::before { content: "最受喜愛"; }';
+    }
+
+    // Update LINE add-friend bar button text
+    const lineBarBtn = document.getElementById('line-add-friend-bar');
+    if (lineBarBtn) lineBarBtn.textContent = lang === 'en' ? '➕ Add LINE Friend' : '➕ 加入 LINE 好友';
+
+    // Update html lang attribute
+    document.documentElement.lang = lang === 'en' ? 'en' : 'zh-TW';
+
+    // Update toggle button label
+    const btn = document.getElementById('lang-toggle');
+    if (btn) btn.textContent = lang === 'en' ? '中文' : 'EN';
+  }
+
+  function toggleLang() {
+    applyLang(currentLang === 'zh' ? 'en' : 'zh');
+  }
+
+  // Inject dynamic style tag for hot plan pseudo-element
+  const hotStyle = document.createElement('style');
+  hotStyle.id = 'hot-plan-style';
+  document.head.appendChild(hotStyle);
+
+  // Apply saved or default language on load
+  applyLang(currentLang);
+
   window.addEventListener('scroll', () => {
     document.getElementById('main-nav').style.padding =
       window.scrollY > 60 ? '.75rem 5vw' : '1.1rem 5vw';
