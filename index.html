@@ -382,6 +382,56 @@ section { position: relative; }
   .room-scenes { grid-template-columns: 1fr; }
 }
 
+/* ===== EXPLORE SECTION ===== */
+#explore { background: var(--warm); padding: 6rem 2rem; }
+#explore .section-header { text-align: center; margin-bottom: 1.5rem; }
+.explore-intro {
+  text-align: center; font-size: 0.95rem; color: var(--muted);
+  line-height: 2; max-width: 560px; margin: 0 auto 3.5rem;
+}
+.explore-map {
+  max-width: 1100px; margin: 0 auto 4rem;
+}
+.explore-map img { width: 100%; display: block; border-radius: 2px; }
+.explore-subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; color: var(--text);
+  text-align: center; margin-bottom: 2rem;
+}
+.explore-grid {
+  max-width: 1100px; margin: 0 auto 5rem;
+  display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem;
+}
+.explore-card {
+  background: var(--white); padding: 1.4rem 1.6rem;
+  display: flex; gap: 1rem; align-items: flex-start;
+}
+.explore-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 0.1rem; }
+.explore-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 0.2rem; }
+.explore-card .explore-dist { font-size: 0.78rem; color: var(--gold); font-weight: 500; margin-bottom: 0.4rem; }
+.explore-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.75; }
+.food-grid {
+  max-width: 1100px; margin: 0 auto 3.5rem;
+  display: grid; grid-template-columns: repeat(5,1fr); gap: 1rem;
+}
+.food-card {
+  background: var(--white); padding: 1.4rem 1rem;
+  text-align: center;
+}
+.food-card .food-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
+.food-card h4 { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+.food-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+.explore-note {
+  max-width: 560px; margin: 0 auto;
+  text-align: center; font-size: 0.9rem; color: var(--muted);
+  line-height: 2; border-top: 1px solid rgba(211,177,125,0.3);
+  padding-top: 2rem;
+}
+@media (max-width: 768px) {
+  .explore-grid { grid-template-columns: 1fr; }
+  .food-grid { grid-template-columns: repeat(2,1fr); }
+}
+
 /* ===== S08 CLIENT VIEW ===== */
 #client {
   height: 70vh; min-height: 400px;
@@ -779,6 +829,47 @@ footer {
       <h4>夜晚的安靜時光</h4>
       <p>關掉手機，躺在床上，讓一天慢慢結束。</p>
     </div>
+  </div>
+</section>
+
+<!-- EXPLORE SECTION -->
+<section id="explore">
+  <div class="section-header">
+    <p class="eyebrow">探索台北</p>
+    <h2 class="section-h2">從這裡出發，輕鬆探索台北</h2>
+    <div class="section-gold-bar"></div>
+  </div>
+  <p class="explore-intro">位於西門町周邊，無論是美食、購物、歷史文化，或是搭乘捷運前往台北各地，都能輕鬆抵達。</p>
+
+  <div class="explore-map">
+    <img src="images/explore-map-zh.jpg" alt="西門町周邊旅遊地圖">
+  </div>
+
+  <h3 class="explore-subtitle">周邊景點</h3>
+  <div class="explore-grid">
+    <div class="explore-card"><div class="explore-icon">🚇</div><div><h4>西門站</h4><div class="explore-dist">步行約 5 分鐘</div><p>台北最方便的捷運站之一，輕鬆前往台北各大景點。</p></div></div>
+    <div class="explore-card"><div class="explore-icon">🛍</div><div><h4>西門町商圈</h4><div class="explore-dist">步行約 3 分鐘</div><p>台北最具代表性的流行商圈，結合購物、美食、電影與街頭文化。</p></div></div>
+    <div class="explore-card"><div class="explore-icon">🏮</div><div><h4>龍山寺</h4><div class="explore-dist">捷運約 5 分鐘</div><p>台北歷史最悠久的寺廟之一，感受傳統文化與在地信仰。</p></div></div>
+    <div class="explore-card"><div class="explore-icon">🏛</div><div><h4>中正紀念堂</h4><div class="explore-dist">捷運約 10 分鐘</div><p>台北知名地標，廣闊園區與經典建築值得一訪。</p></div></div>
+    <div class="explore-card"><div class="explore-icon">🌃</div><div><h4>寧夏夜市</h4><div class="explore-dist">車程約 10 分鐘</div><p>聚集許多台灣經典小吃，是體驗夜市文化的好選擇。</p></div></div>
+    <div class="explore-card"><div class="explore-icon">🚄</div><div><h4>台北車站</h4><div class="explore-dist">捷運約 5 分鐘</div><p>高鐵、台鐵、捷運與機場捷運交會，前往各地都非常方便。</p></div></div>
+    <div class="explore-card"><div class="explore-icon">✈️</div><div><h4>桃園國際機場</h4><div class="explore-dist">機場捷運約 50 分鐘</div><p>從機場抵達住宿方便快速，適合作為探索台北的起點。</p></div></div>
+  </div>
+
+  <h3 class="explore-subtitle">在地推薦</h3>
+  <div class="food-grid">
+    <div class="food-card"><div class="food-icon">🍜</div><h4>阿宗麵線</h4><p>西門町經典美食，許多旅客來訪必吃的人氣小吃。</p></div>
+    <div class="food-card"><div class="food-icon">🧋</div><h4>幸福堂</h4><p>招牌黑糖珍珠鮮奶，是西門町熱門打卡飲品。</p></div>
+    <div class="food-card"><div class="food-icon">🥟</div><h4>金園排骨</h4><p>老字號排骨飯，深受在地人與觀光客喜愛。</p></div>
+    <div class="food-card"><div class="food-icon">☕</div><h4>蜂大咖啡</h4><p>創立超過一甲子的經典咖啡館，感受老台北的獨特氛圍。</p></div>
+    <div class="food-card"><div class="food-icon">🍧</div><h4>楊記花生玉米冰</h4><p>西門町知名古早味冰品，清爽消暑的在地甜點。</p></div>
+  </div>
+
+  <p class="explore-note">如果需要更多美食推薦、交通資訊或旅遊建議，<br>歡迎隨時詢問，我們很樂意分享在地私房名單。</p>
+
+  <!-- English version map -->
+  <div class="explore-map" style="margin-top:3rem;">
+    <img src="images/explore-map-en.jpg" alt="Nearby Attractions & Local Food Recommendations">
   </div>
 </section>
 
