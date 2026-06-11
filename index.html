@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bear Hug Inn · Bear Hug & Relax · Massage & Stay</title>
+<title>熊抱舒所 · Bear Hug & Relax · 按摩與住宿</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -57,6 +57,15 @@ nav {
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--gold); }
+.lang-toggle {
+  background: transparent; color: rgba(211,177,125,0.7);
+  border: 1px solid rgba(211,177,125,0.3);
+  padding: 0.3rem 0.7rem; font-size: 0.78rem;
+  letter-spacing: 0.1em; cursor: pointer;
+  transition: all 0.2s; margin-right: 0.8rem;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+.lang-toggle:hover { border-color: var(--gold); color: var(--gold); }
 .btn-nav {
   background: var(--gold); color: var(--bear);
   border: none; padding: 0.55rem 1.2rem;
@@ -633,13 +642,14 @@ footer {
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#home" class="nav-logo">🐻 Bear Hug Inn <span>Bear Hug & Relax</span></a>
+    <a href="#home" class="nav-logo">🐻 熊抱舒所 <span>Bear Hug &amp; Relax</span></a>
     <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#space">Space</a>
-      <a href="#booking">Book</a>
-      <button class="btn-nav" onclick="openModal()">Book Now</button>
+      <a href="#about" data-zh="關於我" data-en="About">關於我</a>
+      <a href="#services" data-zh="服務項目" data-en="Services">服務項目</a>
+      <a href="#space" data-zh="空間環境" data-en="Space">空間環境</a>
+      <a href="#booking" data-zh="預約" data-en="Book">預約</a>
+      <button class="lang-toggle" onclick="toggleLang()">EN</button>
+      <button class="btn-nav" onclick="openModal()" data-zh="立即預約" data-en="Book Now">立即預約</button>
     </div>
     <button class="btn-nav desktop-only" onclick="openModal()" style="display:none"></button>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu" onclick="toggleMobileMenu()">
@@ -648,24 +658,24 @@ footer {
   </div>
 </nav>
 <div class="nav-mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="closeMobileMenu()">About</a>
-  <a href="#services" onclick="closeMobileMenu()">Services</a>
-  <a href="#space" onclick="closeMobileMenu()">Space</a>
-  <a href="#booking" onclick="closeMobileMenu()">Book</a>
-  <button class="btn-nav" onclick="closeMobileMenu(); openModal()">Book Now</button>
+  <a href="#about" onclick="closeMobileMenu()" data-zh="關於我" data-en="About">關於我</a>
+  <a href="#services" onclick="closeMobileMenu()" data-zh="服務項目" data-en="Services">服務項目</a>
+  <a href="#space" onclick="closeMobileMenu()" data-zh="空間環境" data-en="Space">空間環境</a>
+  <a href="#booking" onclick="closeMobileMenu()" data-zh="預約" data-en="Book">預約</a>
+  <button class="btn-nav" onclick="closeMobileMenu(); openModal()" data-zh="立即預約" data-en="Book Now">立即預約</button>
 </div>
 
 <!-- S01 HERO -->
 <section id="home">
   <div class="hero-left">
     <div class="hero-left-inner">
-      <p class="hero-eyebrow">Bear Hug Inn · Bear Hug & Relax</p>
-      <h1 class="hero-h1">The Body Tuner,<br><em>Slow Down</em></h1>
-      <p class="hero-tagline">Relaxation · Body Care · Slow Living</p>
-      <p class="hero-p">Sometimes what we need isn't to try harder —<br>it's a moment that truly belongs to us.</p>
+      <p class="hero-eyebrow">熊抱舒所 · Bear Hug &amp; Relax</p>
+      <h1 class="hero-h1" data-zh="身體的調音師，" data-en="The Body Tuner,">身體的調音師，<br><em data-zh="讓你慢下來" data-en="Slow Down">讓你慢下來</em></h1>
+      <p class="hero-tagline" data-zh="舒壓放鬆 × 身體保養 × 慢活休息" data-en="Relaxation · Body Care · Slow Living">舒壓放鬆 × 身體保養 × 慢活休息</p>
+      <p class="hero-p" data-zh="有時候我們需要的，不是更努力，而是一段真正屬於自己的休息時間。" data-en="Sometimes what we need isn't to try harder — it's a moment that truly belongs to us.">有時候我們需要的，不是更努力，而是一段真正屬於自己的休息時間。</p>
       <div class="hero-btns">
-        <button class="btn-gold" onclick="openModal()">Book Now</button>
-        <a href="#services" class="btn-ghost">Our Services</a>
+        <button class="btn-gold" onclick="openModal()" data-zh="立即預約" data-en="Book Now">立即預約</button>
+        <a href="#services" class="btn-ghost" data-zh="了解服務" data-en="Our Services">了解服務</a>
       </div>
     </div>
   </div>
@@ -681,10 +691,10 @@ footer {
   </div>
   <div class="about-text">
     <div class="about-text-inner">
-      <p class="eyebrow">About the Coach</p>
-      <h2 class="about-h2">Hands That Understand<br>Both Sports and Music</h2>
+      <p class="eyebrow" data-zh="關於熊教練" data-en="About the Coach">關於熊教練</p>
+      <h2 class="about-h2" data-zh="一雙懂運動的手<br>也是一雙懂音樂的手" data-en="Hands That Understand<br>Both Sports and Music">一雙懂運動的手<br>也是一雙懂音樂的手</h2>
       <div class="gold-bar"></div>
-      <p class="about-p">Coach Bear has spent years immersed in both sport and music, believing that true relaxation is more than physical rest — it's a way of rediscovering life's rhythm. Through mindful pressure and gentle technique, every guest at Bear Hug Inn is invited to set down the busyness and sink into a quiet moment of their own.</p>
+      <p class="about-p" data-zh="熊教練長期接觸運動與音樂，相信放鬆不只是身體的休息，更是一種重新找回生活節奏的方式。透過舒適的按壓與放鬆手法，讓每位來到熊抱舒所的人，都能暫時放下忙碌，享受片刻寧靜。" data-en="Coach Bear has spent years immersed in both sport and music, believing that true relaxation is more than physical rest — it's a way of rediscovering life's rhythm. Through mindful pressure and gentle technique, every guest at Bear Hug Inn is invited to set down the busyness and sink into a quiet moment of their own.">熊教練長期接觸運動與音樂，相信放鬆不只是身體的休息，更是一種重新找回生活節奏的方式。透過舒適的按壓與放鬆手法，讓每位來到熊抱舒所的人，都能暫時放下忙碌，享受片刻寧靜。</p>
     </div>
   </div>
 </section>
@@ -692,45 +702,45 @@ footer {
 <!-- S03 PIANO QUOTE -->
 <section id="philosophy">
   <div class="philosophy-inner">
-    <p class="piano-eyebrow">Why "The Body Tuner"?</p>
-    <h2 class="piano-h2">A piano needs tuning.<br>So does life.</h2>
-    <p class="piano-p">When work, stress, and busyness pile up, sometimes all we need is one good chance to truly let go.</p>
+    <p class="piano-eyebrow" data-zh="為什麼叫做身體的調音師？" data-en="Why &quot;The Body Tuner&quot;?">為什麼叫做身體的調音師？</p>
+    <h2 class="piano-h2" data-zh="鋼琴需要調音，<br>生活也需要。" data-en="A piano needs tuning.<br>So does life.">鋼琴需要調音，<br>生活也需要。</h2>
+    <p class="piano-p" data-zh="當工作、壓力與忙碌堆積，有時候我們需要的，只是一次好好放鬆的機會。" data-en="When work, stress, and busyness pile up, sometimes all we need is one good chance to truly let go.">當工作、壓力與忙碌堆積，有時候我們需要的，只是一次好好放鬆的機會。</p>
   </div>
 </section>
 
 <!-- S04 SERVICES -->
 <section id="services">
   <div class="section-header">
-    <p class="eyebrow">Services</p>
-    <h2 class="section-h2">Find Your Way to Unwind</h2>
+    <p class="eyebrow" data-zh="服務項目" data-en="Services">服務項目</p>
+    <h2 class="section-h2" data-zh="選擇屬於你的放鬆方式" data-en="Find Your Way to Unwind">選擇屬於你的放鬆方式</h2>
     <div class="section-gold-bar"></div>
   </div>
   <div class="services-grid">
     <div class="service-card">
       <img src="images/11-neck.jpg" alt="Neck & Shoulder Relief">
       <div class="service-body">
-        <h3 class="service-name">Neck & Shoulder Relief</h3>
-        <p class="service-desc">The perfect release for desk workers, long hours, and screen fatigue.</p>
+        <h3 class="service-name" data-zh="肩頸放鬆" data-en="Neck &amp; Shoulder Relief">肩頸放鬆</h3>
+        <p class="service-desc" data-zh="長時間久坐、辦公與低頭族的舒壓選擇。" data-en="The perfect release for desk workers, long hours, and screen fatigue.">長時間久坐、辦公與低頭族的舒壓選擇。</p>
         <p class="service-price">60 min · NT$1,500</p>
-        <button class="btn-gold" onclick="openModal('neck')">Book</button>
+        <button class="btn-gold" onclick="openModal('neck')" data-zh="預約" data-en="Book">預約</button>
       </div>
     </div>
     <div class="service-card">
       <img src="images/10-foot.jpg" alt="Foot Relaxation">
       <div class="service-body">
-        <h3 class="service-name">Foot Relaxation</h3>
-        <p class="service-desc">Give your feet the rest they deserve and ease into a slower pace.</p>
+        <h3 class="service-name" data-zh="足部放鬆" data-en="Foot Relaxation">足部放鬆</h3>
+        <p class="service-desc" data-zh="讓雙腳好好休息，享受慢下來的時光。" data-en="Give your feet the rest they deserve and ease into a slower pace.">讓雙腳好好休息，享受慢下來的時光。</p>
         <p class="service-price">60 min · NT$1,500</p>
-        <button class="btn-gold" onclick="openModal('foot')">Book</button>
+        <button class="btn-gold" onclick="openModal('foot')" data-zh="預約" data-en="Book">預約</button>
       </div>
     </div>
     <div class="service-card">
       <img src="images/12-body.jpg" alt="Full Body Relaxation">
       <div class="service-body">
-        <h3 class="service-name">Full Body Relaxation</h3>
-        <p class="service-desc">Head to toe — give yourself a session that's entirely your own.</p>
+        <h3 class="service-name" data-zh="全身放鬆" data-en="Full Body Relaxation">全身放鬆</h3>
+        <p class="service-desc" data-zh="從頭到腳，給自己一段專屬的休息時間。" data-en="Head to toe — give yourself a session that's entirely your own.">從頭到腳，給自己一段專屬的休息時間。</p>
         <p class="service-price">90 min · NT$2,000</p>
-        <button class="btn-gold" onclick="openModal('body')">Book</button>
+        <button class="btn-gold" onclick="openModal('body')" data-zh="預約" data-en="Book">預約</button>
       </div>
     </div>
   </div>
@@ -739,8 +749,8 @@ footer {
 <!-- S05 HANDS -->
 <section id="hands">
   <div class="hands-text">
-    <h2 class="hands-h2">Every Press,<br>A Moment of Presence</h2>
-    <p class="hands-p">Relaxation isn't about intensity — it's about finding just the right rhythm and letting yourself come back to yourself.</p>
+    <h2 class="hands-h2" data-zh="每一次按壓，<br>都是一份專注" data-en="Every Press,<br>A Moment of Presence">每一次按壓，<br>都是一份專注</h2>
+    <p class="hands-p" data-zh="放鬆不是追求刺激，而是在剛剛好的節奏裡，讓自己慢慢回來。" data-en="Relaxation isn't about intensity — it's about finding just the right rhythm and letting yourself come back to yourself.">放鬆不是追求刺激，而是在剛剛好的節奏裡，讓自己慢慢回來。</p>
   </div>
 </section>
 
@@ -748,10 +758,10 @@ footer {
 <section id="sport">
   <div class="sport-text">
     <div class="sport-text-inner">
-      <p class="eyebrow">Athletes Need Recovery Too</p>
-      <h2 class="sport-h2">After the Workout,<br>You Deserve to Rest</h2>
+      <p class="eyebrow" data-zh="運動族也需要放鬆" data-en="Athletes Need Recovery Too">運動族也需要放鬆</p>
+      <h2 class="sport-h2" data-zh="運動後，<br>也值得好好休息" data-en="After the Workout,<br>You Deserve to Rest">運動後，<br>也值得好好休息</h2>
       <div class="gold-bar"></div>
-      <p class="sport-p">Whether it's gym sessions, jogging, table tennis, badminton, or everyday movement — you've earned a moment to unwind.</p>
+      <p class="sport-p" data-zh="無論是健身、慢跑、桌球、羽球或日常活動，都值得給自己一段放鬆時光。" data-en="Whether it's gym sessions, jogging, table tennis, badminton, or everyday movement — you've earned a moment to unwind.">無論是健身、慢跑、桌球、羽球或日常活動，都值得給自己一段放鬆時光。</p>
     </div>
   </div>
   <div class="sport-img">
@@ -762,11 +772,11 @@ footer {
 <!-- S07 SPACE -->
 <section id="space">
   <div class="section-header">
-    <p class="eyebrow">The Space</p>
-    <h2 class="section-h2">A Space Designed for the Weary Traveler</h2>
+    <p class="eyebrow" data-zh="空間環境" data-en="The Space">空間環境</p>
+    <h2 class="section-h2" data-zh="為疲憊旅人設計的空間" data-en="A Space Designed for the Weary Traveler">為疲憊旅人設計的空間</h2>
     <div class="section-gold-bar"></div>
   </div>
-  <p class="space-desc">Warm lighting, natural wood, and a quiet atmosphere. Our hope is that every guest who steps inside feels at ease the moment they arrive.</p>
+  <p class="space-desc" data-zh="暖色燈光、木質空間、安靜氛圍。希望每位走進來的人，都能感受到安心與自在。" data-en="Warm lighting, natural wood, and a quiet atmosphere. Our hope is that every guest who steps inside feels at ease the moment they arrive.">暖色燈光、木質空間、安靜氛圍。希望每位走進來的人，都能感受到安心與自在。</p>
   <div class="space-images">
     <img src="images/08-lounge.jpg" alt="Lounge Area">
     <img src="images/07-room.jpg" alt="Guest Room">
@@ -776,58 +786,55 @@ footer {
 <!-- ROOM SECTION -->
 <section id="room">
   <div class="section-header">
-    <p class="eyebrow">About This Space</p>
-    <h2 class="section-h2">A Room You Won't Want to Leave</h2>
+    <p class="eyebrow" data-zh="關於這個空間" data-en="About This Space">關於這個空間</p>
+    <h2 class="section-h2" data-zh="一個讓人想多待一下的房間" data-en="A Room You Won't Want to Leave">一個讓人想多待一下的房間</h2>
     <div class="section-gold-bar"></div>
   </div>
 
-  <!-- 封面介紹 -->
   <div class="room-intro">
     <div class="room-intro-img"><img src="images/room-01-cover.jpg" alt="Room Cover"></div>
     <div class="room-intro-text">
       <div class="room-intro-text-inner">
-        <h3>A Cozy Little Room</h3>
-        <p>15 square metres holding everything you need: a comfortable bed, a bright work desk, a private bath, and fast Wi-Fi. A space where every traveler can truly settle in.</p>
+        <h3 data-zh="一間舒服的小房間" data-en="A Cozy Little Room">一間舒服的小房間</h3>
+        <p data-zh="15平方公尺的空間裡，有舒服的床鋪、明亮的工作桌、獨立衛浴與高速網路。" data-en="15 square metres holding everything you need: a comfortable bed, a bright work desk, a private bath, and fast Wi-Fi. A space where every traveler can truly settle in.">15平方公尺的空間裡，有舒服的床鋪、明亮的工作桌、獨立衛浴與高速網路。</p>
       </div>
     </div>
   </div>
 
-  <!-- 規格 Icon Cards -->
   <div class="room-specs">
     <div class="room-spec-card"><div class="room-spec-icon">📐</div><div class="room-spec-label">15㎡</div></div>
-    <div class="room-spec-card"><div class="room-spec-icon">🛏</div><div class="room-spec-label">Double Bed</div></div>
-    <div class="room-spec-card"><div class="room-spec-icon">🚿</div><div class="room-spec-label">Private Bath</div></div>
+    <div class="room-spec-card"><div class="room-spec-icon">🛏</div><div class="room-spec-label" data-zh="雙人床" data-en="Double Bed">雙人床</div></div>
+    <div class="room-spec-card"><div class="room-spec-icon">🚿</div><div class="room-spec-label" data-zh="獨立衛浴" data-en="Private Bath">獨立衛浴</div></div>
     <div class="room-spec-card"><div class="room-spec-icon">📶</div><div class="room-spec-label">High-Speed WiFi</div></div>
-    <div class="room-spec-card"><div class="room-spec-icon">💻</div><div class="room-spec-label">Work Desk</div></div>
-    <div class="room-spec-card"><div class="room-spec-icon">❄️</div><div class="room-spec-label">A/C & Heat</div></div>
+    <div class="room-spec-card"><div class="room-spec-icon">💻</div><div class="room-spec-label" data-zh="工作長桌" data-en="Work Desk">工作長桌</div></div>
+    <div class="room-spec-card"><div class="room-spec-icon">❄️</div><div class="room-spec-label" data-zh="冷暖空調" data-en="A/C &amp; Heat">冷暖空調</div></div>
   </div>
 
-  <!-- 情境圖 -->
   <div class="room-scenes">
     <div class="room-scene">
       <img src="images/room-02-bed.jpg" alt="Bed">
-      <h4>Sleep Well</h4>
-      <p>A soft mattress and fresh linens to make every night on the road feel secure.</p>
+      <h4 data-zh="好好入睡" data-en="Sleep Well">好好入睡</h4>
+      <p data-zh="柔軟的床墊與乾淨的床單，讓每個旅夜都能安心休息。" data-en="A soft mattress and fresh linens to make every night on the road feel secure.">柔軟的床墊與乾淨的床單，讓每個旅夜都能安心休息。</p>
     </div>
     <div class="room-scene">
       <img src="images/room-03-desk.jpg" alt="Work Area">
-      <h4>Work in Comfort</h4>
-      <p>A window-side desk with natural light — perfect for working, reading, or planning the next leg of your trip.</p>
+      <h4 data-zh="舒適工作區" data-en="Work in Comfort">舒適工作區</h4>
+      <p data-zh="靠窗的工作桌，採光明亮，適合辦公、閱讀或規劃行程。" data-en="A window-side desk with natural light — perfect for working, reading, or planning the next leg of your trip.">靠窗的工作桌，採光明亮，適合辦公、閱讀或規劃行程。</p>
     </div>
     <div class="room-scene">
       <img src="images/room-04-bath.jpg" alt="Bathroom">
-      <h4>Clean & Simple Bathroom</h4>
-      <p>A private bath with a dry-wet separated design, so every morning routine feels effortless.</p>
+      <h4 data-zh="乾淨簡潔的衛浴" data-en="Clean &amp; Simple Bathroom">乾淨簡潔的衛浴</h4>
+      <p data-zh="乾濕分離設計的獨立衛浴，讓每個早晨的盥洗都輕鬆自在。" data-en="A private bath with a dry-wet separated design, so every morning routine feels effortless.">乾濕分離設計的獨立衛浴，讓每個早晨的盥洗都輕鬆自在。</p>
     </div>
     <div class="room-scene">
       <img src="images/room-05-life.jpg" alt="Lifestyle">
-      <h4>Slow Down</h4>
-      <p>Morning sunlight and a coffee by the window. Sometimes travel doesn't need to be planned to the minute.</p>
+      <h4 data-zh="慢下來" data-en="Slow Down">慢下來</h4>
+      <p data-zh="窗邊的晨光與一杯咖啡，有時候旅行不需要行程滿滿。" data-en="Morning sunlight and a coffee by the window. Sometimes travel doesn't need to be planned to the minute.">窗邊的晨光與一杯咖啡，有時候旅行不需要行程滿滿。</p>
     </div>
     <div class="room-scene">
       <img src="images/room-06-night.jpg" alt="Evening Ambiance">
-      <h4>A Quiet Evening</h4>
-      <p>Put the phone away, lie back, and let the day wind down on its own.</p>
+      <h4 data-zh="靜謐夜晚" data-en="A Quiet Evening">靜謐夜晚</h4>
+      <p data-zh="放下手機，躺下來，讓這一天自己慢慢結束。" data-en="Put the phone away, lie back, and let the day wind down on its own.">放下手機，躺下來，讓這一天自己慢慢結束。</p>
     </div>
   </div>
 </section>
@@ -835,63 +842,63 @@ footer {
 <!-- EXPLORE SECTION -->
 <section id="explore">
   <div class="section-header">
-    <p class="eyebrow">Explore Taipei</p>
-    <h2 class="section-h2">Step Out and Discover Taipei</h2>
+    <p class="eyebrow" data-zh="探索台北" data-en="Explore Taipei">探索台北</p>
+    <h2 class="section-h2" data-zh="從這裡出發，輕鬆探索台北" data-en="Step Out and Discover Taipei">從這裡出發，輕鬆探索台北</h2>
     <div class="section-gold-bar"></div>
   </div>
-  <p class="explore-intro">Nestled near Ximending, you're steps away from great food, shopping, history, and the MRT — making all of Taipei surprisingly easy to explore.</p>
+  <p class="explore-intro" data-zh="位於西門町周邊，無論是美食、購物、歷史文化，或是搭乘捷運前往台北各地，都能輕鬆抵達。" data-en="Nestled near Ximending, you're steps away from great food, shopping, history, and the MRT — making all of Taipei surprisingly easy to explore.">位於西門町周邊，無論是美食、購物、歷史文化，或是搭乘捷運前往台北各地，都能輕鬆抵達。</p>
 
   <div class="explore-map">
     <img src="images/explore-map-zh.jpg" alt="Ximending Neighborhood Map">
   </div>
 
-  <h3 class="explore-subtitle">Nearby Attractions</h3>
+  <h3 class="explore-subtitle" data-zh="周邊景點" data-en="Nearby Attractions">周邊景點</h3>
   <div class="explore-grid">
-    <div class="explore-card"><div class="explore-icon">🚇</div><div><h4>Ximen MRT Station</h4><div class="explore-dist">~5 min walk</div><p>One of Taipei's most convenient metro hubs — a quick hop to all major sights.</p></div></div>
-    <div class="explore-card"><div class="explore-icon">🛍</div><div><h4>Ximending Shopping District</h4><div class="explore-dist">~3 min walk</div><p>Taipei's most iconic youth district — shopping, street food, cinema, and street culture all in one.</p></div></div>
-    <div class="explore-card"><div class="explore-icon">🏮</div><div><h4>Longshan Temple</h4><div class="explore-dist">~5 min by MRT</div><p>One of Taipei's oldest and most revered temples — a window into traditional culture and local faith.</p></div></div>
-    <div class="explore-card"><div class="explore-icon">🏛</div><div><h4>Chiang Kai-shek Memorial Hall</h4><div class="explore-dist">~10 min by MRT</div><p>A landmark worth visiting for its sweeping grounds and iconic architecture.</p></div></div>
-    <div class="explore-card"><div class="explore-icon">🌃</div><div><h4>Ningxia Night Market</h4><div class="explore-dist">~10 min by taxi</div><p>A concentrated showcase of Taiwanese street food classics — the perfect night market experience.</p></div></div>
-    <div class="explore-card"><div class="explore-icon">🚄</div><div><h4>Taipei Main Station</h4><div class="explore-dist">~5 min by MRT</div><p>HSR, TRA, MRT, and the Airport Express all converge here — connecting you anywhere with ease.</p></div></div>
-    <div class="explore-card"><div class="explore-icon">✈️</div><div><h4>Taoyuan International Airport</h4><div class="explore-dist">~50 min by Airport MRT</div><p>A smooth, direct ride from the airport straight to your doorstep — the ideal Taipei base.</p></div></div>
+    <div class="explore-card"><div class="explore-icon">🚇</div><div><h4 data-zh="西門捷運站" data-en="Ximen MRT Station">西門捷運站</h4><div class="explore-dist">~5 min walk</div><p data-zh="台北最便利的捷運轉乘站之一，快速連結各大景點。" data-en="One of Taipei's most convenient metro hubs — a quick hop to all major sights.">台北最便利的捷運轉乘站之一，快速連結各大景點。</p></div></div>
+    <div class="explore-card"><div class="explore-icon">🛍</div><div><h4 data-zh="西門町商圈" data-en="Ximending Shopping District">西門町商圈</h4><div class="explore-dist">~3 min walk</div><p data-zh="台北最具代表性的青年潮流商圈，購物、小吃、電影院與街頭文化一次滿足。" data-en="Taipei's most iconic youth district — shopping, street food, cinema, and street culture all in one.">台北最具代表性的青年潮流商圈，購物、小吃、電影院與街頭文化一次滿足。</p></div></div>
+    <div class="explore-card"><div class="explore-icon">🏮</div><div><h4 data-zh="龍山寺" data-en="Longshan Temple">龍山寺</h4><div class="explore-dist">~5 min by MRT</div><p data-zh="台北歷史最悠久的廟宇之一，感受傳統文化與在地信仰。" data-en="One of Taipei's oldest and most revered temples — a window into traditional culture and local faith.">台北歷史最悠久的廟宇之一，感受傳統文化與在地信仰。</p></div></div>
+    <div class="explore-card"><div class="explore-icon">🏛</div><div><h4 data-zh="中正紀念堂" data-en="Chiang Kai-shek Memorial Hall">中正紀念堂</h4><div class="explore-dist">~10 min by MRT</div><p data-zh="台北地標之一，廣闊的廣場與宏偉建築值得一訪。" data-en="A landmark worth visiting for its sweeping grounds and iconic architecture.">台北地標之一，廣闊的廣場與宏偉建築值得一訪。</p></div></div>
+    <div class="explore-card"><div class="explore-icon">🌃</div><div><h4 data-zh="寧夏夜市" data-en="Ningxia Night Market">寧夏夜市</h4><div class="explore-dist">~10 min by taxi</div><p data-zh="台灣傳統小吃的集中地，最道地的夜市體驗就在這裡。" data-en="A concentrated showcase of Taiwanese street food classics — the perfect night market experience.">台灣傳統小吃的集中地，最道地的夜市體驗就在這裡。</p></div></div>
+    <div class="explore-card"><div class="explore-icon">🚄</div><div><h4 data-zh="台北車站" data-en="Taipei Main Station">台北車站</h4><div class="explore-dist">~5 min by MRT</div><p data-zh="高鐵、台鐵、捷運與機場捷運在此交會，前往台灣各地超方便。" data-en="HSR, TRA, MRT, and the Airport Express all converge here — connecting you anywhere with ease.">高鐵、台鐵、捷運與機場捷運在此交會，前往台灣各地超方便。</p></div></div>
+    <div class="explore-card"><div class="explore-icon">✈️</div><div><h4 data-zh="桃園國際機場" data-en="Taoyuan International Airport">桃園國際機場</h4><div class="explore-dist">~50 min by Airport MRT</div><p data-zh="機場捷運直達，從機場到熊抱舒所輕鬆無縫接軌。" data-en="A smooth, direct ride from the airport straight to your doorstep — the ideal Taipei base.">機場捷運直達，從機場到熊抱舒所輕鬆無縫接軌。</p></div></div>
   </div>
 
-  <h3 class="explore-subtitle">Local Eats</h3>
+  <h3 class="explore-subtitle" data-zh="在地推薦" data-en="Local Eats">在地推薦</h3>
   <div class="food-grid">
-    <div class="food-card"><div class="food-icon">🍜</div><h4>A-Zong Mee Sua</h4><p>A Ximending institution — the oyster vermicelli that every visitor puts on their list.</p></div>
-    <div class="food-card"><div class="food-icon">🧋</div><h4>Xing Fu Tang</h4><p>Famous brown sugar bubble milk — the most-photographed drink in the neighborhood.</p></div>
-    <div class="food-card"><div class="food-icon">🥟</div><h4>Jin Yuan Pork Chop</h4><p>A beloved old-school pork chop rice shop, popular with locals and visitors alike.</p></div>
-    <div class="food-card"><div class="food-icon">☕</div><h4>Fong Da Coffee</h4><p>A classic café with over six decades of history — a taste of old Taipei's unhurried charm.</p></div>
-    <div class="food-card"><div class="food-icon">🍧</div><h4>Yang Ji Peanut Corn Ice</h4><p>A beloved Ximending shaved ice spot — the classic local sweet to cool down with.</p></div>
+    <div class="food-card"><div class="food-icon">🍜</div><h4 data-zh="阿宗麵線" data-en="A-Zong Mee Sua">阿宗麵線</h4><p data-zh="西門町必吃的大腸蚵仔麵線，來台必訪的排隊名店。" data-en="A Ximending institution — the oyster vermicelli that every visitor puts on their list.">西門町必吃的大腸蚵仔麵線，來台必訪的排隊名店。</p></div>
+    <div class="food-card"><div class="food-icon">🧋</div><h4 data-zh="幸福堂" data-en="Xing Fu Tang">幸福堂</h4><p data-zh="招牌黑糖珍珠鮮奶，西門町最多人拍照打卡的飲料。" data-en="Famous brown sugar bubble milk — the most-photographed drink in the neighborhood.">招牌黑糖珍珠鮮奶，西門町最多人拍照打卡的飲料。</p></div>
+    <div class="food-card"><div class="food-icon">🥟</div><h4 data-zh="金元排骨" data-en="Jin Yuan Pork Chop">金元排骨</h4><p data-zh="深受在地人喜愛的老牌排骨飯，觀光客與老饕都愛光顧。" data-en="A beloved old-school pork chop rice shop, popular with locals and visitors alike.">深受在地人喜愛的老牌排骨飯，觀光客與老饕都愛光顧。</p></div>
+    <div class="food-card"><div class="food-icon">☕</div><h4 data-zh="蜂大咖啡" data-en="Fong Da Coffee">蜂大咖啡</h4><p data-zh="超過六十年歷史的老派咖啡廳，品味舊台北的悠閒韻味。" data-en="A classic café with over six decades of history — a taste of old Taipei's unhurried charm.">超過六十年歷史的老派咖啡廳，品味舊台北的悠閒韻味。</p></div>
+    <div class="food-card"><div class="food-icon">🍧</div><h4 data-zh="楊記花生玉米冰" data-en="Yang Ji Peanut Corn Ice">楊記花生玉米冰</h4><p data-zh="西門町人氣剉冰，花生玉米口味是在地人的消暑首選。" data-en="A beloved Ximending shaved ice spot — the classic local sweet to cool down with.">西門町人氣剉冰，花生玉米口味是在地人的消暑首選。</p></div>
   </div>
 
-  <p class="explore-note">Need more food tips, transit advice, or sightseeing ideas?<br>Just ask — we're always happy to share our local favorites.</p>
+  <p class="explore-note" data-zh="如果需要更多美食推薦、交通資訊或旅遊建議，歡迎隨時詢問，我們很樂意分享在地私房名單。" data-en="Need more food tips, transit advice, or sightseeing ideas? Just ask — we're always happy to share our local favorites.">如果需要更多美食推薦、交通資訊或旅遊建議，歡迎隨時詢問，我們很樂意分享在地私房名單。</p>
 
   <!-- English version maps -->
   <div class="explore-map" style="margin-top:3rem;">
     <img src="images/explore-en1.jpg" alt="Taipei Ximending Neighborhood Guide">
   </div>
   <div class="explore-map" style="margin-top:1.5rem;">
-    <img src="images/explore-en2.jpg" alt="Nearby Attractions & Local Food Recommendations">
+    <img src="images/explore-en2.jpg" alt="Nearby Attractions &amp; Local Food Recommendations">
   </div>
 </section>
 
 <!-- S08 CLIENT VIEW -->
 <section id="client">
   <div class="client-inner">
-    <h2 class="client-h2">Lie Down</h2>
-    <p class="client-p">Let Time Do the Rest</p>
+    <h2 class="client-h2" data-zh="躺下來" data-en="Lie Down">躺下來</h2>
+    <p class="client-p" data-zh="剩下的交給時間" data-en="Let Time Do the Rest">剩下的交給時間</p>
   </div>
 </section>
 
 <!-- S09 CTA -->
 <section id="booking">
   <div class="cta-inner">
-    <h2 class="cta-h2">Tonight's Fatigue<br><em style="color:#D3B17D">Doesn't Have to Follow You Home</em></h2>
-    <p class="cta-p">Give yourself a reason to breathe.</p>
+    <h2 class="cta-h2" data-zh="今天的疲勞，<br><em style='color:#D3B17D'>不一定要帶回家</em>" data-en="Tonight's Fatigue<br><em style='color:#D3B17D'>Doesn't Have to Follow You Home</em>">今天的疲勞，<br><em style="color:#D3B17D">不一定要帶回家</em></h2>
+    <p class="cta-p" data-zh="給自己一個喘息的理由。" data-en="Give yourself a reason to breathe.">給自己一個喘息的理由。</p>
     <div class="cta-btns">
-      <a href="https://line.me/ti/p/leemuch2" target="_blank" class="btn-gold">Book via LINE</a>
-      <a href="#services" class="btn-ghost">Our Services</a>
+      <a href="https://line.me/ti/p/leemuch2" target="_blank" class="btn-gold" data-zh="加入 LINE 預約" data-en="Book via LINE">加入 LINE 預約</a>
+      <a href="#services" class="btn-ghost" data-zh="了解服務" data-en="Our Services">了解服務</a>
     </div>
   </div>
 </section>
@@ -900,61 +907,61 @@ footer {
 <footer>
   <div class="footer-inner">
     <div>
-      <p class="footer-logo">🐻 Bear Hug Inn · Bear Hug & Relax</p>
-      <p class="footer-desc">The Body Tuner — Slow Down.<br>Relaxation · Body Care · Slow Living</p>
+      <p class="footer-logo">🐻 熊抱舒所 · Bear Hug &amp; Relax</p>
+      <p class="footer-desc" data-zh="身體的調音師 — 讓你慢下來。<br>舒壓放鬆 · 身體保養 · 慢活休息" data-en="The Body Tuner — Slow Down.<br>Relaxation · Body Care · Slow Living">身體的調音師 — 讓你慢下來。<br>舒壓放鬆 · 身體保養 · 慢活休息</p>
       <a href="https://line.me/ti/p/leemuch2" target="_blank" class="footer-link">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-        Book via LINE
+        <span data-zh="加入 LINE 預約" data-en="Book via LINE">加入 LINE 預約</span>
       </a>
     </div>
     <div>
-      <p class="footer-title">Hours &amp; Info</p>
+      <p class="footer-title" data-zh="營業時間" data-en="Hours &amp; Info">營業時間</p>
       <p class="footer-info">
         Mon–Sun 11:00 – 21:00<br>
         LINE：@leemuch2<br>
         Instagram：@bearhug_relax<br>
-        Address: Taipei, Taiwan
+        <span data-zh="地址：台灣台北" data-en="Address: Taipei, Taiwan">地址：台灣台北</span>
       </p>
     </div>
   </div>
-  <div class="footer-bottom">© 2024 Bear Hug Inn · Bear Hug &amp; Relax · All rights reserved</div>
+  <div class="footer-bottom" data-zh="© 2024 熊抱舒所 · Bear Hug &amp; Relax · 版權所有" data-en="© 2024 Bear Hug Inn · Bear Hug &amp; Relax · All rights reserved">© 2024 熊抱舒所 · Bear Hug &amp; Relax · 版權所有</div>
 </footer>
 
 <!-- LINE FAB -->
 <a href="https://line.me/ti/p/leemuch2" target="_blank" class="line-fab" aria-label="Book via LINE">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-  Book
+  <span data-zh="預約" data-en="Book">預約</span>
 </a>
 
 <!-- BOOKING MODAL -->
 <div class="modal-overlay" id="bookingModal" onclick="handleOverlayClick(event)">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
-    <h2 class="modal-h2">Book a Session</h2>
-    <p class="modal-sub">Fill in your details and we'll confirm your booking via LINE.</p>
+    <h2 class="modal-h2" data-zh="預約服務" data-en="Book a Session">預約服務</h2>
+    <p class="modal-sub" data-zh="填寫資料後，我們將透過 LINE 確認您的預約。" data-en="Fill in your details and we'll confirm your booking via LINE.">填寫資料後，我們將透過 LINE 確認您的預約。</p>
     <form onsubmit="handleSubmit(event)">
       <div class="form-group">
-        <label for="service">Select Service</label>
+        <label for="service" data-zh="選擇服務" data-en="Select Service">選擇服務</label>
         <select id="service" name="service" required>
-          <option value="">Choose a service</option>
-          <option value="neck">Neck & Shoulder Relief · 60 min · NT$1,500</option>
-          <option value="foot">Foot Relaxation · 60 min · NT$1,500</option>
-          <option value="body">Full Body Relaxation · 90 min · NT$2,000</option>
+          <option value="" data-zh="請選擇服務" data-en="Choose a service">請選擇服務</option>
+          <option value="neck" data-zh="肩頸放鬆 · 60 min · NT$1,500" data-en="Neck &amp; Shoulder Relief · 60 min · NT$1,500">肩頸放鬆 · 60 min · NT$1,500</option>
+          <option value="foot" data-zh="足部放鬆 · 60 min · NT$1,500" data-en="Foot Relaxation · 60 min · NT$1,500">足部放鬆 · 60 min · NT$1,500</option>
+          <option value="body" data-zh="全身放鬆 · 90 min · NT$2,000" data-en="Full Body Relaxation · 90 min · NT$2,000">全身放鬆 · 90 min · NT$2,000</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="date">Preferred Date</label>
+        <label for="date" data-zh="預約日期" data-en="Preferred Date">預約日期</label>
         <input type="date" id="date" name="date" required>
       </div>
       <div class="form-group">
-        <label for="name">Your Name</label>
-        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        <label for="name" data-zh="您的姓名" data-en="Your Name">您的姓名</label>
+        <input type="text" id="name" name="name" data-ph-zh="請輸入您的姓名" data-ph-en="Enter your name" placeholder="請輸入您的姓名" required>
       </div>
       <div class="form-group">
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" placeholder="Enter your mobile number" required>
+        <label for="phone" data-zh="聯絡電話" data-en="Phone Number">聯絡電話</label>
+        <input type="tel" id="phone" name="phone" data-ph-zh="請輸入您的手機號碼" data-ph-en="Enter your mobile number" placeholder="請輸入您的手機號碼" required>
       </div>
-      <button type="submit" class="form-submit">Submit Booking Request</button>
+      <button type="submit" class="form-submit" data-zh="送出預約申請" data-en="Submit Booking Request">送出預約申請</button>
     </form>
   </div>
 </div>
@@ -969,11 +976,10 @@ footer {
   }
 
   // Modal
-  const serviceMap = { neck: 'Neck & Shoulder Relief · 60 min · NT$1,500', foot: 'Foot Relaxation · 60 min · NT$1,500', body: 'Full Body Relaxation · 90 min · NT$2,000' };
   function openModal(service) {
     document.getElementById('bookingModal').classList.add('active');
     document.body.style.overflow = 'hidden';
-    if (service && serviceMap[service]) {
+    if (service) {
       document.getElementById('service').value = service;
     }
   }
@@ -993,8 +999,7 @@ footer {
     const service = document.getElementById('service').options[document.getElementById('service').selectedIndex].text;
     const date = document.getElementById('date').value;
     const phone = document.getElementById('phone').value;
-    const msg = encodeURIComponent(`[Booking Request]\nName: ${name}\nService: ${service}\nDate: ${date}\nPhone: ${phone}`);
-    window.open(`https://line.me/ti/p/leemuch2`, '_blank');
+    window.open('https://line.me/ti/p/leemuch2', '_blank');
     closeModal();
   }
 
@@ -1005,6 +1010,33 @@ footer {
   const mm = String(today.getMonth() + 1).padStart(2, '0');
   const dd = String(today.getDate()).padStart(2, '0');
   dateInput.min = `${yyyy}-${mm}-${dd}`;
+
+  // Language toggle
+  function toggleLang() {
+    const current = document.documentElement.lang;
+    setLang(current === 'zh-TW' ? 'en' : 'zh-TW');
+  }
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    const btn = document.querySelector('.lang-toggle');
+    if (btn) btn.textContent = lang === 'zh-TW' ? 'EN' : '中文';
+    document.querySelectorAll('[data-zh]').forEach(el => {
+      if (el.dataset.zh && el.dataset.en) {
+        el.innerHTML = lang === 'zh-TW' ? el.dataset.zh : el.dataset.en;
+      }
+    });
+    document.querySelectorAll('[data-ph-zh]').forEach(el => {
+      el.placeholder = lang === 'zh-TW' ? el.dataset.phZh : el.dataset.phEn;
+    });
+    // Handle select options
+    document.querySelectorAll('select option[data-zh]').forEach(el => {
+      el.textContent = lang === 'zh-TW' ? el.dataset.zh : el.dataset.en;
+    });
+    localStorage.setItem('lang', lang);
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    setLang(localStorage.getItem('lang') || 'zh-TW');
+  });
 </script>
 </body>
 </html>
