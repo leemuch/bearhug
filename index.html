@@ -334,6 +334,54 @@ section { position: relative; }
   width: 100%; height: 380px; object-fit: cover; display: block;
 }
 
+/* ===== ROOM SECTION ===== */
+#room { background: var(--white); padding: 6rem 2rem; }
+#room .section-header { text-align: center; margin-bottom: 4rem; }
+#room .section-h2 { font-size: 2rem; }
+.room-intro {
+  max-width: 1100px; margin: 0 auto 5rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0; min-height: 480px;
+}
+.room-intro-img { overflow: hidden; }
+.room-intro-img img { width: 100%; height: 100%; min-height: 420px; object-fit: cover; display: block; }
+.room-intro-text {
+  background: var(--bear); color: var(--white);
+  display: flex; align-items: center;
+  padding: 4rem 5%;
+}
+.room-intro-text-inner { max-width: 400px; }
+.room-intro-text h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem; color: var(--gold); margin-bottom: 1rem;
+}
+.room-intro-text p { font-size: 0.95rem; color: rgba(254,252,250,0.75); line-height: 2.1; }
+.room-specs {
+  max-width: 700px; margin: 0 auto 5rem;
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem;
+  text-align: center;
+}
+.room-spec-card {
+  background: var(--warm); padding: 1.6rem 1rem;
+}
+.room-spec-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+.room-spec-label { font-size: 0.85rem; color: var(--text); font-weight: 500; }
+.room-scenes {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+}
+.room-scene { }
+.room-scene img { width: 100%; height: 280px; object-fit: cover; display: block; margin-bottom: 1.2rem; }
+.room-scene h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem; color: var(--text); margin-bottom: 0.5rem;
+}
+.room-scene p { font-size: 0.88rem; color: var(--muted); line-height: 1.9; }
+@media (max-width: 768px) {
+  .room-intro { grid-template-columns: 1fr; }
+  .room-specs { grid-template-columns: repeat(2,1fr); }
+  .room-scenes { grid-template-columns: 1fr; }
+}
+
 /* ===== S08 CLIENT VIEW ===== */
 #client {
   height: 70vh; min-height: 400px;
@@ -672,6 +720,65 @@ footer {
   <div class="space-images">
     <img src="images/08-lounge.jpg" alt="等候區">
     <img src="images/07-room.jpg" alt="客房">
+  </div>
+</section>
+
+<!-- ROOM SECTION -->
+<section id="room">
+  <div class="section-header">
+    <p class="eyebrow">關於這個空間</p>
+    <h2 class="section-h2">一個讓人想多待一下的房間</h2>
+    <div class="section-gold-bar"></div>
+  </div>
+
+  <!-- 封面介紹 -->
+  <div class="room-intro">
+    <div class="room-intro-img"><img src="images/room-01-cover.jpg" alt="房間封面"></div>
+    <div class="room-intro-text">
+      <div class="room-intro-text-inner">
+        <h3>一間舒服的小房間</h3>
+        <p>15平方公尺的空間裡，有舒服的床鋪、明亮的工作桌、獨立衛浴與高速網路。希望讓每位旅人都能自在休息。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 規格 Icon Cards -->
+  <div class="room-specs">
+    <div class="room-spec-card"><div class="room-spec-icon">📐</div><div class="room-spec-label">15㎡ 空間</div></div>
+    <div class="room-spec-card"><div class="room-spec-icon">🛏</div><div class="room-spec-label">雙人床</div></div>
+    <div class="room-spec-card"><div class="room-spec-icon">🚿</div><div class="room-spec-label">獨立衛浴</div></div>
+    <div class="room-spec-card"><div class="room-spec-icon">📶</div><div class="room-spec-label">高速 WiFi</div></div>
+    <div class="room-spec-card"><div class="room-spec-icon">💻</div><div class="room-spec-label">工作長桌</div></div>
+    <div class="room-spec-card"><div class="room-spec-icon">❄️</div><div class="room-spec-label">冷暖空調</div></div>
+  </div>
+
+  <!-- 情境圖 -->
+  <div class="room-scenes">
+    <div class="room-scene">
+      <img src="images/room-02-bed.jpg" alt="床鋪">
+      <h4>好好睡一覺</h4>
+      <p>柔軟床墊與乾淨寢具，讓旅途中的夜晚更安心。</p>
+    </div>
+    <div class="room-scene">
+      <img src="images/room-03-desk.jpg" alt="工作區">
+      <h4>工作，也能很舒服</h4>
+      <p>窗邊長桌與自然採光，適合工作、閱讀或整理旅程。</p>
+    </div>
+    <div class="room-scene">
+      <img src="images/room-04-bath.jpg" alt="衛浴">
+      <h4>簡單乾淨的衛浴空間</h4>
+      <p>獨立衛浴、乾濕分離設計，讓每天的梳洗更自在。</p>
+    </div>
+    <div class="room-scene">
+      <img src="images/room-05-life.jpg" alt="生活情境">
+      <h4>放慢步調</h4>
+      <p>早晨的陽光、窗邊的一杯咖啡。旅行有時候不需要太多安排。</p>
+    </div>
+    <div class="room-scene">
+      <img src="images/room-06-night.jpg" alt="夜晚情境">
+      <h4>夜晚的安靜時光</h4>
+      <p>關掉手機，躺在床上，讓一天慢慢結束。</p>
+    </div>
   </div>
 </section>
 
