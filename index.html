@@ -992,7 +992,7 @@ footer {
     <div class="therapist-card">
       <div class="therapist-photos" onclick="openLightbox('benson')">
         <img src="images/therapist-benson.jpg" alt="熊教練 Benson">
-        <div class="therapist-photo-hint">查看更多 +4</div>
+        <div class="therapist-photo-hint" data-zh="查看更多 +4" data-en="View Photos +4">查看更多 +4</div>
       </div>
       <div class="therapist-info">
         <div class="therapist-name">🐻 熊教練 Benson</div>
@@ -1013,7 +1013,7 @@ footer {
     <div class="therapist-card">
       <div class="therapist-photos" onclick="openLightbox('bear')">
         <img src="images/bear-2.jpg" alt="肉壯熊">
-        <div class="therapist-photo-hint">查看更多 +4</div>
+        <div class="therapist-photo-hint" data-zh="查看更多 +4" data-en="View Photos +4">查看更多 +4</div>
       </div>
       <div class="therapist-info">
         <div class="therapist-name">🐻‍❄️ 肉壯熊</div>
@@ -1034,7 +1034,7 @@ footer {
     <div class="therapist-card">
       <div class="therapist-photos" onclick="openLightbox('johnny')">
         <img src="images/johnny-4.jpg" alt="強尼熊老師傅">
-        <div class="therapist-photo-hint">查看更多 +4</div>
+        <div class="therapist-photo-hint" data-zh="查看更多 +4" data-en="View Photos +4">查看更多 +4</div>
       </div>
       <div class="therapist-info">
         <div class="therapist-name">🐻‍❄️ 強尼熊老師傅</div>
@@ -1158,21 +1158,22 @@ footer {
   // Modal
   const therapistPhotos = {
     benson: {
-      name: '🐻 熊教練 Benson',
+      zh: '🐻 熊教練 Benson', en: '🐻 Benson · The Body Tuner',
       imgs: ['images/therapist-benson.jpg','images/benson-2.jpg','images/benson-4.jpg','images/benson-3.jpg']
     },
     bear: {
-      name: '🐻‍❄️ 肉壯熊',
+      zh: '🐻‍❄️ 肉壯熊', en: '🐻‍❄️ Strong Bear',
       imgs: ['images/bear-2.jpg','images/bear-4.jpg','images/bear-3.jpg','images/bear-1.jpg']
     },
     johnny: {
-      name: '🐻‍❄️ 強尼熊老師傅',
+      zh: '🐻‍❄️ 強尼熊老師傅', en: '🐻‍❄️ Johnny · The Seasoned Master',
       imgs: ['images/johnny-4.jpg','images/johnny-1.jpg','images/johnny-2.jpg','images/johnny-3.jpg']
     }
   };
   function openLightbox(id) {
     const data = therapistPhotos[id];
-    document.getElementById('lightboxName').textContent = data.name;
+    const lang = document.documentElement.lang;
+    document.getElementById('lightboxName').textContent = lang === 'en' ? data.en : data.zh;
     document.getElementById('lightboxGrid').innerHTML = data.imgs.map(src => `<img src="${src}" alt="">`).join('');
     document.getElementById('lightbox').classList.add('open');
     document.body.style.overflow = 'hidden';
