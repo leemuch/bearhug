@@ -3,1249 +3,807 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>熊抱舒所 Bear Hug & Relax · 客房與舒緩按摩</title>
+<title>熊抱舒所 Bear Hug & Relax · 舒壓按摩</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bear:   #3D2B1F;
-  --warm:   #F8F3ED;
-  --gold:   #B8965A;
-  --cream:  #EDE4D8;
-  --pebble: #C4B5A4;
-  --text:   #2C1E14;
-  --muted:  #8A7A6E;
-  --white:  #FEFCFA;
+  --bear:  #2A1B16;
+  --bear2: #3A261E;
+  --brown: #6B4A34;
+  --gold:  #D3B17D;
+  --warm:  #F5F0EA;
+  --text:  #2A1B16;
+  --muted: #8A7A6E;
+  --white: #FEFCFA;
 }
 
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Noto Sans TC', sans-serif;
-  background: var(--white); color: var(--text); overflow-x: hidden;
+  background: var(--white);
+  color: var(--text);
+  overflow-x: hidden;
 }
 
-/* NAV */
+/* ===== NAV ===== */
 nav {
   position: fixed; top: 0; width: 100%; z-index: 200;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 1.1rem 5vw;
-  background: rgba(61,43,31,0.94);
-  backdrop-filter: blur(10px);
-  transition: padding .3s;
+  background: rgba(42,27,22,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(211,177,125,0.15);
+  height: 64px;
+  display: flex; align-items: center;
+}
+.nav-inner {
+  max-width: 1200px; width: 100%; margin: 0 auto;
+  padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
 }
 .nav-logo {
-  display: flex; align-items: center; gap: .6rem;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: 700; font-size: 1.05rem;
+  color: var(--gold); text-decoration: none;
+  letter-spacing: 0.03em;
+  display: flex; align-items: center; gap: 0.4rem;
 }
-.nav-logo .bear-icon { font-size: 1.5rem; }
-.nav-logo .brand-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem; color: var(--gold); letter-spacing: .05em;
-  line-height: 1.1;
-}
-.nav-logo .brand-sub {
-  font-size: .65rem; color: var(--pebble); letter-spacing: .18em;
-  text-transform: uppercase; display: block;
-}
-.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-logo span { font-size: 0.75rem; color: rgba(211,177,125,0.65); font-weight: 300; margin-left: 0.3rem; }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
 .nav-links a {
-  color: var(--cream); text-decoration: none;
-  font-size: .82rem; letter-spacing: .1em; text-transform: uppercase;
-  transition: color .2s;
+  color: rgba(254,252,250,0.8); text-decoration: none;
+  font-size: 0.88rem; font-weight: 400; letter-spacing: 0.05em;
+  transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--gold); }
-.nav-cta {
+.btn-nav {
   background: var(--gold); color: var(--bear);
-  border: none; padding: .55rem 1.4rem;
-  font-family: 'Noto Sans TC', sans-serif; font-size: .82rem;
-  letter-spacing: .06em; cursor: pointer; transition: opacity .2s; font-weight: 500;
+  border: none; padding: 0.55rem 1.2rem;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 0.85rem; font-weight: 700;
+  cursor: pointer; letter-spacing: 0.05em;
+  transition: background 0.2s;
 }
-.nav-cta:hover { opacity: .85; }
-.lang-toggle-btn {
-  background: transparent; color: var(--pebble);
-  border: 1px solid rgba(196,181,164,.3); padding: .38rem .85rem;
-  font-family: 'Noto Sans TC', sans-serif; font-size: .75rem;
-  letter-spacing: .1em; cursor: pointer; transition: border-color .2s, color .2s;
-  margin-right: .5rem;
+.btn-nav:hover { background: #e0c48e; }
+.nav-hamburger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  background: none; border: none; padding: 4px;
 }
-.lang-toggle-btn:hover { border-color: var(--gold); color: var(--gold); }
+.nav-hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--gold); border-radius: 2px;
+  transition: transform 0.3s;
+}
+.nav-mobile-menu {
+  display: none; position: fixed; top: 64px; left: 0; right: 0;
+  background: rgba(42,27,22,0.97); z-index: 199;
+  flex-direction: column; padding: 1.5rem 2rem 2rem;
+  gap: 1.2rem; border-bottom: 1px solid rgba(211,177,125,0.2);
+}
+.nav-mobile-menu.open { display: flex; }
+.nav-mobile-menu a {
+  color: rgba(254,252,250,0.85); text-decoration: none;
+  font-size: 1rem; font-weight: 400; letter-spacing: 0.05em;
+  padding: 0.5rem 0; border-bottom: 1px solid rgba(211,177,125,0.1);
+}
+.nav-mobile-menu .btn-nav { width: 100%; text-align: center; margin-top: 0.5rem; }
 
-/* HERO */
-.hero {
-  min-height: 100vh; position: relative;
-  display: flex; align-items: center;
-  background-image:
-    linear-gradient(90deg, rgba(20,15,10,.85) 0%, rgba(20,15,10,.55) 45%, rgba(20,15,10,.1) 100%),
-    url('images/hero-banner.jpg');
-  background-size: cover;
-  background-position: center right;
-  overflow: hidden;
+/* ===== SHARED ===== */
+.eyebrow {
+  font-size: 0.75rem; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.8rem;
 }
-.hero-texture {
-  position: absolute; inset: 0; opacity: .04;
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F8F3ED' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+.gold-bar {
+  width: 48px; height: 2px; background: var(--gold);
+  margin: 1.4rem 0;
 }
-.hero-glow {
-  position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none;
-}
-.hero-glow.g1 { width: 500px; height: 500px; background: rgba(184,150,90,.15); right: -80px; top: -100px; }
-.hero-glow.g2 { width: 350px; height: 350px; background: rgba(184,150,90,.08); left: 5%; bottom: 0; }
-.hero-content { position: relative; padding: 0 8vw; max-width: 680px; }
-.hero-badge {
-  display: inline-flex; align-items: center; gap: .5rem;
-  border: 1px solid rgba(184,150,90,.35);
-  padding: .35rem .9rem; margin-bottom: 2rem;
-  font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold);
-}
-.hero-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.6rem, 6vw, 4.8rem);
-  color: var(--warm); line-height: 1.12; margin-bottom: 1rem;
-}
-.hero-title em { font-style: italic; color: var(--gold); }
-.hero-tagline {
-  font-size: 1.05rem; color: var(--pebble); font-weight: 300;
-  line-height: 1.9; margin-bottom: .8rem;
-}
-.hero-tagline strong { color: var(--cream); font-weight: 400; }
-.hero-quote {
-  margin: 1.5rem 0 2.5rem;
-  padding-left: 1.2rem;
-  border-left: 2px solid var(--gold);
-  color: rgba(196,181,164,.7);
-  font-size: .88rem; line-height: 1.9; font-weight: 300; font-style: italic;
-}
-.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-.btn-primary {
+.btn-gold {
+  display: inline-block;
   background: var(--gold); color: var(--bear);
-  border: none; padding: .85rem 2.2rem;
-  font-family: 'Noto Sans TC', sans-serif; font-size: .9rem; font-weight: 500;
-  letter-spacing: .06em; cursor: pointer; transition: transform .2s, box-shadow .2s;
+  border: none; padding: 0.75rem 1.8rem;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 0.9rem; font-weight: 700; letter-spacing: 0.08em;
+  cursor: pointer; text-decoration: none;
+  transition: background 0.2s;
 }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(184,150,90,.35); }
+.btn-gold:hover { background: #e0c48e; }
 .btn-ghost {
-  background: transparent; color: var(--cream);
-  border: 1px solid rgba(196,181,164,.3); padding: .85rem 2.2rem;
-  font-family: 'Noto Sans TC', sans-serif; font-size: .9rem;
-  letter-spacing: .06em; cursor: pointer; transition: border-color .2s, color .2s;
+  display: inline-block;
+  background: transparent; color: var(--white);
+  border: 1px solid rgba(211,177,125,0.5);
+  padding: 0.75rem 1.8rem;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 0.9rem; font-weight: 400; letter-spacing: 0.08em;
+  cursor: pointer; text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
 }
 .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
-.hero-scroll {
-  position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: .5rem;
-  color: var(--muted); font-size: .68rem; letter-spacing: .2em; text-transform: uppercase;
-}
-.scroll-line {
-  width: 1px; height: 48px;
-  background: linear-gradient(to bottom, var(--gold), transparent);
-  animation: pulse 2s ease-in-out infinite;
-}
-@keyframes pulse { 0%,100%{opacity:.25} 50%{opacity:1} }
+section { position: relative; }
 
-/* SECTION COMMONS */
-section { padding: 6rem 8vw; }
-.sec-eyebrow {
-  font-size: .72rem; letter-spacing: .32em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: .9rem;
+/* ===== S01 HERO ===== */
+#home {
+  display: flex; height: 100vh; min-height: 600px;
+  padding-top: 64px;
 }
-.sec-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem); line-height: 1.2; margin-bottom: 1rem;
-}
-.sec-sub {
-  color: var(--muted); font-size: .93rem; line-height: 1.85;
-  max-width: 480px; font-weight: 300;
-}
-.gold-bar { width: 44px; height: 2px; background: var(--gold); margin: 1.2rem 0; }
-
-/* ABOUT BENSON */
-#about { background: var(--bear); }
-.about-inner {
-  display: grid; grid-template-columns: 1fr 1.3fr; gap: 6rem; align-items: center;
-}
-.about-left { position: relative; }
-.about-portrait {
-  width: 100%; aspect-ratio: 3/4;
-  background: linear-gradient(160deg, #5C3D28, #3D2B1F);
-  display: flex; align-items: center; justify-content: center; font-size: 6rem;
-  position: relative; overflow: hidden;
-}
-.about-portrait::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(61,43,31,.6) 0%, transparent 50%);
-}
-.about-accent-box {
-  position: absolute; bottom: -1.5rem; left: -1.5rem;
-  width: 60%; aspect-ratio: 1;
-  border: 1px solid rgba(184,150,90,.2); z-index: -1;
-}
-.about-stats {
-  position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem; z-index: 2;
-  display: flex; gap: 1.5rem;
-}
-.stat { text-align: center; }
-.stat-num {
-  font-family: 'Playfair Display', serif; font-size: 1.8rem;
-  color: var(--gold); line-height: 1;
-}
-.stat-label { font-size: .68rem; color: var(--pebble); letter-spacing: .12em; text-transform: uppercase; margin-top: .3rem; }
-.about-right .sec-title { color: var(--warm); }
-.about-right .sec-sub { color: rgba(196,181,164,.75); max-width: 540px; }
-.about-right .sec-eyebrow { color: var(--gold); }
-.about-right .gold-bar { background: var(--gold); }
-.pillars { margin-top: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-.pillar {
-  padding: 1.4rem 1.2rem;
-  border: 1px solid rgba(184,150,90,.12);
-  background: rgba(255,255,255,.03);
-  transition: border-color .25s, background .25s;
-}
-.pillar:hover { border-color: rgba(184,150,90,.4); background: rgba(255,255,255,.05); }
-.pillar-icon { font-size: 1.6rem; margin-bottom: .6rem; }
-.pillar-name { font-size: .88rem; font-weight: 500; color: var(--cream); margin-bottom: .3rem; }
-.pillar-desc { font-size: .78rem; color: rgba(196,181,164,.6); line-height: 1.6; font-weight: 300; }
-.benson-philosophy {
-  margin-top: 2.5rem; padding: 1.5rem;
-  background: rgba(184,150,90,.06); border-left: 2px solid var(--gold);
-}
-.benson-philosophy p {
-  font-size: .88rem; color: rgba(196,181,164,.8); line-height: 1.9; font-weight: 300; font-style: italic;
-}
-
-/* ROOMS */
-#rooms { background: var(--white); }
-.rooms-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1.5rem; }
-.rooms-stack { display: flex; flex-direction: column; gap: 4rem; }
-.room-showcase {
-  display: grid; grid-template-columns: 1.1fr 1fr; gap: 0;
-  background: var(--white); overflow: hidden;
-  box-shadow: 0 2px 40px rgba(61,43,31,.08);
-}
-.room-showcase.reverse { grid-template-columns: 1fr 1.1fr; }
-.room-showcase.reverse .room-photos { order: 2; }
-.room-showcase.reverse .room-info { order: 1; }
-.room-photos { display: grid; grid-template-rows: 60% 40%; }
-.room-photos .photo-main {
-  width: 100%; height: 100%; object-fit: cover; display: block;
-  background: linear-gradient(135deg,#c4b5a4,#ede4d8);
-}
-.room-photos .photo-sub { display: grid; grid-template-columns: 1fr 1fr; }
-.room-photos .photo-sub img {
-  width: 100%; height: 100%; object-fit: cover; display: block;
-  filter: brightness(.95); transition: filter .3s;
-}
-.room-photos .photo-sub img:hover { filter: brightness(1.05); }
-.room-img-placeholder {
-  width: 100%; height: 100%;
+.hero-left {
+  width: 45%;
+  background: var(--bear);
   display: flex; align-items: center; justify-content: center;
-  font-size: 3rem;
+  padding: 4rem 5%;
 }
-.room-info {
-  padding: 3rem 2.8rem; display: flex; flex-direction: column; justify-content: center;
+.hero-left-inner { max-width: 420px; }
+.hero-eyebrow {
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(211,177,125,0.7); margin-bottom: 1.2rem;
+}
+.hero-h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem; font-weight: 600; line-height: 1.18;
+  color: var(--gold); margin-bottom: 1rem;
+}
+.hero-h1 em { font-style: italic; }
+.hero-tagline {
+  font-size: 0.9rem; color: var(--muted);
+  letter-spacing: 0.1em; margin-bottom: 1.4rem;
+}
+.hero-p {
+  font-size: 0.95rem; color: rgba(254,252,250,0.7);
+  line-height: 2; margin-bottom: 2rem;
+}
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-right {
+  width: 55%; position: relative; overflow: hidden;
+}
+.hero-right img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.hero-right::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(0,0,0,0.35);
+}
+
+/* ===== S02 ABOUT ===== */
+#about {
   background: var(--warm);
+  display: flex; min-height: 520px;
 }
-.room-type-badge {
-  display: inline-block;
-  font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
-  color: var(--gold); border: 1px solid rgba(184,150,90,.3);
-  padding: .25rem .8rem; margin-bottom: 1.2rem;
+.about-img { width: 45%; overflow: hidden; }
+.about-img img {
+  width: 100%; height: 100%; min-height: 520px; object-fit: cover; display: block;
 }
-.room-name {
-  font-family: 'Playfair Display', serif; font-size: 1.9rem;
-  line-height: 1.2; margin-bottom: .5rem; color: var(--bear);
+.about-text {
+  width: 55%; display: flex; align-items: center;
+  padding: 5rem 6% 5rem 5%;
 }
-.room-tagline {
-  font-size: .85rem; color: var(--muted); font-weight: 300; margin-bottom: 1.5rem;
-  font-style: italic;
+.about-text-inner { max-width: 500px; }
+.about-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem; font-weight: 600; line-height: 1.3;
+  color: var(--text); margin-bottom: 0;
 }
-.room-gold-bar { width: 36px; height: 2px; background: var(--gold); margin-bottom: 1.5rem; }
-.room-specs {
-  display: grid; grid-template-columns: 1fr 1fr; gap: .6rem .5rem;
-  margin-bottom: 1.8rem;
+.about-p {
+  font-size: 0.95rem; line-height: 2.1;
+  color: var(--brown); margin-top: 0;
 }
-.spec-item { display: flex; flex-direction: column; gap: .15rem; }
-.spec-key { font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--pebble); }
-.spec-val { font-size: .85rem; font-weight: 500; color: var(--bear); }
-.room-features { margin-bottom: 2rem; }
-.room-features-title {
-  font-size: .72rem; letter-spacing: .2em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: .8rem;
-}
-.features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
-.feature-chip {
-  display: flex; align-items: center; gap: .5rem;
-  font-size: .78rem; color: var(--muted); font-weight: 300;
-  padding: .5rem 0;
-  border-bottom: 1px solid rgba(61,43,31,.06);
-}
-.feature-chip .chip-icon { font-size: 1rem; flex-shrink: 0; }
-.room-price-row {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 1.2rem 0; border-top: 1px solid rgba(61,43,31,.08); margin-top: auto;
-}
-.room-price { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--bear); }
-.room-price span { font-size: .85rem; font-family: 'Noto Sans TC', sans-serif; font-weight: 300; color: var(--muted); }
-.room-book-btn {
-  background: var(--bear); color: var(--warm);
-  border: none; padding: .7rem 1.8rem;
-  font-family: 'Noto Sans TC', sans-serif; font-size: .82rem;
-  letter-spacing: .06em; cursor: pointer; transition: background .2s;
-}
-.room-book-btn:hover { background: #5C3D28; }
 
-/* MASSAGE */
-#massage { background: var(--cream); }
-.massage-inner {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
+/* ===== S03 PIANO QUOTE ===== */
+#philosophy {
+  background: var(--bear);
+  height: 70vh; min-height: 480px;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  background-image: url('images/04-piano.jpg');
+  background-size: cover; background-position: center;
+  background-attachment: fixed;
 }
-.massage-story { }
-.massage-story .sec-sub { max-width: 460px; }
-.story-body {
-  margin-top: 1.8rem; font-size: .9rem; color: var(--muted);
-  line-height: 2; font-weight: 300;
+#philosophy::before {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(20,10,5,0.72); z-index: 0;
 }
-.story-body strong { color: var(--bear); font-weight: 500; }
-.story-body .story-quote {
-  margin: 1.5rem 0; padding: 1.2rem 1.4rem;
-  background: rgba(61,43,31,.05); border-left: 3px solid var(--gold);
-  font-style: italic; color: var(--bear);
+.philosophy-inner {
+  position: relative; z-index: 1;
+  max-width: 640px; padding: 2rem;
 }
-.notice-box {
-  margin-top: 1.5rem; padding: 1rem 1.2rem;
-  background: rgba(184,150,90,.08); border: 1px solid rgba(184,150,90,.2);
-  font-size: .8rem; color: var(--muted); line-height: 1.7; font-weight: 300;
+.piano-eyebrow {
+  font-size: 0.82rem; font-style: italic;
+  color: var(--gold); letter-spacing: 0.1em;
+  margin-bottom: 1.4rem; opacity: 0.9;
 }
-.notice-box strong { color: var(--bear); }
-.massage-services { }
-.services-card {
-  background: var(--bear); padding: 2.5rem;
+.piano-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem; font-weight: 400; font-style: italic;
+  color: var(--white); line-height: 1.3; margin-bottom: 1.6rem;
 }
-.services-card .sec-eyebrow { color: var(--gold); }
-.services-card .sec-title { color: var(--warm); font-size: 1.6rem; }
-.services-card .gold-bar { background: var(--gold); }
-.service-list { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0; }
-.service-row {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 1.1rem 0; border-bottom: 1px solid rgba(255,255,255,.07);
-  transition: padding-left .2s; cursor: default;
+.piano-p {
+  font-size: 1rem; color: rgba(254,252,250,0.72);
+  line-height: 2.2;
 }
-.service-row:last-child { border-bottom: none; }
-.service-row:hover { padding-left: .4rem; }
-.svc-left { display: flex; flex-direction: column; gap: .2rem; }
-.svc-name { font-size: .95rem; color: var(--cream); font-weight: 400; }
-.svc-tags { display: flex; gap: .4rem; flex-wrap: wrap; }
-.svc-tag {
-  font-size: .65rem; letter-spacing: .12em; text-transform: uppercase;
-  color: rgba(184,150,90,.7); border: 1px solid rgba(184,150,90,.2);
-  padding: .15rem .5rem;
-}
-.svc-right { text-align: right; }
-.svc-duration { font-size: .72rem; color: var(--pebble); margin-bottom: .2rem; }
-.svc-price { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); }
-.promos-area { margin-top: 2rem; display: flex; flex-direction: column; gap: .8rem; }
-.promo-chip {
-  display: flex; align-items: center; gap: .8rem;
-  padding: .8rem 1rem; background: rgba(255,255,255,.04);
-  border: 1px solid rgba(184,150,90,.15);
-  font-size: .82rem; color: rgba(196,181,164,.75); font-weight: 300;
-}
-.promo-chip .promo-icon { font-size: 1.1rem; }
-.payment-row {
-  margin-top: 1.5rem; padding-top: 1.2rem;
-  border-top: 1px solid rgba(255,255,255,.07);
-  display: flex; align-items: center; gap: .8rem;
-  font-size: .78rem; color: var(--pebble);
-}
-.pay-badge {
-  padding: .3rem .7rem;
-  border: 1px solid rgba(184,150,90,.2); font-size: .72rem;
-  color: var(--gold); letter-spacing: .1em;
-}
-.reserve-cta {
-  width: 100%; margin-top: 1.5rem; padding: .95rem;
-  background: var(--gold); color: var(--bear);
-  border: none; font-family: 'Noto Sans TC', sans-serif;
-  font-size: .9rem; font-weight: 500; letter-spacing: .08em;
-  cursor: pointer; transition: opacity .2s;
-}
-.reserve-cta:hover { opacity: .88; }
 
-/* SUBSCRIBE */
-#subscribe { background: var(--bear); }
-.subscribe-inner {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
+/* ===== S04 SERVICES ===== */
+#services {
+  background: var(--warm);
+  padding: 6rem 2rem;
+  text-align: center;
 }
-.sub-left .sec-title { color: var(--warm); }
-.sub-left .sec-eyebrow { color: var(--gold); }
-.sub-left .gold-bar { background: var(--gold); }
-.sub-left .sec-sub { color: rgba(196,181,164,.65); max-width: 420px; }
-.plans { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1px; background: rgba(184,150,90,.1); }
-.plan {
-  padding: 1.8rem; background: var(--bear);
-  border: 1px solid rgba(184,150,90,.1);
-  cursor: pointer; transition: border-color .25s, background .25s;
-  position: relative;
+.section-header { margin-bottom: 3.5rem; }
+.section-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem; font-weight: 600; color: var(--text);
+  margin-bottom: 0;
 }
-.plan:hover, .plan.hot { border-color: var(--gold); background: rgba(184,150,90,.05); }
-.plan.hot::before {
-  content: '最受喜愛';
-  position: absolute; top: 0; right: 1.5rem;
-  background: var(--gold); color: var(--bear);
-  font-size: .65rem; letter-spacing: .12em; padding: .25rem .7rem; font-weight: 500;
+.section-gold-bar {
+  width: 48px; height: 2px; background: var(--gold);
+  margin: 1.2rem auto 0;
 }
-.plan-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
-.plan-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--warm); }
-.plan-note { font-size: .72rem; color: var(--pebble); margin-top: .2rem; }
-.plan-price { font-family: 'Playfair Display', serif; font-size: 1.7rem; color: var(--gold); text-align: right; }
-.plan-price sub { font-size: .72rem; font-family: 'Noto Sans TC', sans-serif; color: var(--muted); }
-.plan-perks { list-style: none; display: flex; flex-direction: column; gap: .45rem; }
-.plan-perks li {
-  font-size: .8rem; color: rgba(196,181,164,.6); font-weight: 300;
-  padding-left: 1.1rem; position: relative;
+.services-grid {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
 }
-.plan-perks li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-size: 1.2rem; line-height: 1.2; }
+.service-card {
+  background: var(--white);
+  box-shadow: 0 2px 20px rgba(42,27,22,0.08);
+  text-align: left; overflow: hidden;
+}
+.service-card img {
+  width: 100%; height: 240px; object-fit: cover; display: block;
+}
+.service-body { padding: 1.5rem; }
+.service-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem; font-weight: 600; color: var(--text);
+  margin-bottom: 0.6rem;
+}
+.service-desc {
+  font-size: 0.88rem; color: var(--muted);
+  line-height: 1.8; margin-bottom: 1rem;
+}
+.service-price {
+  font-size: 0.82rem; font-weight: 500;
+  color: var(--brown); letter-spacing: 0.05em; margin-bottom: 1.2rem;
+}
+.service-card .btn-gold { font-size: 0.82rem; padding: 0.6rem 1.4rem; }
 
-/* SUBSCRIBE FORM */
-.sub-form-wrap { padding: 2.5rem; background: var(--warm); }
-.sub-form-wrap h3 {
-  font-family: 'Playfair Display', serif; font-size: 1.5rem;
-  color: var(--bear); margin-bottom: .4rem;
+/* ===== S05 HANDS ===== */
+#hands {
+  height: 80vh; min-height: 480px;
+  background-image: url('images/05-hands.jpg');
+  background-size: cover; background-position: center;
+  display: flex; align-items: flex-end;
 }
-.sub-form-wrap p {
-  font-size: .84rem; color: var(--muted); line-height: 1.75;
-  margin-bottom: 1.8rem; font-weight: 300;
+#hands::before {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(0,0,0,0.45); z-index: 0;
 }
-.fg { margin-bottom: .9rem; }
-.fg input, .fg select, .fg textarea {
-  width: 100%; background: var(--white);
-  border: 1px solid var(--cream); color: var(--text);
-  padding: .85rem 1rem; font-family: 'Noto Sans TC', sans-serif;
-  font-size: .86rem; outline: none; transition: border-color .2s; resize: none;
+.hands-text {
+  position: relative; z-index: 1;
+  padding: 0 8vw 3rem;
 }
-.fg input::placeholder, .fg textarea::placeholder { color: var(--pebble); }
-.fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--gold); }
-.fg select option { background: var(--white); }
-.fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
-.sub-submit {
-  width: 100%; padding: 1rem; margin-top: .3rem;
-  background: var(--bear); color: var(--warm);
-  border: none; font-family: 'Noto Sans TC', sans-serif;
-  font-size: .9rem; letter-spacing: .08em; cursor: pointer; transition: background .2s; font-weight: 500;
+.hands-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem; font-weight: 600; color: var(--white);
+  line-height: 1.3; margin-bottom: 1rem;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.5);
 }
-.sub-submit:hover { background: #5C3D28; }
+.hands-p {
+  font-size: 1rem; color: rgba(255,255,255,0.75);
+  line-height: 2; max-width: 460px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+}
 
-/* FOOTER */
+/* ===== S06 SPORT ===== */
+#sport {
+  background: var(--white);
+  display: flex; min-height: 480px;
+}
+.sport-text {
+  width: 50%; display: flex; align-items: center;
+  padding: 5rem 5% 5rem 8%;
+}
+.sport-text-inner { max-width: 460px; }
+.sport-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem; font-weight: 600; color: var(--text);
+  line-height: 1.35; margin-bottom: 0;
+}
+.sport-p {
+  font-size: 0.95rem; line-height: 2.1; color: var(--brown);
+}
+.sport-img { width: 50%; overflow: hidden; }
+.sport-img img {
+  width: 100%; height: 100%; min-height: 480px; object-fit: cover; display: block;
+}
+
+/* ===== S07 SPACE ===== */
+#space {
+  background: var(--warm);
+  padding: 6rem 2rem;
+  text-align: center;
+}
+.space-desc {
+  font-size: 0.95rem; color: var(--muted);
+  line-height: 2; max-width: 560px; margin: 1.5rem auto 3rem;
+}
+.space-images {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+}
+.space-images img {
+  width: 100%; height: 380px; object-fit: cover; display: block;
+}
+
+/* ===== S08 CLIENT VIEW ===== */
+#client {
+  height: 70vh; min-height: 400px;
+  background-image: url('images/13-client.jpg');
+  background-size: cover; background-position: center;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+}
+#client::before {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(0,0,0,0.4); z-index: 0;
+}
+.client-inner { position: relative; z-index: 1; }
+.client-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem; font-style: italic; font-weight: 400;
+  color: var(--white); margin-bottom: 0.8rem;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+.client-p {
+  font-size: 1.1rem; color: var(--gold);
+  letter-spacing: 0.12em;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+}
+
+/* ===== S09 CTA ===== */
+#booking {
+  background: var(--bear);
+  padding: 8rem 2rem;
+  text-align: center;
+  overflow: hidden;
+}
+#booking::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: url('images/06-cta.jpg');
+  background-size: cover; background-position: center;
+  opacity: 0.2; z-index: 0;
+}
+.cta-inner { position: relative; z-index: 1; }
+.cta-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem; font-weight: 400; color: var(--white);
+  line-height: 1.35; margin-bottom: 1.2rem;
+}
+.cta-p {
+  font-size: 1rem; color: var(--muted); margin-bottom: 2.5rem;
+  letter-spacing: 0.06em;
+}
+.cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ===== FOOTER ===== */
 footer {
-  background: #2C1E14; padding: 5rem 8vw 2rem;
-  border-top: 1px solid rgba(184,150,90,.1);
+  background: #1A0F0A;
+  padding: 3.5rem 2rem 2.5rem;
+  border-top: 1px solid rgba(211,177,125,0.12);
 }
-.footer-grid {
-  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; margin-bottom: 3.5rem;
+.footer-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
 }
-.footer-brand-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--gold); margin-bottom: .8rem; }
-.footer-brand-desc { font-size: .82rem; color: rgba(196,181,164,.4); line-height: 1.85; font-weight: 300; max-width: 240px; }
-.footer-col h4 { font-size: .72rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.1rem; }
-.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .65rem; }
-.footer-col ul li a { font-size: .82rem; color: rgba(196,181,164,.45); text-decoration: none; font-weight: 300; transition: color .2s; }
-.footer-col ul li a:hover { color: var(--cream); }
+.footer-logo {
+  font-size: 1rem; font-weight: 700; color: var(--gold);
+  margin-bottom: 0.8rem; letter-spacing: 0.05em;
+}
+.footer-desc {
+  font-size: 0.82rem; color: var(--muted);
+  line-height: 1.9; margin-bottom: 1rem;
+}
+.footer-link {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.82rem; color: var(--gold);
+  text-decoration: none; letter-spacing: 0.05em;
+  transition: opacity 0.2s;
+}
+.footer-link:hover { opacity: 0.75; }
+.footer-title {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+.footer-info {
+  font-size: 0.82rem; color: var(--muted); line-height: 2;
+}
 .footer-bottom {
-  border-top: 1px solid rgba(184,150,90,.07); padding-top: 1.4rem;
-  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  max-width: 1100px; margin: 2.5rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(211,177,125,0.08);
+  font-size: 0.75rem; color: rgba(138,122,110,0.5);
+  text-align: center;
 }
-.footer-bottom p { font-size: .73rem; color: rgba(196,181,164,.25); font-weight: 300; }
 
-/* MODAL */
-.modal-overlay {
-  position: fixed; inset: 0; background: rgba(44,30,20,.88);
-  z-index: 500; display: none; align-items: center; justify-content: center;
-  backdrop-filter: blur(6px);
-}
-.modal-overlay.open { display: flex; }
-.modal {
-  background: var(--warm); max-width: 520px; width: 92%;
-  padding: 2.8rem; position: relative;
-  animation: fadeUp .3s ease;
-  max-height: 90vh; overflow-y: auto;
-}
-@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
-.modal-close {
-  position: absolute; top: 1rem; right: 1rem;
-  background: none; border: none; font-size: 1.2rem; cursor: pointer;
-  color: var(--muted); transition: color .2s;
-}
-.modal-close:hover { color: var(--bear); }
-.modal h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--bear); margin-bottom: .35rem; }
-.modal > p { font-size: .84rem; color: var(--muted); margin-bottom: 1.5rem; font-weight: 300; }
-.modal .fg input, .modal .fg select, .modal .fg textarea {
-  background: var(--white); border: 1px solid var(--cream);
-}
-.modal-submit {
-  width: 100%; padding: .95rem; margin-top: .5rem;
-  background: var(--bear); color: var(--warm);
-  border: none; font-family: 'Noto Sans TC', sans-serif;
-  font-size: .9rem; letter-spacing: .08em; cursor: pointer; font-weight: 500;
-  transition: background .2s;
-}
-.modal-submit:hover { background: #5C3D28; }
-
-/* TOAST */
-.toast {
-  position: fixed; bottom: 2rem; left: 50%;
-  transform: translateX(-50%) translateY(60px);
-  background: var(--bear); color: var(--warm);
-  padding: .85rem 1.8rem; font-size: .85rem; z-index: 1000;
-  border-left: 3px solid var(--gold);
-  transition: transform .35s ease; pointer-events: none;
-  max-width: 90vw; white-space: normal; text-align: center;
-}
-.toast.show { transform: translateX(-50%) translateY(0); }
-
-/* LINE FLOATING BUTTON */
+/* ===== LINE FAB ===== */
 .line-fab {
   position: fixed; bottom: 2rem; right: 2rem; z-index: 300;
-  display: flex; flex-direction: column; align-items: flex-end; gap: .6rem;
-}
-.line-fab-main {
-  display: flex; align-items: center; gap: .7rem;
-  background: #06C755; color: #fff;
-  border: none; padding: .75rem 1.3rem;
-  font-family: 'Noto Sans TC', sans-serif; font-size: .88rem; font-weight: 500;
-  cursor: pointer; box-shadow: 0 4px 20px rgba(6,199,85,.4);
-  transition: transform .2s, box-shadow .2s;
-  text-decoration: none;
-}
-.line-fab-main:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(6,199,85,.5); }
-.line-fab-main .line-logo { font-size: 1.3rem; }
-.line-fab-label { font-size: .7rem; opacity: .88; display: block; }
-
-/* LINE CONTACT SECTION */
-.line-contact-bar {
-  background: #06C755; padding: 2rem 8vw;
-  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;
-}
-.line-contact-bar .lc-left { display: flex; align-items: center; gap: 1.2rem; }
-.line-contact-bar .lc-icon { font-size: 2.8rem; }
-.line-contact-bar .lc-text h3 { font-size: 1.1rem; color: #fff; font-weight: 700; margin-bottom: .2rem; }
-.line-contact-bar .lc-text p { font-size: .82rem; color: rgba(255,255,255,.85); font-weight: 300; line-height: 1.6; }
-.line-contact-bar .lc-id {
-  background: rgba(255,255,255,.2); color: #fff;
-  padding: .4rem 1rem; font-size: .9rem; font-weight: 500; letter-spacing: .06em;
-  border: 1px solid rgba(255,255,255,.3);
-}
-.line-open-btn {
-  background: #fff; color: #06C755;
-  border: none; padding: .8rem 2rem;
-  font-family: 'Noto Sans TC', sans-serif; font-size: .9rem; font-weight: 700;
-  cursor: pointer; transition: transform .2s, box-shadow .2s;
-  text-decoration: none; display: inline-block;
-}
-.line-open-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.15); }
-
-/* LINE PAY BADGE in modal */
-.linepay-box {
-  background: #06C755; border-radius: 0;
-  padding: 1rem 1.2rem; margin: .8rem 0;
-  display: flex; align-items: center; gap: .8rem;
-}
-.linepay-box .lp-icon { font-size: 1.6rem; flex-shrink: 0; }
-.linepay-box .lp-text { font-size: .82rem; color: #fff; line-height: 1.65; }
-.linepay-box .lp-text strong { font-size: .88rem; display: block; margin-bottom: .15rem; }
-
-/* STEP FLOW */
-.step-flow {
-  display: flex; align-items: center; gap: 0;
-  margin: 1.2rem 0; flex-wrap: wrap;
-}
-.step-item {
-  display: flex; flex-direction: column; align-items: center; gap: .3rem;
-  flex: 1; min-width: 70px;
-}
-.step-circle {
-  width: 36px; height: 36px; border-radius: 50%;
   background: var(--gold); color: var(--bear);
-  display: flex; align-items: center; justify-content: center;
-  font-size: .8rem; font-weight: 700;
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.2rem;
+  text-decoration: none; font-family: 'Noto Sans TC', sans-serif;
+  font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em;
+  box-shadow: 0 4px 20px rgba(42,27,22,0.3);
+  transition: background 0.2s, transform 0.2s;
 }
-.step-label { font-size: .72rem; color: var(--muted); text-align: center; line-height: 1.4; }
-.step-arrow {
-  color: var(--pebble); font-size: 1rem; padding: 0 .2rem;
-  margin-bottom: 1.2rem; flex-shrink: 0;
-}
+.line-fab:hover { background: #e0c48e; transform: translateY(-2px); }
+.line-fab svg { flex-shrink: 0; }
 
-/* Payment row update */
-.payment-row-full {
-  margin-top: 1.5rem; padding-top: 1.2rem;
-  border-top: 1px solid rgba(255,255,255,.07);
+/* ===== MODAL ===== */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 500;
+  background: rgba(20,10,5,0.75);
+  align-items: center; justify-content: center;
+  padding: 1rem;
 }
-.payment-row-full .pay-title {
-  font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: .7rem;
+.modal-overlay.active { display: flex; }
+.modal-box {
+  background: var(--white); max-width: 480px; width: 100%;
+  padding: 2.5rem;
+  position: relative;
+  max-height: 90vh; overflow-y: auto;
 }
-.pay-methods { display: flex; gap: .5rem; flex-wrap: wrap; }
-.pay-badge-green {
-  padding: .35rem .9rem; font-size: .75rem; font-weight: 500; letter-spacing: .06em;
-  background: #06C755; color: #fff;
+.modal-close {
+  position: absolute; top: 1rem; right: 1.2rem;
+  background: none; border: none;
+  font-size: 1.4rem; color: var(--muted); cursor: pointer;
+  line-height: 1;
 }
-.pay-badge-gray {
-  padding: .35rem .9rem; font-size: .75rem; font-weight: 500; letter-spacing: .06em;
-  border: 1px solid rgba(184,150,90,.3); color: var(--gold);
+.modal-close:hover { color: var(--text); }
+.modal-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; color: var(--text); margin-bottom: 0.4rem;
 }
+.modal-sub {
+  font-size: 0.82rem; color: var(--muted); margin-bottom: 2rem;
+}
+.form-group { margin-bottom: 1.2rem; }
+.form-group label {
+  display: block; font-size: 0.8rem; font-weight: 500;
+  color: var(--brown); letter-spacing: 0.06em; margin-bottom: 0.4rem;
+}
+.form-group select,
+.form-group input {
+  width: 100%; padding: 0.7rem 0.9rem;
+  border: 1px solid rgba(107,74,52,0.25);
+  background: var(--warm); color: var(--text);
+  font-family: 'Noto Sans TC', sans-serif; font-size: 0.9rem;
+  outline: none; appearance: none; -webkit-appearance: none;
+  transition: border-color 0.2s;
+}
+.form-group select:focus,
+.form-group input:focus { border-color: var(--gold); }
+.form-submit {
+  width: 100%; padding: 0.9rem;
+  background: var(--gold); color: var(--bear);
+  border: none; font-family: 'Noto Sans TC', sans-serif;
+  font-size: 0.95rem; font-weight: 700; letter-spacing: 0.1em;
+  cursor: pointer; margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+.form-submit:hover { background: #e0c48e; }
 
-/* RESPONSIVE */
-@media (max-width: 960px) {
-  .about-inner, .massage-inner, .subscribe-inner { grid-template-columns: 1fr; gap: 3rem; }
-  .room-showcase, .room-showcase.reverse { grid-template-columns: 1fr; }
-  .room-showcase.reverse .room-photos { order: 0; }
-  .room-showcase.reverse .room-info { order: 0; }
-  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
   .nav-links { display: none; }
-}
-@media (max-width: 600px) {
-  section { padding: 4.5rem 5vw; }
-  nav { padding: .9rem 5vw; }
-  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .fg-row { grid-template-columns: 1fr; }
-  .rooms-head { flex-direction: column; align-items: flex-start; }
-  .features-grid { grid-template-columns: 1fr; }
-  .pillars { grid-template-columns: 1fr; }
+  .btn-nav.desktop-only { display: none; }
+  .nav-hamburger { display: flex; }
 
-  /* 手機字體放大 */
-  body { font-size: 17px; }
-  .hero-tagline { font-size: 1.1rem; line-height: 2; }
-  .hero-quote { font-size: 1rem; }
-  .sec-label { font-size: .85rem; }
-  .sec-title { font-size: 1.9rem; }
-  .sec-desc { font-size: 1.05rem; line-height: 2; }
-  .nav-logo .brand-text { font-size: 1.3rem; }
-  .nav-logo .brand-sub { font-size: .78rem; }
-  .stat-num { font-size: 2rem; }
-  .stat-label { font-size: .82rem; }
-  .pillar-name { font-size: 1rem; }
-  .pillar-desc { font-size: .92rem; line-height: 1.75; }
-  .room-name { font-size: 2rem; }
-  .room-desc { font-size: 1rem; }
-  .spec-key { font-size: .82rem; }
-  .spec-val { font-size: 1rem; }
-  .feature-chip { font-size: .9rem; }
-  .room-price { font-size: 1.8rem; }
-  .room-price span { font-size: 1rem; }
-  .svc-name { font-size: 1.1rem; }
-  .svc-duration { font-size: .88rem; }
-  .svc-price { font-size: 1.35rem; }
-  .svc-note { font-size: .92rem; }
-  .promo-chip { font-size: .9rem; }
-  .plan-name { font-size: 1.2rem; }
-  .plan-note { font-size: .85rem; }
-  .plan-price { font-size: 1.9rem; }
-  .plan-price sub { font-size: .85rem; }
-  .plan-perks li { font-size: .92rem; }
-  .contact-title { font-size: 1.7rem; }
-  .contact-desc { font-size: 1rem; line-height: 1.85; }
-  input, textarea, select { font-size: 1rem !important; }
-  .btn-submit { font-size: 1.05rem; padding: 1rem 2rem; }
-  .footer-brand-logo { font-size: 1.5rem; }
-  .footer-brand-desc { font-size: .95rem; }
-}
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; }
+  #home { flex-direction: column; height: auto; min-height: auto; }
+  .hero-right { width: 100%; height: 50vh; order: -1; }
+  .hero-right img { height: 50vh; }
+  .hero-left { width: 100%; padding: 3rem 1.5rem; }
+  .hero-h1 { font-size: 2.4rem; }
+
+  #about { flex-direction: column; }
+  .about-img { width: 100%; height: 280px; }
+  .about-img img { min-height: 280px; height: 280px; }
+  .about-text { width: 100%; padding: 3rem 1.5rem; }
+
+  .services-grid { grid-template-columns: 1fr; }
+
+  #sport { flex-direction: column; }
+  .sport-text { width: 100%; padding: 3rem 1.5rem; order: 1; }
+  .sport-img { width: 100%; height: 280px; order: 0; }
+  .sport-img img { min-height: 280px; height: 280px; }
+
+  .space-images { grid-template-columns: 1fr; }
+  .space-images img { height: 260px; }
+
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+
+  .piano-h2 { font-size: 2rem; }
+  .cta-h2 { font-size: 2rem; }
+  .hands-h2 { font-size: 1.8rem; }
+  .client-h2 { font-size: 2.2rem; }
+  #philosophy { background-attachment: scroll; }
 }
 </style>
 </head>
-<style>
-@media (max-width: 960px) {
-  #coach > div { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
-  #services > div > div { grid-template-columns: 1fr !important; }
-  #pricing > div > div { grid-template-columns: 1fr !important; }
-}
-@media (max-width: 600px) {
-  #space > div > div { grid-template-columns: 1fr !important; }
-  #reviews > div > div { flex-direction: column; }
-}
-</style>
-
 <body>
 
 <!-- NAV -->
-<nav id="main-nav">
-  <div class="nav-logo">
-    <span class="bear-icon">🐻</span>
-    <div>
-      <span class="brand-text">熊抱舒所</span>
-      <span class="brand-sub">Bear Hug &amp; Relax</span>
+<nav>
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">🐻 熊抱舒所 <span>Bear Hug & Relax</span></a>
+    <div class="nav-links">
+      <a href="#about">關於我</a>
+      <a href="#services">服務</a>
+      <a href="#space">空間</a>
+      <a href="#booking">預約</a>
+      <button class="btn-nav" onclick="openModal()">立即預約</button>
     </div>
+    <button class="btn-nav desktop-only" onclick="openModal()" style="display:none"></button>
+    <button class="nav-hamburger" id="hamburger" aria-label="選單" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-  <ul class="nav-links">
-    <li><a href="#coach">教練介紹</a></li>
-    <li><a href="#services">服務項目</a></li>
-    <li><a href="#space">空間環境</a></li>
-    <li><a href="#pricing">預約方案</a></li>
-  </ul>
-  <button id="lang-toggle" class="lang-toggle-btn" onclick="toggleLang()">EN</button>
-  <button class="nav-cta" onclick="openModal('massage')">預約按摩</button>
 </nav>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-texture"></div>
-  <div class="hero-glow g1"></div>
-  <div class="hero-glow g2"></div>
-  <div class="hero-content">
-    <div class="hero-badge">🐻 熊抱舒所 Bear Hug &amp; Relax</div>
-    <h1 class="hero-title">身體的調音師，<br><em>讓你慢下來</em></h1>
-    <p class="hero-tagline">有些疲勞來自肌肉，有些疲勞來自生活。<br>透過運動恢復、深層放鬆與身體調理，<br>讓緊繃的身體重新找回<strong>平衡與節奏</strong>。</p>
-    <div class="hero-actions">
-      <button class="btn-primary" onclick="openModal('massage')">立即預約</button>
-      <button class="btn-ghost" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">了解服務</button>
-    </div>
-  </div>
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    <span>向下捲動</span>
-  </div>
-</section>
-
-<!-- COACH -->
-<section id="coach" style="background:var(--warm);">
-  <div style="display:grid;grid-template-columns:1fr 1.3fr;gap:5rem;align-items:center;max-width:1200px;margin:0 auto;">
-    <!-- Left: portrait placeholder -->
-    <div style="background:linear-gradient(135deg,#3D2B1F,#5C3D28);height:380px;border-radius:4px;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:8rem;">
-      🐻
-    </div>
-    <!-- Right: text -->
-    <div>
-      <p class="sec-eyebrow">熊教練介紹</p>
-      <h2 class="sec-title">一雙懂運動的手，<br>也是一雙懂音樂的手</h2>
-      <div class="gold-bar"></div>
-      <p class="sec-sub" style="margin-bottom:1rem;">熊教練擁有健身教練背景，長期投入身體訓練與肌肉運作研究，深刻理解運動後肌肉疲勞與恢復的機制。</p>
-      <p class="sec-sub">同時也因為音樂與鋼琴的學習歷程，培養出對節奏、張力與細微變化的敏銳感受。每一次按摩，不只是放鬆肌肉，更像為身體重新調音。</p>
-      <div style="display:flex;gap:2.5rem;margin-top:2rem;">
-        <div class="stat">
-          <div class="stat-num">5+</div>
-          <div class="stat-label">年經驗</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">200+</div>
-          <div class="stat-label">服務人次</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">2</div>
-          <div class="stat-label">項專業認證</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHY US -->
-<section id="why" style="background:#fff;">
-  <div style="max-width:900px;margin:0 auto;text-align:center;">
-    <p class="sec-eyebrow">為什麼選擇熊抱舒所</p>
-    <h2 class="sec-title">不只是按摩，<br>是身體的對話</h2>
-    <div class="gold-bar" style="margin:1.2rem auto;"></div>
-  </div>
-  <div class="pillars" style="max-width:900px;margin:2.5rem auto 0;">
-    <div class="pillar">
-      <div class="pillar-icon">🧸</div>
-      <div class="pillar-name">運動恢復</div>
-      <div class="pillar-desc">協助運動後的疲勞恢復，改善肌肉緊繃與活動受限。</div>
-    </div>
-    <div class="pillar">
-      <div class="pillar-icon">🎹</div>
-      <div class="pillar-name">身體調音</div>
-      <div class="pillar-desc">透過細膩觸診與放鬆技巧，找回身體自然的節奏。</div>
-    </div>
-    <div class="pillar">
-      <div class="pillar-icon">🌿</div>
-      <div class="pillar-name">深層放鬆</div>
-      <div class="pillar-desc">緩解長時間久坐、工作壓力與睡眠品質問題。</div>
-    </div>
-    <div class="pillar">
-      <div class="pillar-icon">☕</div>
-      <div class="pillar-name">安靜療癒空間</div>
-      <div class="pillar-desc">沒有吵雜推銷，只有舒服自在的休息時光。</div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services" style="background:var(--bear);">
-  <div style="max-width:1100px;margin:0 auto;">
-    <p class="sec-eyebrow" style="color:var(--gold);">熱門服務</p>
-    <h2 class="sec-title" style="color:var(--warm);">為每一種疲勞，<br>找到對應的放鬆</h2>
-    <div class="gold-bar"></div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;">
-      <!-- Card 1 -->
-      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(184,150,90,0.3);padding:2.5rem;border-radius:4px;display:flex;flex-direction:column;gap:1rem;">
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--warm);">肩頸舒緩</h3>
-        <p style="font-size:.85rem;color:rgba(196,181,164,.75);line-height:1.8;font-weight:300;flex:1;">長時間使用電腦、低頭滑手機族群首選。針對肩頸部位深層放鬆。</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:.8rem 0;border-top:1px solid rgba(255,255,255,.08);">
-          <span style="font-size:.8rem;color:var(--pebble);">30 分鐘</span>
-          <span style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);">NT$800</span>
-        </div>
-        <button class="btn-primary" style="width:100%;text-align:center;" onclick="openModal('massage')">預約此服務</button>
-      </div>
-      <!-- Card 2 -->
-      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(184,150,90,0.3);padding:2.5rem;border-radius:4px;display:flex;flex-direction:column;gap:1rem;">
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--warm);">全身深層放鬆</h3>
-        <p style="font-size:.85rem;color:rgba(196,181,164,.75);line-height:1.8;font-weight:300;flex:1;">針對全身肌群進行系統性調理，改善整體疲勞與僵硬感。</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:.8rem 0;border-top:1px solid rgba(255,255,255,.08);">
-          <span style="font-size:.8rem;color:var(--pebble);">60 分鐘</span>
-          <span style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);">NT$1,500</span>
-        </div>
-        <button class="btn-primary" style="width:100%;text-align:center;" onclick="openModal('massage')">預約此服務</button>
-      </div>
-      <!-- Card 3 -->
-      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(184,150,90,0.3);padding:2.5rem;border-radius:4px;display:flex;flex-direction:column;gap:1rem;">
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--warm);">運動恢復方案</h3>
-        <p style="font-size:.85rem;color:rgba(196,181,164,.75);line-height:1.8;font-weight:300;flex:1;">適合健身、跑步與球類運動愛好者，加速肌肉恢復。</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:.8rem 0;border-top:1px solid rgba(255,255,255,.08);">
-          <span style="font-size:.8rem;color:var(--pebble);">90 分鐘</span>
-          <span style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);">NT$2,000</span>
-        </div>
-        <button class="btn-primary" style="width:100%;text-align:center;" onclick="openModal('massage')">預約此服務</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- REVIEWS -->
-<section id="reviews" style="background:var(--cream);">
-  <div style="max-width:1100px;margin:0 auto;">
-    <p class="sec-eyebrow">客戶回饋</p>
-    <h2 class="sec-title">他們說的話</h2>
-    <div class="gold-bar"></div>
-    <div style="display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:2.5rem;">
-      <div style="flex:1;min-width:240px;background:#fff;padding:2rem;border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,0.06);">
-        <div style="font-size:1.1rem;margin-bottom:1rem;">⭐⭐⭐⭐⭐</div>
-        <p style="font-size:.88rem;color:var(--muted);line-height:1.9;font-weight:300;font-style:italic;margin-bottom:1rem;">"肩頸緊繃很久了，第一次來就感受到明顯的放鬆。教練會先問清楚哪裡不舒服，手法也很有力度但不會痛。"</p>
-        <p style="font-size:.8rem;color:var(--bear);font-weight:500;">— 小雅</p>
-      </div>
-      <div style="flex:1;min-width:240px;background:#fff;padding:2rem;border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,0.06);">
-        <div style="font-size:1.1rem;margin-bottom:1rem;">⭐⭐⭐⭐⭐</div>
-        <p style="font-size:.88rem;color:var(--muted);line-height:1.9;font-weight:300;font-style:italic;margin-bottom:1rem;">"空間很舒服，不像一般按摩店，更像高級飯店的休息室。整個環境讓人可以真的放空。"</p>
-        <p style="font-size:.8rem;color:var(--bear);font-weight:500;">— 健哥</p>
-      </div>
-      <div style="flex:1;min-width:240px;background:#fff;padding:2rem;border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,0.06);">
-        <div style="font-size:1.1rem;margin-bottom:1rem;">⭐⭐⭐⭐⭐</div>
-        <p style="font-size:.88rem;color:var(--muted);line-height:1.9;font-weight:300;font-style:italic;margin-bottom:1rem;">"熊教練很專業，練健身的人特別推薦，他真的懂肌肉在哪裡緊、為什麼緊。"</p>
-        <p style="font-size:.8rem;color:var(--bear);font-weight:500;">— Mei</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SPACE -->
-<section id="space" style="background:var(--warm);">
-  <div style="max-width:1100px;margin:0 auto;">
-    <p class="sec-eyebrow">空間環境</p>
-    <h2 class="sec-title">為疲憊旅人設計的<br>療癒角落</h2>
-    <div class="gold-bar"></div>
-    <p class="sec-sub" style="margin-top:.5rem;">暖色燈光、木質空間、舒適床鋪。讓身體與情緒一起慢下來。</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2.5rem;">
-      <div style="background:linear-gradient(135deg,#c4b5a4,#ede4d8);height:220px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:#7a6a5c;text-align:center;line-height:1.6;">🛏 按摩床 · 主空間</div>
-      <div style="background:linear-gradient(135deg,#c4b5a4,#ede4d8);height:220px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:#7a6a5c;text-align:center;line-height:1.6;">🪟 窗邊 · 自然光</div>
-      <div style="background:linear-gradient(135deg,#c4b5a4,#ede4d8);height:220px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:#7a6a5c;text-align:center;line-height:1.6;">🧴 備品 · 細節</div>
-      <div style="background:linear-gradient(135deg,#c4b5a4,#ede4d8);height:220px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:#7a6a5c;text-align:center;line-height:1.6;">🌿 氛圍 · 燈光</div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing" style="background:#fff;">
-  <div style="max-width:900px;margin:0 auto;">
-    <p class="sec-eyebrow">預約方案</p>
-    <h2 class="sec-title">選擇適合你的放鬆時光</h2>
-    <div class="gold-bar"></div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.5rem;">
-      <!-- Standard -->
-      <div style="background:var(--warm);padding:2.5rem;border:1px solid rgba(184,150,90,0.2);border-radius:4px;">
-        <p style="font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;">標準</p>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--bear);margin-bottom:.4rem;">經典放鬆體驗</h3>
-        <p style="font-size:.82rem;color:var(--muted);margin-bottom:1.2rem;font-weight:300;">60 分鐘全身放鬆</p>
-        <div style="font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--bear);margin-bottom:1.5rem;">NT$1,500</div>
-        <ul class="plan-perks" style="margin-bottom:2rem;">
-          <li>全身深層放鬆</li>
-          <li>客製化手法</li>
-          <li>放鬆建議諮詢</li>
-        </ul>
-        <button class="btn-primary" style="width:100%;text-align:center;" onclick="openModal('massage')">立即預約</button>
-      </div>
-      <!-- Recommended -->
-      <div style="background:var(--bear);padding:2.5rem;border:1px solid var(--gold);border-radius:4px;position:relative;">
-        <div style="position:absolute;top:0;right:1.5rem;background:var(--gold);color:var(--bear);font-size:.65rem;letter-spacing:.12em;padding:.25rem .7rem;font-weight:500;">最推薦</div>
-        <p style="font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;">推薦</p>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--warm);margin-bottom:.4rem;">運動恢復體驗</h3>
-        <p style="font-size:.82rem;color:var(--pebble);margin-bottom:1.2rem;font-weight:300;">90 分鐘深度調理</p>
-        <div style="font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--gold);margin-bottom:1.5rem;">NT$2,000</div>
-        <ul class="plan-perks" style="margin-bottom:2rem;">
-          <li style="color:rgba(196,181,164,.7);">全身深層放鬆</li>
-          <li style="color:rgba(196,181,164,.7);">運動恢復專項</li>
-          <li style="color:rgba(196,181,164,.7);">客製化手法</li>
-          <li style="color:rgba(196,181,164,.7);">居家保養建議</li>
-        </ul>
-        <button class="btn-primary" style="width:100%;text-align:center;" onclick="openModal('massage')">立即預約</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA SECTION -->
-<section id="cta-section" style="background:#3D2B1F;padding:7rem 8vw;text-align:center;">
-  <h2 style="font-family:'Playfair Display',serif;color:var(--warm);font-size:clamp(2rem,5vw,3.5rem);line-height:1.2;margin-bottom:1.5rem;">今天的疲勞，<br><em>不一定要帶回家。</em></h2>
-  <p style="color:var(--pebble);font-size:1.1rem;margin-bottom:2.5rem;">讓熊抱舒所陪你慢下來。</p>
-  <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;">
-    <button class="btn-primary" style="font-size:1rem;padding:1rem 2.5rem;" onclick="openModal('massage')">立即預約按摩</button>
-    <a href="https://line.me/ti/p/leemuch2" target="_blank" style="display:inline-flex;align-items:center;padding:1rem 2.5rem;border:1px solid var(--gold);color:var(--gold);background:transparent;font-family:'Noto Sans TC',sans-serif;font-size:1rem;letter-spacing:.06em;text-decoration:none;cursor:pointer;transition:opacity .2s;" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">加入 LINE 預約</a>
-  </div>
-</section>
-
-<!-- LINE CONTACT BAR -->
-<div class="line-contact-bar">
-  <div class="lc-left">
-    <div class="lc-icon">💬</div>
-    <div class="lc-text">
-      <h3>用 LINE 預約最方便！</h3>
-      <p>加入好友後直接傳訊，熊教練親自回覆確認時間<br>接受 LINE Pay 付款，安全便利不用現金</p>
-    </div>
-  </div>
-  <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
-    <div class="lc-id">LINE ID：<strong id="line-id-display">leemuch2</strong></div>
-    <a class="line-open-btn" href="https://line.me/ti/p/leemuch2" id="line-add-friend-bar" target="_blank">➕ 加入 LINE 好友</a>
-  </div>
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobileMenu()">關於我</a>
+  <a href="#services" onclick="closeMobileMenu()">服務</a>
+  <a href="#space" onclick="closeMobileMenu()">空間</a>
+  <a href="#booking" onclick="closeMobileMenu()">預約</a>
+  <button class="btn-nav" onclick="closeMobileMenu(); openModal()">立即預約</button>
 </div>
 
-<!-- CONTACT / FOOTER -->
+<!-- S01 HERO -->
+<section id="home">
+  <div class="hero-left">
+    <div class="hero-left-inner">
+      <p class="hero-eyebrow">熊抱舒所 Bear Hug & Relax</p>
+      <h1 class="hero-h1">身體的調音師，<br><em>讓你慢下來</em></h1>
+      <p class="hero-tagline">舒壓放鬆 × 身體保養 × 慢活休息</p>
+      <p class="hero-p">有時候我們需要的，不是更努力，<br>而是一段真正屬於自己的休息時間。</p>
+      <div class="hero-btns">
+        <button class="btn-gold" onclick="openModal()">立即預約</button>
+        <a href="#services" class="btn-ghost">了解服務</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="images/hero-banner.jpg" alt="熊抱舒所">
+  </div>
+</section>
+
+<!-- S02 ABOUT -->
+<section id="about">
+  <div class="about-img">
+    <img src="images/02-coach.jpg" alt="熊教練">
+  </div>
+  <div class="about-text">
+    <div class="about-text-inner">
+      <p class="eyebrow">關於熊教練</p>
+      <h2 class="about-h2">一雙懂運動的手<br>也是一雙懂音樂的手</h2>
+      <div class="gold-bar"></div>
+      <p class="about-p">熊教練長期接觸運動與音樂，相信放鬆不只是身體的休息，更是一種重新找回生活節奏的方式。透過舒適的按壓與放鬆手法，讓每位來到熊抱舒所的人，都能暫時放下忙碌，享受片刻寧靜。</p>
+    </div>
+  </div>
+</section>
+
+<!-- S03 PIANO QUOTE -->
+<section id="philosophy">
+  <div class="philosophy-inner">
+    <p class="piano-eyebrow">為什麼叫做身體的調音師？</p>
+    <h2 class="piano-h2">鋼琴需要調音，<br>生活也需要。</h2>
+    <p class="piano-p">當工作、壓力與忙碌堆積，有時候我們需要的，只是一次好好放鬆的機會。</p>
+  </div>
+</section>
+
+<!-- S04 SERVICES -->
+<section id="services">
+  <div class="section-header">
+    <p class="eyebrow">服務項目</p>
+    <h2 class="section-h2">選擇屬於你的放鬆方式</h2>
+    <div class="section-gold-bar"></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <img src="images/11-neck.jpg" alt="肩頸放鬆">
+      <div class="service-body">
+        <h3 class="service-name">肩頸放鬆</h3>
+        <p class="service-desc">長時間久坐、辦公與低頭族的舒壓選擇。</p>
+        <p class="service-price">60分鐘 · NT$1,500</p>
+        <button class="btn-gold" onclick="openModal('neck')">預約</button>
+      </div>
+    </div>
+    <div class="service-card">
+      <img src="images/10-foot.jpg" alt="足部放鬆">
+      <div class="service-body">
+        <h3 class="service-name">足部放鬆</h3>
+        <p class="service-desc">讓雙腳好好休息，享受慢下來的時光。</p>
+        <p class="service-price">60分鐘 · NT$1,500</p>
+        <button class="btn-gold" onclick="openModal('foot')">預約</button>
+      </div>
+    </div>
+    <div class="service-card">
+      <img src="images/12-body.jpg" alt="全身放鬆">
+      <div class="service-body">
+        <h3 class="service-name">全身放鬆</h3>
+        <p class="service-desc">從頭到腳，給自己一段專屬的休息時間。</p>
+        <p class="service-price">90分鐘 · NT$2,000</p>
+        <button class="btn-gold" onclick="openModal('body')">預約</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S05 HANDS -->
+<section id="hands">
+  <div class="hands-text">
+    <h2 class="hands-h2">每一次按壓<br>都是一份專注</h2>
+    <p class="hands-p">放鬆不是追求刺激，而是在剛剛好的節奏裡，讓自己慢慢回來。</p>
+  </div>
+</section>
+
+<!-- S06 SPORT -->
+<section id="sport">
+  <div class="sport-text">
+    <div class="sport-text-inner">
+      <p class="eyebrow">運動族也需要放鬆</p>
+      <h2 class="sport-h2">運動後<br>也值得好好休息</h2>
+      <div class="gold-bar"></div>
+      <p class="sport-p">無論是健身、慢跑、桌球、羽球或日常活動，都值得給自己一段放鬆時光。</p>
+    </div>
+  </div>
+  <div class="sport-img">
+    <img src="images/03-sport.jpg" alt="運動放鬆">
+  </div>
+</section>
+
+<!-- S07 SPACE -->
+<section id="space">
+  <div class="section-header">
+    <p class="eyebrow">空間環境</p>
+    <h2 class="section-h2">為疲憊旅人設計的空間</h2>
+    <div class="section-gold-bar"></div>
+  </div>
+  <p class="space-desc">暖色燈光、木質空間、安靜氛圍。希望每位走進來的人，都能感受到安心與自在。</p>
+  <div class="space-images">
+    <img src="images/08-lounge.jpg" alt="等候區">
+    <img src="images/07-room.jpg" alt="客房">
+  </div>
+</section>
+
+<!-- S08 CLIENT VIEW -->
+<section id="client">
+  <div class="client-inner">
+    <h2 class="client-h2">躺下來</h2>
+    <p class="client-p">剩下的交給時間</p>
+  </div>
+</section>
+
+<!-- S09 CTA -->
+<section id="booking">
+  <div class="cta-inner">
+    <h2 class="cta-h2">今天的疲勞<br><em style="color:#D3B17D">不一定要帶回家</em></h2>
+    <p class="cta-p">給自己一個喘息的理由。</p>
+    <div class="cta-btns">
+      <a href="https://line.me/ti/p/leemuch2" target="_blank" class="btn-gold">加入 LINE 預約</a>
+      <a href="#services" class="btn-ghost">了解服務</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  <div class="footer-grid">
+  <div class="footer-inner">
     <div>
-      <div class="footer-brand-logo">🐻 熊抱舒所</div>
-      <p class="footer-brand-desc">Bear Hug &amp; Relax<br><br>一雙懂運動的手，也是一雙懂音樂的手。從健身訓練到深層放鬆，陪你找回身體的節奏。</p>
+      <p class="footer-logo">🐻 熊抱舒所 Bear Hug & Relax</p>
+      <p class="footer-desc">身體的調音師，讓你慢下來。<br>舒壓放鬆 · 身體保養 · 慢活休息</p>
+      <a href="https://line.me/ti/p/leemuch2" target="_blank" class="footer-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        LINE 預約
+      </a>
     </div>
-    <div class="footer-col">
-      <h4>服務項目</h4>
-      <ul>
-        <li><a href="#services">肩頸舒緩 30分鐘</a></li>
-        <li><a href="#services">全身深層放鬆 60分鐘</a></li>
-        <li><a href="#services">運動恢復方案 90分鐘</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>預約方案</h4>
-      <ul>
-        <li><a href="#pricing">經典放鬆體驗 NT$1,500</a></li>
-        <li><a href="#pricing">運動恢復體驗 NT$2,000</a></li>
-        <li><a href="#services">肩頸舒緩 NT$800</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>聯絡方式</h4>
-      <ul>
-        <li><a href="https://line.me/ti/p/leemuch2" id="footer-line-link" target="_blank">💬 LINE 加好友</a></li>
-        <li><a href="#">LINE Pay 付款</a></li>
-        <li><a href="#">銀行轉帳</a></li>
-        <li><a href="#">現金付款</a></li>
-      </ul>
+    <div>
+      <p class="footer-title">營業資訊</p>
+      <p class="footer-info">
+        週一至週日 11:00 – 21:00<br>
+        LINE：@leemuch2<br>
+        Instagram：@bearhug_relax<br>
+        地址：台灣
+      </p>
     </div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2026 熊抱舒所 Bear Hug &amp; Relax</p>
-    <p>本服務為舒緩按摩，不涉及醫療行為，不宣稱任何療效</p>
-  </div>
+  <div class="footer-bottom">© 2024 熊抱舒所 Bear Hug & Relax · All rights reserved</div>
 </footer>
 
-<!-- BOOKING MODAL -->
-<div class="modal-overlay" id="modal-booking">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('booking')">✕</button>
-    <h2 data-zh="🏠 預訂客房" data-en="🏠 Book a Room">🏠 預訂客房</h2>
-    <p data-zh="填寫後點「確認預訂」，將自動開啟 LINE 對話，並帶入您的預約資訊，由班森熊教練親自確認。" data-en="Fill in your details and tap Confirm — LINE will open automatically with your booking info pre-filled for Coach Benson to confirm.">填寫後點「確認預訂」，將自動開啟 LINE 對話，並帶入您的預約資訊，由班森熊教練親自確認。</p>
-    <div class="step-flow">
-      <div class="step-item"><div class="step-circle">1</div><div class="step-label" data-zh="填寫<br>資料" data-en="Fill<br>Form">填寫<br>資料</div></div>
-      <div class="step-arrow">›</div>
-      <div class="step-item"><div class="step-circle">2</div><div class="step-label" data-zh="跳轉<br>LINE" data-en="Open<br>LINE">跳轉<br>LINE</div></div>
-      <div class="step-arrow">›</div>
-      <div class="step-item"><div class="step-circle">3</div><div class="step-label" data-zh="教練<br>確認" data-en="Coach<br>Confirms">教練<br>確認</div></div>
-      <div class="step-arrow">›</div>
-      <div class="step-item"><div class="step-circle">4</div><div class="step-label" data-zh="LINE Pay<br>付款" data-en="LINE Pay<br>Payment">LINE Pay<br>付款</div></div>
-    </div>
-    <div class="fg"><input type="text" id="bk-name" placeholder="姓名 *" data-ph-zh="姓名 *" data-ph-en="Name *"></div>
-    <div class="fg"><input type="tel" id="bk-phone" placeholder="手機號碼 *" data-ph-zh="手機號碼 *" data-ph-en="Phone Number *"></div>
-    <div class="fg-row">
-      <div class="fg"><input type="date" id="bk-checkin"></div>
-      <div class="fg"><input type="date" id="bk-checkout"></div>
-    </div>
-    <div class="fg">
-      <select id="bk-room">
-        <option disabled selected data-zh="選擇房型 *" data-en="Select Room Type *">選擇房型 *</option>
-        <option data-zh="養生舒壓客房" data-en="Wellness &amp; Relaxation Room">養生舒壓客房</option>
-        <option data-zh="日韓簡約客房" data-en="Japanese-Korean Minimal Room">日韓簡約客房</option>
-      </select>
-    </div>
-    <div class="fg"><textarea rows="2" id="bk-note" placeholder="特殊需求（選填）" data-ph-zh="特殊需求（選填）" data-ph-en="Special requests (optional)"></textarea></div>
-    <div class="linepay-box">
-      <div class="lp-icon">💚</div>
-      <div class="lp-text">
-        <strong data-zh="付款方式：LINE Pay" data-en="Payment: LINE Pay">付款方式：LINE Pay</strong>
-        <span data-zh="確認後教練會透過 LINE 傳送付款連結，安全快速完成訂房。也可選擇現金 / 銀行轉帳。" data-en="After confirmation, Coach Benson will send a LINE Pay link via LINE. Cash and bank transfer also accepted.">確認後教練會透過 LINE 傳送付款連結，安全快速完成訂房。也可選擇現金 / 銀行轉帳。</span>
-      </div>
-    </div>
-    <button class="modal-submit" onclick="submitBooking()" data-zh="確認預訂 → 開啟 LINE" data-en="Confirm Booking → Open LINE">確認預訂 → 開啟 LINE</button>
-  </div>
-</div>
+<!-- LINE FAB -->
+<a href="https://line.me/ti/p/leemuch2" target="_blank" class="line-fab" aria-label="LINE 預約">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+  預約
+</a>
 
-<!-- MASSAGE MODAL -->
-<div class="modal-overlay" id="modal-massage">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('massage')">✕</button>
-    <h2 data-zh="🐻 預約舒緩按摩" data-en="🐻 Book a Massage">🐻 預約舒緩按摩</h2>
-    <p data-zh="填寫後點「確認預約」，將自動開啟 LINE 對話，由班森熊教練親自回覆確認時間。" data-en="Fill in your details and tap Confirm — LINE will open and Coach Benson will personally reply to confirm your appointment.">填寫後點「確認預約」，將自動開啟 LINE 對話，由班森熊教練親自回覆確認時間。</p>
-    <div class="step-flow">
-      <div class="step-item"><div class="step-circle">1</div><div class="step-label" data-zh="填寫<br>資料" data-en="Fill<br>Form">填寫<br>資料</div></div>
-      <div class="step-arrow">›</div>
-      <div class="step-item"><div class="step-circle">2</div><div class="step-label" data-zh="跳轉<br>LINE" data-en="Open<br>LINE">跳轉<br>LINE</div></div>
-      <div class="step-arrow">›</div>
-      <div class="step-item"><div class="step-circle">3</div><div class="step-label" data-zh="教練<br>確認" data-en="Coach<br>Confirms">教練<br>確認</div></div>
-      <div class="step-arrow">›</div>
-      <div class="step-item"><div class="step-circle">4</div><div class="step-label" data-zh="LINE Pay<br>付款" data-en="LINE Pay<br>Payment">LINE Pay<br>付款</div></div>
-    </div>
-    <div class="fg"><input type="text" id="ms-name" placeholder="姓名 *" data-ph-zh="姓名 *" data-ph-en="Name *"></div>
-    <div class="fg"><input type="tel" id="ms-phone" placeholder="手機號碼 *" data-ph-zh="手機號碼 *" data-ph-en="Phone Number *"></div>
-    <div class="fg-row">
-      <div class="fg"><input type="date" id="ms-date"></div>
-      <div class="fg">
-        <select id="ms-time">
-          <option disabled selected data-zh="希望時段" data-en="Preferred Time">希望時段</option>
-          <option>10:00</option><option>11:00</option>
-          <option>13:00</option><option>14:00</option>
-          <option>15:00</option><option>16:00</option>
-          <option>17:00</option><option>18:00</option>
-          <option>19:00</option>
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="bookingModal" onclick="handleOverlayClick(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()" aria-label="關閉">×</button>
+    <h2 class="modal-h2">預約服務</h2>
+    <p class="modal-sub">填寫資料後，我們將透過 LINE 與您確認。</p>
+    <form onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label for="service">選擇服務</label>
+        <select id="service" name="service" required>
+          <option value="">請選擇服務項目</option>
+          <option value="neck">肩頸放鬆 60 分鐘 · NT$1,500</option>
+          <option value="foot">足部放鬆 60 分鐘 · NT$1,500</option>
+          <option value="body">全身放鬆 90 分鐘 · NT$2,000</option>
         </select>
       </div>
-    </div>
-    <div class="fg">
-      <select id="ms-service">
-        <option disabled selected data-zh="選擇療程 *" data-en="Select Service *">選擇療程 *</option>
-        <option value="60min-1500" data-zh="瑞典式精油按摩 60分鐘 — NT$1,500" data-en="Swedish Aromatherapy Massage 60 min — NT$1,500">瑞典式精油按摩 60分鐘 — NT$1,500</option>
-        <option value="90min-2000" data-zh="瑞典式精油按摩 90分鐘 — NT$2,000" data-en="Swedish Aromatherapy Massage 90 min — NT$2,000">瑞典式精油按摩 90分鐘 — NT$2,000</option>
-      </select>
-    </div>
-    <div class="fg">
-      <select id="ms-promo">
-        <option value="none" data-zh="無優惠" data-en="No discount">無優惠</option>
-        <option value="birthday" data-zh="🎂 當月壽星 折抵 NT$200（需出示證件）" data-en="🎂 Birthday Month — NT$200 off (ID required)">🎂 當月壽星 折抵 NT$200（需出示證件）</option>
-        <option value="uniform" data-zh="🚓 軍警消人員 折抵 NT$200（需出示證件）" data-en="🚓 Military/Police/Fire — NT$200 off (ID required)">🚓 軍警消人員 折抵 NT$200（需出示證件）</option>
-      </select>
-    </div>
-    <div class="fg"><textarea rows="2" id="ms-note" placeholder="身體特別緊繃的部位或其他需求（選填）" data-ph-zh="身體特別緊繃的部位或其他需求（選填）" data-ph-en="Areas of tension or special requests (optional)"></textarea></div>
-    <div class="linepay-box">
-      <div class="lp-icon">💚</div>
-      <div class="lp-text">
-        <strong data-zh="付款方式：LINE Pay / 現金 / 銀行轉帳" data-en="Payment: LINE Pay / Cash / Bank Transfer">付款方式：LINE Pay / 現金 / 銀行轉帳</strong>
-        <span data-zh="確認預約後，教練會透過 LINE 傳送 LINE Pay 付款連結，輕鬆完成預付。" data-en="After confirmation, Coach Benson will send a LINE Pay link — quick and easy prepayment.">確認預約後，教練會透過 LINE 傳送 LINE Pay 付款連結，輕鬆完成預付。</span>
+      <div class="form-group">
+        <label for="date">希望日期</label>
+        <input type="date" id="date" name="date" required>
       </div>
-    </div>
-    <div style="font-size:.74rem;color:var(--muted);line-height:1.7;margin:.6rem 0;padding:.7rem .9rem;background:var(--cream);border-left:2px solid var(--gold);" data-zh="⚠️ 本服務為舒緩按摩，不涉及醫療行為，不宣稱任何療效" data-en="⚠️ This is a relaxation massage service only. No medical claims are made.">
-      ⚠️ 本服務為舒緩按摩，不涉及醫療行為，不宣稱任何療效
-    </div>
-    <button class="modal-submit" onclick="submitMassage()" data-zh="確認預約 → 開啟 LINE" data-en="Confirm Booking → Open LINE">確認預約 → 開啟 LINE</button>
+      <div class="form-group">
+        <label for="name">您的姓名</label>
+        <input type="text" id="name" name="name" placeholder="請輸入姓名" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">聯絡電話</label>
+        <input type="tel" id="phone" name="phone" placeholder="請輸入手機號碼" required>
+      </div>
+      <button type="submit" class="form-submit">送出預約申請</button>
+    </form>
   </div>
 </div>
 
-<!-- LINE FLOATING BUTTON -->
-<div class="line-fab">
-  <a class="line-fab-main" id="line-fab-btn" href="#" target="_blank">
-    <span class="line-logo">💬</span>
-    <span>
-      <span data-zh="LINE 聯絡我們" data-en="Contact via LINE">LINE 聯絡我們</span>
-      <span class="line-fab-label" data-zh="點此加好友・直接對話" data-en="Add friend · Chat directly">點此加好友・直接對話</span>
-    </span>
-  </a>
-</div>
-
-<!-- TOAST -->
-<div class="toast" id="toast"></div>
-
 <script>
-  // ─────────────────────────────────────────
-  // ★ 設定您的 LINE ID（申請官方帳號後填入）
-  // 個人帳號範例：'benson_bear'
-  // 官方帳號範例：'@bearhugrelax'
-  const LINE_ID = 'leemuch2';
-  // ─────────────────────────────────────────
-
-  // 產生 LINE 加好友 / 傳訊連結
-  function getLineUrl(message) {
-    const isOfficial = LINE_ID.startsWith('@');
-    if (message) {
-      // 帶預填訊息開啟聊天（個人帳號支援；官方帳號用加好友頁）
-      return isOfficial
-        ? `https://line.me/R/ti/p/${encodeURIComponent(LINE_ID)}`
-        : `https://line.me/R/oaMessage/${encodeURIComponent(LINE_ID)}/?${encodeURIComponent(message)}`;
-    }
-    return isOfficial
-      ? `https://line.me/R/ti/p/${encodeURIComponent(LINE_ID)}`
-      : `https://line.me/ti/p/~${LINE_ID}`;
+  // Nav mobile menu
+  function toggleMobileMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
   }
 
-  // 更新頁面所有 LINE 連結
-  function refreshLineLinks() {
-    const url = getLineUrl('');
-    ['line-add-friend-bar','line-fab-btn','footer-line-link'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.href = url;
-    });
-    document.getElementById('line-id-display').textContent = LINE_ID;
-  }
-  refreshLineLinks();
-
-  // ── 客房預訂 ──
-  function submitBooking() {
-    const name    = document.getElementById('bk-name').value.trim();
-    const phone   = document.getElementById('bk-phone').value.trim();
-    const checkin = document.getElementById('bk-checkin').value;
-    const checkout= document.getElementById('bk-checkout').value;
-    const room    = document.getElementById('bk-room').value;
-    const note    = document.getElementById('bk-note').value.trim();
-
-    if (!name || !phone || room.includes('選擇')) {
-      showToast('請填寫姓名、手機與房型 ✏️'); return;
-    }
-
-    const msg = [
-      '【熊抱舒所 客房預訂】',
-      `姓名：${name}`,
-      `手機：${phone}`,
-      checkin  ? `入住：${checkin}`  : '',
-      checkout ? `退房：${checkout}` : '',
-      `房型：${room}`,
-      note ? `需求：${note}` : '',
-      '─ 付款方式：LINE Pay / 現金 / 銀行轉帳'
-    ].filter(Boolean).join('\n');
-
-    closeModal('booking');
-    showToast('即將開啟 LINE，預約資訊已幫您備妥 💬');
-    setTimeout(() => { window.open(getLineUrl(msg), '_blank'); }, 600);
-  }
-
-  // ── 按摩預約 ──
-  function submitMassage() {
-    const name    = document.getElementById('ms-name').value.trim();
-    const phone   = document.getElementById('ms-phone').value.trim();
-    const date    = document.getElementById('ms-date').value;
-    const time    = document.getElementById('ms-time').value;
-    const service = document.getElementById('ms-service');
-    const promo   = document.getElementById('ms-promo');
-    const note    = document.getElementById('ms-note').value.trim();
-
-    if (!name || !phone || service.selectedIndex <= 0) {
-      showToast('請填寫姓名、手機與療程 ✏️'); return;
-    }
-
-    const promoText = promo.value !== 'none' ? promo.options[promo.selectedIndex].text : '';
-    const msg = [
-      '【熊抱舒所 舒緩按摩預約】',
-      `姓名：${name}`,
-      `手機：${phone}`,
-      date ? `日期：${date}` : '',
-      (time && !time.includes('希望')) ? `時段：${time}` : '',
-      `療程：${service.options[service.selectedIndex].text}`,
-      promoText ? `優惠：${promoText}` : '',
-      note ? `備註：${note}` : '',
-      '─ 付款：LINE Pay / 現金 / 銀行轉帳',
-      '⚠️ 舒緩按摩，不宣稱療效'
-    ].filter(Boolean).join('\n');
-
-    closeModal('massage');
-    showToast('即將開啟 LINE，預約資訊已幫您備妥 🐻');
-    setTimeout(() => { window.open(getLineUrl(msg), '_blank'); }, 600);
-  }
-
-  // ── Subscribe 表單 ──
-  document.querySelector('.sub-submit').addEventListener('click', function() {
-    showToast('感謝訂閱申請！班森熊教練會盡快透過 LINE 聯繫您 🐻🌿');
-  });
-
-  // ── Utils ──
-  function openModal(type) {
-    document.getElementById('modal-' + type).classList.add('open');
+  // Modal
+  const serviceMap = { neck: '肩頸放鬆 60 分鐘 · NT$1,500', foot: '足部放鬆 60 分鐘 · NT$1,500', body: '全身放鬆 90 分鐘 · NT$2,000' };
+  function openModal(service) {
+    document.getElementById('bookingModal').classList.add('active');
     document.body.style.overflow = 'hidden';
+    if (service && serviceMap[service]) {
+      document.getElementById('service').value = service;
+    }
   }
-  function closeModal(type) {
-    document.getElementById('modal-' + type).classList.remove('open');
+  function closeModal() {
+    document.getElementById('bookingModal').classList.remove('active');
     document.body.style.overflow = '';
   }
-  document.querySelectorAll('.modal-overlay').forEach(el => {
-    el.addEventListener('click', e => {
-      if (e.target === el) { el.classList.remove('open'); document.body.style.overflow = ''; }
-    });
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('bookingModal')) closeModal();
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
   });
-  function showToast(msg) {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 3500);
-  }
-  // ── Language Toggle ──
-  const LANG_KEY = 'bhrlang';
-  let currentLang = localStorage.getItem(LANG_KEY) || 'zh';
-
-  function applyLang(lang) {
-    currentLang = lang;
-    localStorage.setItem(LANG_KEY, lang);
-
-    // Update all data-zh / data-en elements
-    document.querySelectorAll('[data-zh],[data-en]').forEach(el => {
-      const val = lang === 'en' ? el.dataset.en : el.dataset.zh;
-      if (val === undefined) return;
-      // For elements that contain child nodes (e.g. <strong>, <br>), use innerHTML
-      // For plain text-only elements use textContent to avoid XSS — but our values
-      // contain intentional HTML (<br>, <strong>), so innerHTML is appropriate here.
-      el.innerHTML = val;
-    });
-
-    // Update placeholder attributes (inputs/textareas with data-ph-zh / data-ph-en)
-    document.querySelectorAll('[data-ph-zh],[data-ph-en]').forEach(el => {
-      const val = lang === 'en' ? el.dataset.phEn : el.dataset.phZh;
-      if (val !== undefined) el.placeholder = val;
-    });
-
-    // Update the hot plan badge via CSS content replacement
-    const hotStyle = document.getElementById('hot-plan-style');
-    if (lang === 'en') {
-      hotStyle.textContent = '.plan.hot::before { content: "Most Popular"; }';
-    } else {
-      hotStyle.textContent = '.plan.hot::before { content: "最受喜愛"; }';
-    }
-
-    // Update LINE add-friend bar button text
-    const lineBarBtn = document.getElementById('line-add-friend-bar');
-    if (lineBarBtn) lineBarBtn.textContent = lang === 'en' ? '➕ Add LINE Friend' : '➕ 加入 LINE 好友';
-
-    // Update html lang attribute
-    document.documentElement.lang = lang === 'en' ? 'en' : 'zh-TW';
-
-    // Update toggle button label
-    const btn = document.getElementById('lang-toggle');
-    if (btn) btn.textContent = lang === 'en' ? '中文' : 'EN';
+  function handleSubmit(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const service = document.getElementById('service').options[document.getElementById('service').selectedIndex].text;
+    const date = document.getElementById('date').value;
+    const phone = document.getElementById('phone').value;
+    const msg = encodeURIComponent(`【預約申請】\n姓名：${name}\n服務：${service}\n日期：${date}\n電話：${phone}`);
+    window.open(`https://line.me/ti/p/leemuch2`, '_blank');
+    closeModal();
   }
 
-  function toggleLang() {
-    applyLang(currentLang === 'zh' ? 'en' : 'zh');
-  }
-
-  // Inject dynamic style tag for hot plan pseudo-element
-  const hotStyle = document.createElement('style');
-  hotStyle.id = 'hot-plan-style';
-  document.head.appendChild(hotStyle);
-
-  // Apply saved or default language on load
-  applyLang(currentLang);
-
-  window.addEventListener('scroll', () => {
-    document.getElementById('main-nav').style.padding =
-      window.scrollY > 60 ? '.75rem 5vw' : '1.1rem 5vw';
-  });
+  // Set min date for date input
+  const dateInput = document.getElementById('date');
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  dateInput.min = `${yyyy}-${mm}-${dd}`;
 </script>
 </body>
 </html>
