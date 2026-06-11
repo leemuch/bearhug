@@ -74,7 +74,11 @@ nav {
 .hero {
   min-height: 100vh; position: relative;
   display: flex; align-items: center;
-  background: linear-gradient(145deg, #3D2B1F 0%, #5C3D28 40%, #2C1E14 100%);
+  background-image:
+    linear-gradient(90deg, rgba(20,15,10,.85) 0%, rgba(20,15,10,.55) 45%, rgba(20,15,10,.1) 100%),
+    url('images/hero-banner.jpg');
+  background-size: cover;
+  background-position: center right;
   overflow: hidden;
 }
 .hero-texture {
