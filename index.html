@@ -461,8 +461,11 @@ section { position: relative; }
   transition: border-color 0.3s;
 }
 .therapist-card:hover { border-color: rgba(211,177,125,0.5); }
-.therapist-card img {
-  width: 100%; height: 340px; object-fit: cover; object-position: top;
+.therapist-photos {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3px;
+}
+.therapist-photos img {
+  width: 100%; height: 200px; object-fit: cover; object-position: top;
   display: block;
 }
 .therapist-info { padding: 1.8rem 1.5rem 2rem; }
@@ -953,7 +956,12 @@ footer {
 
     <!-- Benson -->
     <div class="therapist-card">
-      <img src="images/therapist-benson.jpg" alt="熊教練 Benson">
+      <div class="therapist-photos">
+        <img src="images/therapist-benson.jpg" alt="熊教練 Benson">
+        <img src="images/benson-2.jpg" alt="熊教練 Benson 2">
+        <img src="images/benson-4.jpg" alt="熊教練 Benson 工作">
+        <img src="images/benson-3.jpg" alt="熊教練 Benson 鋼琴">
+      </div>
       <div class="therapist-info">
         <div class="therapist-name">🐻 熊教練 Benson</div>
         <div class="therapist-title" data-zh="身體的調音師" data-en="The Body Tuner">身體的調音師</div>
@@ -971,7 +979,12 @@ footer {
 
     <!-- 肉壯熊 -->
     <div class="therapist-card">
-      <img src="images/therapist-bear.jpg" alt="肉壯熊">
+      <div class="therapist-photos">
+        <img src="images/bear-2.jpg" alt="肉壯熊 抱胸">
+        <img src="images/bear-4.jpg" alt="肉壯熊 站姿">
+        <img src="images/bear-3.jpg" alt="肉壯熊 工作">
+        <img src="images/bear-1.jpg" alt="肉壯熊 全身">
+      </div>
       <div class="therapist-info">
         <div class="therapist-name">🐻‍❄️ 肉壯熊</div>
         <div class="therapist-title" data-zh="扎實有力的陪伴" data-en="Strong & Grounded">扎實有力的陪伴</div>
@@ -989,7 +1002,12 @@ footer {
 
     <!-- 強尼熊老師傅 -->
     <div class="therapist-card">
-      <img src="images/therapist-johnny.jpg" alt="強尼熊老師傅">
+      <div class="therapist-photos">
+        <img src="images/johnny-4.jpg" alt="強尼熊 微笑">
+        <img src="images/johnny-1.jpg" alt="強尼熊 站姿">
+        <img src="images/johnny-2.jpg" alt="強尼熊 工作">
+        <img src="images/johnny-3.jpg" alt="強尼熊 站立">
+      </div>
       <div class="therapist-info">
         <div class="therapist-name">🐻‍❄️ 強尼熊老師傅</div>
         <div class="therapist-title" data-zh="經驗累積的老功夫" data-en="The Seasoned Master">經驗累積的老功夫</div>
